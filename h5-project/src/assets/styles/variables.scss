@@ -1,0 +1,26 @@
+/**
+ * SCSS 变量定义文件
+ * 包含项目中所有的设计变量：颜色、字体、间距等
+ * @author 前端工程师团队
+ * @date 2024-12-XX
+ */
+
+// ==================== 颜色系统 ====================
+// 主要颜色
+$primary-color: #FF6B35;
+$primary-light: #FF8A5C;
+$primary-dark: #E55A2B;
+// 辅助颜色
+$secondary-color: #4CAF50;
+$success-color: #52C41A;
+$warning-color: #FAAD14;
+$error-color: #FF4D4F;
+$info-color: #1890FF;
+// 中性颜色
+$text-color-primary: #333333;
+$text-color-secondary: #666666;
+$text-color-disabled: #999999;
+$text-color-light: #CCCCCC;
+// 背景颜色
+$background-color: #FFFFFF;
+$background-color-light:#999999;
