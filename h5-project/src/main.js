@@ -13,8 +13,6 @@ import router from './router'
 import pinia from './stores'
 
 // 全局样式
-import './assets/styles/variables.scss'
-import './assets/styles/mixins.scss'
 import './assets/styles/base.scss'
 
 /**

@@ -1,3 +1,10 @@
+/**
+ * PostCSS 配置文件
+ * CSS 后处理器配置，包含自动前缀和移动端适配
+ * @author 前端工程师团队
+ * @date 2024-12-XX
+ */
+
 export default {
     plugins: {
         autoprefixer: {
@@ -11,19 +18,5 @@ export default {
             ],
             grid: true
         },
-        'postcss-px-to-viewport': {
-            unitToConvert: 'px',
-            viewportWidth: 375,
-            unitPrecision: 6,
-            propList: ['*'],
-            viewportUnit: 'vw',
-            fontViewportUnit: 'vw',
-            selectorBlackList: [],
-            minPixelValue: 1,
-            mediaQuery: true,
-            replace: true,
-            exclude: [],
-            landscape: false
-        }
     }
 }

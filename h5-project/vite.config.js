@@ -22,10 +22,7 @@ export default defineConfig({
     css: {
         preprocessorOptions: {
             scss: {
-                additionalData: `
-          @import "@/assets/styles/variables.scss";
-          @import "@/assets/styles/mixins.scss";
-        `
+                // 空配置，手动导入变量
             }
         }
     },

@@ -5,6 +5,9 @@
  * @date 2024-12-XX
  */
 
+@use "./variables.scss" as *;
+@use "./mixins.scss" as *;
+
 // ==================== CSS 重置 ====================
 * {
     box-sizing: border-box;

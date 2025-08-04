@@ -12,7 +12,5 @@ const pinia = createPinia()
 export default pinia
 
 // 导出所有store
-export { useUserStore }
-from './user'
-export { useInviteStore }
-from './invite'
+export { useUserStore } from './user'
+export { useInviteStore } from './invite'
