@@ -127,6 +127,10 @@
           <span class="method-icon">💬</span>
           <span class="method-text">微信登录</span>
         </button>
+        <button class="quick-login-btn demo" @click="handleDemoLogin">
+          <span class="method-icon">🎮</span>
+          <span class="method-text">演示登录</span>
+        </button>
       </div>
     </div>
   </div>
@@ -365,6 +369,17 @@ const handleWechatLogin = async () => {
   } catch (error) {
     showError('微信登录暂时不可用')
   }
+}
+
+/**
+ * 演示登录
+ */
+const handleDemoLogin = () => {
+  userStore.mockLogin()
+  showSuccess('演示登录成功')
+  setTimeout(() => {
+    router.push('/')
+  }, 1000)
 }
 
 /**

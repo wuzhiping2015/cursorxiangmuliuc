@@ -33,6 +33,22 @@ export const useUserStore = defineStore('user', () => {
         }
     }
 
+    // 模拟登录，用于演示
+    function mockLogin() {
+        const mockToken = 'mock-token-' + Date.now()
+        const mockUserInfo = {
+            id: 1,
+            mobile: '13800138000',
+            nickname: '演示用户',
+            avatar: '',
+            balance: 1000,
+            inviteCode: 'DEMO2024',
+            inviteCount: 5
+        }
+        setToken(mockToken)
+        setUserInfo(mockUserInfo)
+    }
+
     function logout() {
         userInfo.value = null
         token.value = ''
@@ -46,6 +62,7 @@ export const useUserStore = defineStore('user', () => {
         setUserInfo,
         setToken,
         initUserData,
-        logout
+        logout,
+        mockLogin
     }
 })

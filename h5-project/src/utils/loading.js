@@ -16,7 +16,7 @@ let loadingCount = 0
  * @param {Object} instance Loading 组件实例
  */
 export const setLoadingInstance = (instance) => {
-  loadingInstance = instance
+    loadingInstance = instance
 }
 
 /**
@@ -30,57 +30,57 @@ export const setLoadingInstance = (instance) => {
  * @returns {Function} 关闭函数
  */
 export const showLoading = (options = {}) => {
-  if (!loadingInstance) {
-    console.warn('Loading 组件未初始化')
-    return () => {}
-  }
-  
-  loadingCount++
-  
-  // 合并默认配置
-  const config = {
-    text: '加载中...',
-    type: 'default',
-    overlay: true,
-    fullscreen: true,
-    ...options
-  }
-  
-  loadingInstance.show(config)
-  
-  // 返回关闭函数
-  return () => {
-    hideLoading()
-  }
+    if (!loadingInstance) {
+        console.warn('Loading 组件未初始化')
+        return () => {}
+    }
+
+    loadingCount++
+
+    // 合并默认配置
+    const config = {
+        text: '加载中...',
+        type: 'default',
+        overlay: true,
+        fullscreen: true,
+        ...options
+    }
+
+    loadingInstance.show(config)
+
+    // 返回关闭函数
+    return () => {
+        hideLoading()
+    }
 }
 
 /**
  * 隐藏全屏加载
  */
 export const hideLoading = () => {
-  if (!loadingInstance) {
-    console.warn('Loading 组件未初始化')
-    return
-  }
-  
-  loadingCount = Math.max(0, loadingCount - 1)
-  
-  if (loadingCount === 0) {
-    loadingInstance.hide()
-  }
+    if (!loadingInstance) {
+        console.warn('Loading 组件未初始化')
+        return
+    }
+
+    loadingCount = Math.max(0, loadingCount - 1)
+
+    if (loadingCount === 0) {
+        loadingInstance.hide()
+    }
 }
 
 /**
  * 强制隐藏所有加载状态
  */
 export const forceHideLoading = () => {
-  if (!loadingInstance) {
-    console.warn('Loading 组件未初始化')
-    return
-  }
-  
-  loadingCount = 0
-  loadingInstance.hide()
+    if (!loadingInstance) {
+        console.warn('Loading 组件未初始化')
+        return
+    }
+
+    loadingCount = 0
+    loadingInstance.hide()
 }
 
 /**
@@ -89,10 +89,10 @@ export const forceHideLoading = () => {
  * @returns {Function} 关闭函数
  */
 export const showSimpleLoading = (text = '加载中...') => {
-  return showLoading({
-    text,
-    type: 'default'
-  })
+    return showLoading({
+        text,
+        type: 'default'
+    })
 }
 
 /**
@@ -101,10 +101,10 @@ export const showSimpleLoading = (text = '加载中...') => {
  * @returns {Function} 关闭函数
  */
 export const showDotsLoading = (text = '请稍候...') => {
-  return showLoading({
-    text,
-    type: 'dots'
-  })
+    return showLoading({
+        text,
+        type: 'dots'
+    })
 }
 
 /**
@@ -113,10 +113,10 @@ export const showDotsLoading = (text = '请稍候...') => {
  * @returns {Function} 关闭函数
  */
 export const showCircleLoading = (text = '处理中...') => {
-  return showLoading({
-    text,
-    type: 'circle'
-  })
+    return showLoading({
+        text,
+        type: 'circle'
+    })
 }
 
 /**
@@ -125,10 +125,10 @@ export const showCircleLoading = (text = '处理中...') => {
  * @returns {Function} 关闭函数
  */
 export const showBarsLoading = (text = '加载中...') => {
-  return showLoading({
-    text,
-    type: 'bars'
-  })
+    return showLoading({
+        text,
+        type: 'bars'
+    })
 }
 
 /**
@@ -137,15 +137,15 @@ export const showBarsLoading = (text = '加载中...') => {
  * @param {Object} options 加载配置
  * @returns {Promise} API 请求结果
  */
-export const withLoading = async (apiCall, options = {}) => {
-  const hideLoadingFn = showLoading(options)
-  
-  try {
-    const result = await apiCall()
-    return result
-  } finally {
-    hideLoadingFn()
-  }
+export const withLoading = async(apiCall, options = {}) => {
+    const hideLoadingFn = showLoading(options)
+
+    try {
+        const result = await apiCall()
+        return result
+    } finally {
+        hideLoadingFn()
+    }
 }
 
 /**
@@ -153,46 +153,46 @@ export const withLoading = async (apiCall, options = {}) => {
  * @returns {Object} 加载状态管理器
  */
 export const createLocalLoading = () => {
-  let isLoading = false
-  let loadingTimeout = null
-  
-  return {
-    /**
-     * 开始加载
-     * @param {number} delay 延迟显示时间（毫秒）
-     */
-    start(delay = 300) {
-      if (loadingTimeout) {
-        clearTimeout(loadingTimeout)
-      }
-      
-      if (delay > 0) {
-        loadingTimeout = setTimeout(() => {
-          isLoading = true
-        }, delay)
-      } else {
-        isLoading = true
-      }
-    },
-    
-    /**
-     * 停止加载
-     */
-    stop() {
-      if (loadingTimeout) {
-        clearTimeout(loadingTimeout)
-        loadingTimeout = null
-      }
-      isLoading = false
-    },
-    
-    /**
-     * 获取加载状态
-     */
-    get loading() {
-      return isLoading
+    let isLoading = false
+    let loadingTimeout = null
+
+    return {
+        /**
+         * 开始加载
+         * @param {number} delay 延迟显示时间（毫秒）
+         */
+        start(delay = 300) {
+            if (loadingTimeout) {
+                clearTimeout(loadingTimeout)
+            }
+
+            if (delay > 0) {
+                loadingTimeout = setTimeout(() => {
+                    isLoading = true
+                }, delay)
+            } else {
+                isLoading = true
+            }
+        },
+
+        /**
+         * 停止加载
+         */
+        stop() {
+            if (loadingTimeout) {
+                clearTimeout(loadingTimeout)
+                loadingTimeout = null
+            }
+            isLoading = false
+        },
+
+        /**
+         * 获取加载状态
+         */
+        get loading() {
+            return isLoading
+        }
     }
-  }
 }
 
 /**
@@ -202,42 +202,42 @@ export const createLocalLoading = () => {
  * @param {Object} options 加载配置
  * @returns {Promise} API 请求结果
  */
-export const withDebounceLoading = async (apiCall, minDuration = 500, options = {}) => {
-  const startTime = Date.now()
-  const hideLoadingFn = showLoading(options)
-  
-  try {
-    const result = await apiCall()
-    
-    // 确保加载至少显示指定时间
-    const elapsed = Date.now() - startTime
-    if (elapsed < minDuration) {
-      await new Promise(resolve => setTimeout(resolve, minDuration - elapsed))
+export const withDebounceLoading = async(apiCall, minDuration = 500, options = {}) => {
+    const startTime = Date.now()
+    const hideLoadingFn = showLoading(options)
+
+    try {
+        const result = await apiCall()
+
+        // 确保加载至少显示指定时间
+        const elapsed = Date.now() - startTime
+        if (elapsed < minDuration) {
+            await new Promise(resolve => setTimeout(resolve, minDuration - elapsed))
+        }
+
+        return result
+    } finally {
+        hideLoadingFn()
     }
-    
-    return result
-  } finally {
-    hideLoadingFn()
-  }
 }
 
 // 默认导出对象
 export default {
-  show: showLoading,
-  hide: hideLoading,
-  forceHide: forceHideLoading,
-  
-  // 快捷方法
-  simple: showSimpleLoading,
-  dots: showDotsLoading,
-  circle: showCircleLoading,
-  bars: showBarsLoading,
-  
-  // 包装器
-  withLoading,
-  withDebounceLoading,
-  createLocal: createLocalLoading,
-  
-  // 实例管理
-  setInstance: setLoadingInstance
+    show: showLoading,
+    hide: hideLoading,
+    forceHide: forceHideLoading,
+
+    // 快捷方法
+    simple: showSimpleLoading,
+    dots: showDotsLoading,
+    circle: showCircleLoading,
+    bars: showBarsLoading,
+
+    // 包装器
+    withLoading,
+    withDebounceLoading,
+    createLocal: createLocalLoading,
+
+    // 实例管理
+    setInstance: setLoadingInstance
 }

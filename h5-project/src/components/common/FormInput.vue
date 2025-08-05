@@ -74,7 +74,7 @@
       {{ errorMessage }}
     </div>
     
-    <!-- 帮助文本 */
+    <!-- 帮助文本 */ -->
     <div v-if="helpText && !errorMessage" class="form-input-help">
       {{ helpText }}
     </div>
@@ -578,7 +578,7 @@ defineExpose({
   color: $text-color-disabled;
 }
 
-// 移动端适配
+/* 移动端适配 */
 @include respond-to(xs) {
   .form-input-wrapper--small .form-input {
     padding: 6px $spacing-xs;
