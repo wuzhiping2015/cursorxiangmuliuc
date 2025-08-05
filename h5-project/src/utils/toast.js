@@ -15,7 +15,7 @@ let toastInstance = null
  * @param {Object} instance Toast 组件实例
  */
 export const setToastInstance = (instance) => {
-  toastInstance = instance
+    toastInstance = instance
 }
 
 /**
@@ -30,12 +30,12 @@ export const setToastInstance = (instance) => {
  * @returns {string} Toast ID
  */
 export const showToast = (options) => {
-  if (!toastInstance) {
-    console.warn('Toast 组件未初始化')
-    return null
-  }
-  
-  return toastInstance.addToast(options)
+    if (!toastInstance) {
+        console.warn('Toast 组件未初始化')
+        return null
+    }
+
+    return toastInstance.addToast(options)
 }
 
 /**
@@ -45,11 +45,11 @@ export const showToast = (options) => {
  * @returns {string} Toast ID
  */
 export const showSuccess = (message, options = {}) => {
-  return showToast({
-    type: 'success',
-    message,
-    ...options
-  })
+    return showToast({
+        type: 'success',
+        message,
+        ...options
+    })
 }
 
 /**
@@ -59,12 +59,12 @@ export const showSuccess = (message, options = {}) => {
  * @returns {string} Toast ID
  */
 export const showError = (message, options = {}) => {
-  return showToast({
-    type: 'error',
-    message,
-    duration: 4000, // 错误消息显示更长时间
-    ...options
-  })
+    return showToast({
+        type: 'error',
+        message,
+        duration: 4000, // 错误消息显示更长时间
+        ...options
+    })
 }
 
 /**
@@ -74,11 +74,11 @@ export const showError = (message, options = {}) => {
  * @returns {string} Toast ID
  */
 export const showWarning = (message, options = {}) => {
-  return showToast({
-    type: 'warning',
-    message,
-    ...options
-  })
+    return showToast({
+        type: 'warning',
+        message,
+        ...options
+    })
 }
 
 /**
@@ -88,11 +88,11 @@ export const showWarning = (message, options = {}) => {
  * @returns {string} Toast ID
  */
 export const showInfo = (message, options = {}) => {
-  return showToast({
-    type: 'info',
-    message,
-    ...options
-  })
+    return showToast({
+        type: 'info',
+        message,
+        ...options
+    })
 }
 
 /**
@@ -102,13 +102,13 @@ export const showInfo = (message, options = {}) => {
  * @returns {string} Toast ID
  */
 export const showLoading = (message = '加载中...', options = {}) => {
-  return showToast({
-    type: 'loading',
-    message,
-    duration: 0, // 加载消息不自动消失
-    closable: false, // 加载消息不可手动关闭
-    ...options
-  })
+    return showToast({
+        type: 'loading',
+        message,
+        duration: 0, // 加载消息不自动消失
+        closable: false, // 加载消息不可手动关闭
+        ...options
+    })
 }
 
 /**
@@ -116,24 +116,24 @@ export const showLoading = (message = '加载中...', options = {}) => {
  * @param {string} id Toast ID
  */
 export const removeToast = (id) => {
-  if (!toastInstance) {
-    console.warn('Toast 组件未初始化')
-    return
-  }
-  
-  toastInstance.removeToast(id)
+    if (!toastInstance) {
+        console.warn('Toast 组件未初始化')
+        return
+    }
+
+    toastInstance.removeToast(id)
 }
 
 /**
  * 清空所有 Toast
  */
 export const clearToasts = () => {
-  if (!toastInstance) {
-    console.warn('Toast 组件未初始化')
-    return
-  }
-  
-  toastInstance.clearToasts()
+    if (!toastInstance) {
+        console.warn('Toast 组件未初始化')
+        return
+    }
+
+    toastInstance.clearToasts()
 }
 
 /**
@@ -142,29 +142,29 @@ export const clearToasts = () => {
  * @param {string} defaultMessage 默认错误消息
  */
 export const showApiError = (error, defaultMessage = '操作失败，请重试') => {
-  const message = error?.message || defaultMessage
-  return showError(message)
+    const message = error ? .message || defaultMessage
+    return showError(message)
 }
 
 /**
  * 显示网络错误消息
  */
 export const showNetworkError = () => {
-  return showError('网络连接失败，请检查网络设置')
+    return showError('网络连接失败，请检查网络设置')
 }
 
 /**
  * 显示权限错误消息
  */
 export const showPermissionError = () => {
-  return showError('权限不足，请联系管理员')
+    return showError('权限不足，请联系管理员')
 }
 
 /**
  * 显示复制成功消息
  */
 export const showCopySuccess = () => {
-  return showSuccess('复制成功')
+    return showSuccess('复制成功')
 }
 
 /**
@@ -172,7 +172,7 @@ export const showCopySuccess = () => {
  * @param {string} operation 操作名称
  */
 export const showOperationSuccess = (operation) => {
-  return showSuccess(`${operation}成功`)
+    return showSuccess(`${operation}成功`)
 }
 
 /**
@@ -181,28 +181,28 @@ export const showOperationSuccess = (operation) => {
  * @param {string} rule 验证规则描述
  */
 export const showValidationError = (field, rule) => {
-  return showError(`${field}${rule}`)
+    return showError(`${field}${rule}`)
 }
 
 // 默认导出对象，包含所有方法
 export default {
-  show: showToast,
-  success: showSuccess,
-  error: showError,
-  warning: showWarning,
-  info: showInfo,
-  loading: showLoading,
-  remove: removeToast,
-  clear: clearToasts,
-  
-  // 快捷方法
-  apiError: showApiError,
-  networkError: showNetworkError,
-  permissionError: showPermissionError,
-  copySuccess: showCopySuccess,
-  operationSuccess: showOperationSuccess,
-  validationError: showValidationError,
-  
-  // 实例管理
-  setInstance: setToastInstance
+    show: showToast,
+    success: showSuccess,
+    error: showError,
+    warning: showWarning,
+    info: showInfo,
+    loading: showLoading,
+    remove: removeToast,
+    clear: clearToasts,
+
+    // 快捷方法
+    apiError: showApiError,
+    networkError: showNetworkError,
+    permissionError: showPermissionError,
+    copySuccess: showCopySuccess,
+    operationSuccess: showOperationSuccess,
+    validationError: showValidationError,
+
+    // 实例管理
+    setInstance: setToastInstance
 }

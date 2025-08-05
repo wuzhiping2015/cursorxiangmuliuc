@@ -92,7 +92,7 @@ request.interceptors.response.use(
             const { status, data } = error.response
             switch (status) {
                 case 400:
-                    message = data?.message || '请求参数错误'
+                    message = data ? .message || '请求参数错误'
                     break
                 case 401:
                     message = '用户未登录'
@@ -117,7 +117,7 @@ request.interceptors.response.use(
                     message = '服务暂时不可用'
                     break
                 default:
-                    message = data?.message || `服务器错误 (${status})`
+                    message = data ? .message || `服务器错误 (${status})`
             }
         } else if (error.request) {
             // 网络错误
@@ -131,7 +131,7 @@ request.interceptors.response.use(
         showMessage(message)
 
         const customError = new Error(message)
-        customError.code = error.response?.status || 'NETWORK_ERROR'
+        customError.code = error.response ? .status || 'NETWORK_ERROR'
         customError.original = error
 
         return Promise.reject(customError)
