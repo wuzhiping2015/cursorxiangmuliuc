@@ -1,0 +1,37 @@
+[package]
+name = "tauri-invite-app"
+version = "1.0.0"
+description = "邀请拉新桌面应用"
+authors = ["开发团队"]
+license = "MIT"
+repository = ""
+default-run = "tauri-invite-app"
+edition = "2021"
+rust-version = "1.60"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+tauri-build = { version = "1.0", features = [ "codegen" ] }
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+tauri = { version = "1.0", features = [ "dialog-confirm", "dialog-open", "shell-open", "window-start-dragging", "window-show", "fs-exists", "path-all", "app-show", "fs-remove-file", "notification-all", "fs-create-dir", "window-hide", "fs-read-dir", "dialog-ask", "dialog-message", "window-minimize", "window-maximize", "dialog-save", "fs-remove-dir", "fs-read-file", "window-unminimize", "os-all", "window-unmaximize", "global-shortcut-all", "fs-write-file", "window-close", "app-hide", "clipboard-all", "system-tray"] }
+tokio = { version = "1", features = ["full"] }
+rusqlite = { version = "0.29", features = ["bundled"] }
+clipboard = "0.5"
+open = "5.0"
+dirs = "5.0"
+uuid = { version = "1.0", features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+base64 = "0.21"
+image = "0.24"
+qrcode = "0.14"
+reqwest = { version = "0.11", features = ["json"] }
+
+[features] 
+# this feature is used for production builds or when `devPath` points to the filesystem and the built-in dev server is disabled.
+# If you use cargo directly instead of tauri's cli you can use this feature flag to switch between tauri's `dev` and `build` modes.
+# DO NOT REMOVE!!
+custom-protocol = [ "tauri/custom-protocol" ]

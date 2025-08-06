@@ -112,6 +112,39 @@ export const showLoading = (message = '加载中...', options = {}) => {
 }
 
 /**
+ * 显示确认消息
+ * @param {string} message 消息内容
+ * @param {Object} options 额外选项
+ * @returns {Promise} 确认结果
+ */
+export const showConfirm = (message, options = {}) => {
+    return new Promise((resolve) => {
+        const id = showToast({
+            type: 'confirm',
+            message,
+            duration: 0,
+            closable: true,
+            buttons: [{
+                    text: options.cancelText || '取消',
+                    onClick: () => {
+                        removeToast(id)
+                        resolve(false)
+                    }
+                },
+                {
+                    text: options.confirmText || '确定',
+                    onClick: () => {
+                        removeToast(id)
+                        resolve(true)
+                    }
+                }
+            ],
+            ...options
+        })
+    })
+}
+
+/**
  * 移除指定 Toast
  * @param {string} id Toast ID
  */
@@ -142,7 +175,7 @@ export const clearToasts = () => {
  * @param {string} defaultMessage 默认错误消息
  */
 export const showApiError = (error, defaultMessage = '操作失败，请重试') => {
-    const message = error ? .message || defaultMessage
+    const message = error?.message || defaultMessage
     return showError(message)
 }
 
@@ -192,6 +225,7 @@ export default {
     warning: showWarning,
     info: showInfo,
     loading: showLoading,
+    confirm: showConfirm,
     remove: removeToast,
     clear: clearToasts,
 

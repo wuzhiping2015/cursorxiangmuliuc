@@ -1,0 +1,42 @@
+{
+  "name": "tauri-invite-app",
+  "private": true,
+  "version": "1.0.0",
+  "description": "邀请拉新桌面应用 - 基于Tauri构建",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "lint": "eslint . --ext vue,js,jsx,cjs,mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^1.5.0",
+    "vue": "^3.5.0",
+    "vue-router": "^4.2.5",
+    "pinia": "^2.1.7",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.5.0",
+    "@vitejs/plugin-vue": "^4.5.0",
+    "vite": "^5.0.0",
+    "sass": "^1.69.5",
+    "eslint": "^8.53.0",
+    "eslint-plugin-vue": "^9.18.1",
+    "prettier": "^3.1.0"
+  },
+  "keywords": [
+    "tauri",
+    "vue",
+    "desktop",
+    "invite",
+    "referral"
+  ],
+  "author": "开发团队",
+  "license": "MIT"
+}

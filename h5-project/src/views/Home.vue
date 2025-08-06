@@ -437,7 +437,7 @@ onMounted(() => {
 // 统计区域
 .stats-section {
   padding: $spacing-base;
-  margin-top: -$spacing-base;
+  margin-top: 20px;
   position: relative;
   z-index: 1;
 }

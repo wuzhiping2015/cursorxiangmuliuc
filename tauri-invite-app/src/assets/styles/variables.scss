@@ -1,0 +1,99 @@
+/**
+ * SCSS 变量定义文件
+ * 包含项目中所有的设计变量：颜色、字体、间距等
+ * @author 前端工程师团队
+ * @date 2024-12-XX
+ */
+
+// ==================== 颜色系统 ====================
+// 主要颜色
+$primary-color: #FF6B35;
+$primary-light: #FF8A5C;
+$primary-dark: #E55A2B;
+
+// 辅助颜色
+$secondary-color: #4CAF50;
+$success-color: #52C41A;
+$warning-color: #FAAD14;
+$error-color: #FF4D4F;
+$info-color: #1890FF;
+
+// 中性颜色
+$text-color-primary: #333333;
+$text-color-secondary: #666666;
+$text-color-disabled: #999999;
+$text-color-light: #CCCCCC;
+
+// 背景颜色
+$background-color: #FFFFFF;
+$background-color-light: #F5F5F5;
+
+// 边框颜色
+$border-color: #E8E8E8;
+$border-color-light: #F0F0F0;
+
+// ==================== 字体系统 ====================
+// 字体族
+$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+$font-family-code: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+
+// 字体大小
+$font-size-xs: 10px;
+$font-size-sm: 12px;
+$font-size-base: 14px;
+$font-size-lg: 16px;
+$font-size-xl: 18px;
+$font-size-xxl: 20px;
+$font-size-title: 24px;
+
+// 字体粗细
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 600;
+
+// 行高
+$line-height-tight: 1.2;
+$line-height-base: 1.5;
+$line-height-relaxed: 1.8;
+
+// ==================== 间距系统 ====================
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-base: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 48px;
+
+// ==================== 圆角系统 ====================
+$border-radius-sm: 2px;
+$border-radius-base: 4px;
+$border-radius-lg: 8px;
+$border-radius-xl: 12px;
+
+// ==================== 阴影系统 ====================
+$box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.1);
+$box-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
+$box-shadow-xl: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+// ==================== 动画系统 ====================
+$animation-duration-fast: 0.15s;
+$animation-duration-base: 0.3s;
+$animation-duration-slow: 0.5s;
+
+// ==================== 层级系统 ====================
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+$z-index-toast: 1080;
+
+// ==================== 断点系统 ====================
+$breakpoint-xs: 480px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
