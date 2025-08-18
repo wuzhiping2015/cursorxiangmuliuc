@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm add:*)",
+      "Bash(pnpm config set:*)",
+      "Bash(npm install:*)",
+      "Bash(context7:*)",
+      "Bash(npx @upstash/context7-mcp:*)",
+      "Bash(node:*)",
+      "Bash(pnpm:*)",
+      "Bash(rm:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm:*)",
+      "Bash(corepack enable)",
+      "Bash(corepack prepare:*)",
+      "Bash(timeout 15 pnpm dev)",
+      "Bash(npx vite:*)",
+      "Bash(timeout 20 npx vite --force --debug)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
