@@ -1,0 +1,133 @@
+/* pages/solution/solution.wxss */
+.banner {
+  height: 400rpx;
+  background: linear-gradient(135deg, #6366f1, #2563eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 0 40rpx;
+}
+
+.banner-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.banner-subtitle {
+  font-size: 28rpx;
+  opacity: 0.9;
+}
+
+.products {
+  padding: 30rpx;
+}
+
+.product-card {
+  background: white;
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.product-card:active {
+  transform: scale(0.98);
+}
+
+.product-image {
+  width: 100%;
+  height: 300rpx;
+  background: #f5f5f5;
+}
+
+.product-info {
+  padding: 30rpx;
+}
+
+.product-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.product-desc {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.product-features {
+  background: #f8f9fa;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.feature-dot {
+  color: #2563eb;
+  margin-right: 10rpx;
+}
+
+.feature-text {
+  font-size: 26rpx;
+  color: #333;
+}
+
+.product-price {
+  font-size: 32rpx;
+  color: #2563eb;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.detail-btn {
+  background: #2563eb;
+  color: white;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  padding: 20rpx 0;
+}
+
+.consultation {
+  background: linear-gradient(135deg, #6366f1, #2563eb);
+  padding: 60rpx 40rpx;
+  text-align: center;
+  color: white;
+}
+
+.consultation-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.consultation-desc {
+  font-size: 28rpx;
+  opacity: 0.9;
+  margin-bottom: 40rpx;
+  display: block;
+}
+
+.consultation-btn {
+  background: white;
+  color: #2563eb;
+  font-weight: bold;
+  border-radius: 50rpx;
+  padding: 20rpx 60rpx;
+  display: inline-block;
+}

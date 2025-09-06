@@ -1,0 +1,46 @@
+<view class="container">
+  <!-- 顶部横幅 -->
+  <view class="banner">
+    <view class="banner-content">
+      <text class="banner-title">专业技术服务</text>
+      <text class="banner-subtitle">为企业提供全方位的技术解决方案</text>
+    </view>
+  </view>
+
+  <!-- 服务优势 -->
+  <view class="advantages">
+    <view class="advantage-item" wx:for="{{advantages}}" wx:key="title">
+      <view class="advantage-value">
+        <text class="number">{{item.value}}</text>
+        <text class="unit">{{item.unit}}</text>
+      </view>
+      <text class="advantage-title">{{item.title}}</text>
+    </view>
+  </view>
+
+  <!-- 服务列表 -->
+  <view class="services">
+    <view class="service-card" wx:for="{{services}}" wx:key="id">
+      <view class="service-header">
+        <image class="service-icon" src="{{item.icon}}" mode="aspectFit"></image>
+        <text class="service-title">{{item.title}}</text>
+      </view>
+      <text class="service-desc">{{item.description}}</text>
+      <view class="service-details">
+        <view class="detail-item" wx:for="{{item.details}}" wx:for-item="detail" wx:key="*this">
+          <text class="detail-dot">•</text>
+          <text class="detail-text">{{detail}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 联系我们 -->
+  <view class="contact-section">
+    <view class="contact-content">
+      <text class="contact-title">需要专业服务？</text>
+      <text class="contact-desc">立即联系我们，获取专业解决方案</text>
+      <button class="contact-btn" bindtap="navigateToContact">联系我们</button>
+    </view>
+  </view>
+</view> 

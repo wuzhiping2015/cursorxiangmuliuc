@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>发布信息 - 社区信息共享</title>
+    <style>
+        /* 全局样式 */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            background-color: #f6f6f6;
+            color: #333;
+            line-height: 1.5;
+            max-width: 414px;
+            margin: 0 auto;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            padding: 0;
+            background-color: #f6f6f6;
+            min-height: 100vh;
+        }
+        /* 顶部导航栏 */
+        
+        .header {
+            padding: 12px 15px;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .back-button {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        
+        .publish-btn {
+            padding: 5px 15px;
+            background-color: #07c160;
+            color: white;
+            font-size: 14px;
+            border-radius: 4px;
+            border: none;
+        }
+        
+        .publish-btn.disabled {
+            background-color: #cccccc;
+        }
+        /* 分类选择器 */
+        
+        .category-selector {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .category-title {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .category-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .category-option {
+            padding: 6px 15px;
+            background-color: #f5f5f5;
+            border-radius: 15px;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .category-option.active {
+            background-color: #07c160;
+            color: white;
+        }
+        /* 输入区域 */
+        
+        .input-area {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .textarea {
+            width: 100%;
+            min-height: 120px;
+            border: none;
+            resize: none;
+            font-size: 15px;
+            line-height: 1.5;
+            outline: none;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+        
+        .textarea::placeholder {
+            color: #999;
+        }
+        
+        .input-counter {
+            text-align: right;
+            color: #999;
+            font-size: 13px;
+        }
+        /* 图片上传区 */
+        
+        .upload-area {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .upload-title {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .upload-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+        
+        .upload-item {
+            aspect-ratio: 1;
+            border-radius: 4px;
+            background-color: #f5f5f5;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .upload-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .upload-delete {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .upload-add {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        
+        .upload-add-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .upload-tip {
+            font-size: 12px;
+            color: #999;
+            margin-top: 8px;
+        }
+        /* 表单项 */
+        
+        .form-group {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .form-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        
+        .form-item:last-child {
+            border-bottom: none;
+        }
+        
+        .form-label {
+            width: 80px;
+            font-size: 15px;
+            color: #333;
+        }
+        
+        .form-input {
+            flex: 1;
+            border: none;
+            font-size: 15px;
+            outline: none;
+        }
+        
+        .form-input::placeholder {
+            color: #999;
+        }
+        
+        .form-value {
+            flex: 1;
+            font-size: 15px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .arrow-right {
+            width: 16px;
+            height: 16px;
+            margin-left: 5px;
+        }
+        
+        .price-unit {
+            color: #999;
+            margin-left: 5px;
+        }
+        /* 开关样式 */
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 20px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 3px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked+.slider {
+            background-color: #07c160;
+        }
+        
+        input:checked+.slider:before {
+            transform: translateX(18px);
+        }
+        /* 底部提示 */
+        
+        .bottom-tips {
+            padding: 15px;
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        /* 位置选择 */
+        
+        .location-picker {
+            display: flex;
+            align-items: center;
+        }
+        
+        .location-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+        }
+        /* 价格输入 */
+        
+        .price-input-wrapper {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+        /* 匿名选项 */
+        
+        .anonymous-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .anonymous-label {
+            font-size: 15px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 顶部导航栏 -->
+        <div class="header">
+            <img class="back-button" src="https://www.gstatic.com/images/icons/material/system_gm/1x/arrow_back_gm_grey600_24dp.png" alt="返回">
+            <div class="header-title">发布信息</div>
+            <button class="publish-btn">发布</button>
+        </div>
+
+        <!-- 分类选择 -->
+        <div class="category-selector">
+            <div class="category-title">选择发布类型</div>
+            <div class="category-options">
+                <div class="category-option active">社区信息</div>
+                <div class="category-option">互助问答</div>
+                <div class="category-option">闲置物品</div>
+                <div class="category-option">共享资源</div>
+                <div class="category-option">寻人寻物</div>
+                <div class="category-option">活动招募</div>
+            </div>
+        </div>
+
+        <!-- 内容输入区 -->
+        <div class="input-area">
+            <textarea class="textarea" placeholder="分享新鲜事，记录今日生活..." maxlength="500"></textarea>
+            <div class="input-counter">0/500</div>
+        </div>
+
+        <!-- 图片上传区 -->
+        <div class="upload-area">
+            <div class="upload-title">添加图片</div>
+            <div class="upload-grid">
+                <!-- 已上传图片1 -->
+                <div class="upload-item">
+                    <img class="upload-image" src="https://images.unsplash.com/photo-1560008581-09826d1de69e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="上传图片">
+                    <div class="upload-delete">×</div>
+                </div>
+                <!-- 已上传图片2 -->
+                <div class="upload-item">
+                    <img class="upload-image" src="https://images.unsplash.com/photo-1676379826819-910576f1c602?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="上传图片">
+                    <div class="upload-delete">×</div>
+                </div>
+                <!-- 添加按钮 -->
+                <div class="upload-item">
+                    <div class="upload-add">
+                        <div class="upload-add-icon">+</div>
+                        <div>添加</div>
+                    </div>
+                </div>
+            </div>
+            <div class="upload-tip">最多可上传9张图片</div>
+        </div>
+
+        <!-- 表单信息 -->
+        <div class="form-group">
+            <!-- 位置选择 -->
+            <div class="form-item">
+                <div class="form-label">位置</div>
+                <div class="form-value">
+                    <div class="location-picker">
+                        <img class="location-icon" src="https://www.gstatic.com/images/icons/material/system_gm/1x/place_gm_grey600_24dp.png" alt="位置">
+                        <span>幸福花园小区3栋</span>
+                    </div>
+                    <img class="arrow-right" src="https://www.gstatic.com/images/icons/material/system_gm/1x/chevron_right_gm_grey600_24dp.png" alt="选择">
+                </div>
+            </div>
+
+            <!-- 价格输入(闲置/共享类型时显示) -->
+            <div class="form-item">
+                <div class="form-label">价格</div>
+                <div class="price-input-wrapper">
+                    <input type="number" class="form-input" placeholder="输入价格">
+                    <span class="price-unit">元</span>
+                </div>
+            </div>
+
+            <!-- 联系方式 -->
+            <div class="form-item">
+                <div class="form-label">联系方式</div>
+                <input type="text" class="form-input" placeholder="输入手机号或微信号">
+            </div>
+
+            <!-- 匿名选项 -->
+            <div class="form-item">
+                <div class="anonymous-option">
+                    <div class="anonymous-label">匿名发布</div>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部提示 -->
+        <div class="bottom-tips">
+            请遵守社区规范，文明发言，杜绝违法有害信息
+        </div>
+    </div>
+
+    <script>
+        // 分类选择
+        const categoryOptions = document.querySelectorAll('.category-option');
+        categoryOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                categoryOptions.forEach(o => o.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 文本框字数统计
+        const textarea = document.querySelector('.textarea');
+        const counter = document.querySelector('.input-counter');
+
+        textarea.addEventListener('input', function() {
+            const length = this.value.length;
+            counter.textContent = `${length}/500`;
+
+            // 发布按钮状态控制
+            const publishBtn = document.querySelector('.publish-btn');
+            if (length > 0) {
+                publishBtn.classList.remove('disabled');
+            } else {
+                publishBtn.classList.add('disabled');
+            }
+        });
+
+        // 返回按钮
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('click', function() {
+            window.history.back();
+        });
+
+        // 发布按钮点击事件
+        const publishBtn = document.querySelector('.publish-btn');
+        publishBtn.addEventListener('click', function() {
+            if (!this.classList.contains('disabled')) {
+                alert('发布成功！');
+                // 实际应用中这里会提交表单数据
+                window.history.back();
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .content-scroll {
+            height: calc(100vh - env(safe-area-inset-bottom) - 83px);
+            height: calc(100vh - 127px);
+            /* 减去导航栏(83px)和状态栏(44px)的高度 */
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            /* 添加iOS风格的滚动效果 */
+            padding-top: 44px;
+            /* 为状态栏预留空间 */
+        }
+        
+        .nav-bar {
+            height: 83px;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+        }
+        /* 调整内容区域的间距 */
+        
+        .settings-section {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .settings-section:last-child {
+            border-bottom: none;
+            margin-bottom: 83px;
+            /* 为底部导航栏预留空间 */
+        }
+        /* 优化列表项的间距和样式 */
+        
+        .list-item {
+            padding: 14px 16px;
+            margin: 6px 0;
+            border-radius: 12px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex !important;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .list-item .icon-container {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+        
+        .list-item .text-container {
+            flex: 1;
+            margin-left: 12px;
+        }
+        
+        .list-item:active {
+            background-color: rgba(255, 255, 255, 0.08);
+            transform: scale(0.98);
+        }
+        
+        .list-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: transparent;
+            transition: background-color 0.2s ease;
+        }
+        
+        .list-item:active::after {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        /* iOS风格的开关按钮 */
+        
+        .toggle-switch {
+            width: 51px;
+            height: 31px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15.5px;
+            position: relative;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            margin-top: 2px;
+        }
+        
+        .toggle-switch.active {
+            background-color: #34C759;
+        }
+        
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            width: 27px;
+            height: 27px;
+            background-color: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .toggle-switch.active::before {
+            transform: translateX(20px);
+        }
+        /* iOS风格的按钮 */
+        
+        .ios-button {
+            transition: transform 0.1s ease, opacity 0.1s ease;
+        }
+        
+        .ios-button:active {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+        /* iOS风格的对话框 */
+        
+        .dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        
+        .dialog {
+            background-color: #1c1c1e;
+            border-radius: 14px;
+            width: 270px;
+            overflow: hidden;
+            transform: scale(1.1);
+            opacity: 0;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+        
+        .dialog.show {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .dialog-button {
+            transition: background-color 0.2s ease;
+        }
+        
+        .dialog-button:active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        /* 列表分割线渐变效果 */
+        
+        .list-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+        }
+        /* 优化退出登录按钮的位置 */
+        
+        .logout-section {
+            padding: 16px 20px;
+            margin-bottom: 100px;
+            /* 确保不会被底部导航栏遮挡 */
+        }
+        /* 状态栏样式 */
+        
+        .status-bar {
+            height: 44px;
+            background-color: black;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 0 16px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .status-bar .icons i {
+            font-size: 14px;
+        }
+    </style>
+    <script>
+        // 深色模式切换
+        function toggleDarkMode(toggle) {
+            toggle.classList.toggle('active');
+        }
+
+        // 显示退出确认对话框
+        function showLogoutDialog() {
+            const overlay = document.getElementById('logoutDialog');
+            const dialog = overlay.querySelector('.dialog');
+            overlay.style.display = 'flex';
+            setTimeout(() => {
+                dialog.classList.add('show');
+            }, 10);
+        }
+
+        // 隐藏退出确认对话框
+        function hideLogoutDialog() {
+            const overlay = document.getElementById('logoutDialog');
+            const dialog = overlay.querySelector('.dialog');
+            dialog.classList.remove('show');
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 200);
+        }
+
+        // 执行退出操作
+        function logout() {
+            // 这里添加退出登录的逻辑
+            hideLogoutDialog();
+            // 跳转到登录页面
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+
+<body class="bg-black text-white">
+    <!-- 添加状态栏 -->
+    <div class="status-bar">
+        <span>9:41</span>
+        <div class="icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <div class="content-scroll">
+        <!-- 顶部标题 -->
+        <div class="settings-section">
+            <h1 class="text-xl font-bold">设置</h1>
+        </div>
+
+        <!-- 账号设置 -->
+        <div class="settings-section">
+            <h2 class="text-lg font-semibold mb-4">账号</h2>
+            <div class="space-y-2">
+                <div class="list-item">
+                    <div class="flex items-center flex-1">
+                        <div class="icon-container">
+                            <i class="fas fa-user-circle text-xl text-gray-400"></i>
+                        </div>
+                        <div class="text-container">
+                            <span>个人资料</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                <div class="list-item">
+                    <div class="flex items-center flex-1">
+                        <div class="icon-container">
+                            <i class="fas fa-shield-alt text-xl text-gray-400"></i>
+                        </div>
+                        <div class="text-container">
+                            <span>账号安全</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                <div class="list-item">
+                    <div class="flex items-center flex-1">
+                        <div class="icon-container">
+                            <i class="fas fa-bell text-xl text-gray-400"></i>
+                        </div>
+                        <div class="text-container">
+                            <span>消息通知</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 隐私设置 -->
+        <div class="settings-section">
+            <h2 class="text-lg font-semibold mb-4">隐私</h2>
+            <div class="space-y-2">
+                <div class="list-item">
+                    <div class="flex items-center flex-1">
+                        <div class="icon-container">
+                            <i class="fas fa-lock text-xl text-gray-400"></i>
+                        </div>
+                        <div class="text-container">
+                            <span>隐私设置</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                <div class="list-item">
+                    <div class="flex items-center flex-1">
+                        <div class="icon-container">
+                            <i class="fas fa-user-lock text-xl text-gray-400"></i>
+                        </div>
+                        <div class="text-container">
+                            <span>黑名单管理</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 通用设置 -->
+        <div class="settings-section">
+            <h2 class="text-lg font-semibold mb-4">通用</h2>
+            <div class="space-y-2">
+                <div class="list-item">
+                    <div class="flex items-center flex-1">
+                        <div class="icon-container">
+                            <i class="fas fa-globe text-xl text-gray-400"></i>
+                        </div>
+                        <div class="text-container">
+                            <span>语言</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-gray-400">
+                        <span class="mr-2">简体中文</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="flex items-center flex-1">
+                        <div class="icon-container">
+                            <i class="fas fa-moon text-xl text-gray-400"></i>
+                        </div>
+                        <div class="text-container">
+                            <span>深色模式</span>
+                        </div>
+                    </div>
+                    <div class="toggle-switch active" onclick="toggleDarkMode(this)"></div>
+                </div>
+                <div class="list-item">
+                    <div class="flex items-center flex-1">
+                        <div class="icon-container">
+                            <i class="fas fa-database text-xl text-gray-400"></i>
+                        </div>
+                        <div class="text-container">
+                            <span>清除缓存</span>
+                        </div>
+                    </div>
+                    <span class="text-gray-400">128MB</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 关于 -->
+        <div class="settings-section">
+            <h2 class="text-lg font-semibold mb-4">关于</h2>
+            <div class="space-y-2">
+                <div class="list-item">
+                    <div class="flex items-center flex-1">
+                        <div class="icon-container">
+                            <i class="fas fa-info-circle text-xl text-gray-400"></i>
+                        </div>
+                        <div class="text-container">
+                            <span>关于我们</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                <div class="list-item">
+                    <div class="flex items-center flex-1">
+                        <div class="icon-container">
+                            <i class="fas fa-file-alt text-xl text-gray-400"></i>
+                        </div>
+                        <div class="text-container">
+                            <span>用户协议</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                <div class="list-item">
+                    <div class="flex items-center flex-1">
+                        <div class="icon-container">
+                            <i class="fas fa-shield-alt text-xl text-gray-400"></i>
+                        </div>
+                        <div class="text-container">
+                            <span>隐私政策</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 退出登录按钮 -->
+        <div class="logout-section">
+            <button class="ios-button w-full py-3 bg-red-600 rounded-lg font-semibold" onclick="showLogoutDialog()">
+                退出登录
+            </button>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <div class="flex justify-around items-center h-full">
+            <a href="home.html" class="flex flex-col items-center text-gray-400">
+                <i class="fas fa-home text-xl"></i>
+                <span class="text-xs mt-1">首页</span>
+            </a>
+            <a href="discover.html" class="flex flex-col items-center text-gray-400">
+                <i class="fas fa-compass text-xl"></i>
+                <span class="text-xs mt-1">发现</span>
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400">
+                <i class="fas fa-plus-circle text-3xl"></i>
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400">
+                <i class="fas fa-heart text-xl"></i>
+                <span class="text-xs mt-1">收藏</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center text-gray-400">
+                <i class="fas fa-user text-xl"></i>
+                <span class="text-xs mt-1">我的</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 退出确认对话框 -->
+    <div id="logoutDialog" class="dialog-overlay">
+        <div class="dialog">
+            <div class="p-6 text-center">
+                <h3 class="text-lg font-semibold mb-2">确认退出</h3>
+                <p class="text-gray-400">确定要退出登录吗？</p>
+            </div>
+            <div class="flex border-t border-gray-800">
+                <button class="dialog-button flex-1 p-4 text-gray-400 border-r border-gray-800" onclick="hideLogoutDialog()">
+                取消
+            </button>
+                <button class="dialog-button flex-1 p-4 text-red-500" onclick="logout()">
+                退出
+            </button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+/* pages/support/support.wxss */
+.banner {
+  height: 400rpx;
+  background: linear-gradient(135deg, #10b981, #059669);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 0 40rpx;
+}
+
+.banner-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.banner-subtitle {
+  font-size: 28rpx;
+  opacity: 0.9;
+}
+
+.section {
+  padding: 40rpx 30rpx;
+  background: white;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+  color: #333;
+}
+
+.process-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30rpx;
+}
+
+.process-item {
+  background: #f8f9fa;
+  padding: 30rpx;
+  border-radius: 15rpx;
+  text-align: center;
+}
+
+.process-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.process-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.process-desc {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+.faq-list {
+  border-radius: 15rpx;
+  overflow: hidden;
+}
+
+.faq-item {
+  background: white;
+  border-bottom: 1rpx solid #eee;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.arrow {
+  color: #10b981;
+  font-size: 24rpx;
+}
+
+.faq-answer {
+  padding: 0 30rpx 30rpx;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+.contact-info {
+  background: #f8f9fa;
+  padding: 30rpx;
+  border-radius: 15rpx;
+}
+
+.contact-item {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.contact-label {
+  width: 160rpx;
+  color: #666;
+  font-size: 26rpx;
+}
+
+.contact-value {
+  flex: 1;
+  color: #333;
+  font-size: 26rpx;
+}
+
+.submit-section {
+  padding: 40rpx 30rpx;
+}
+
+.submit-btn {
+  background: #10b981;
+  color: white;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  padding: 20rpx 0;
+}
+
+.submit-btn:active {
+  opacity: 0.9;
+}

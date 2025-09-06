@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "添加习惯",
+  "usingComponents": {
+    "u-navbar": "/node-modules/uview-ui/components/u-navbar/u-navbar",
+    "u-button": "/node-modules/uview-ui/components/u-button/u-button",
+    "u-form": "/node-modules/uview-ui/components/u-form/u-form",
+    "u-form-item": "/node-modules/uview-ui/components/u-form-item/u-form-item",
+    "u-input": "/node-modules/uview-ui/components/u-input/u-input",
+    "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
+    "u-radio-group": "/node-modules/uview-ui/components/u-radio-group/u-radio-group",
+    "u-radio": "/node-modules/uview-ui/components/u-radio/u-radio",
+    "u-switch": "/node-modules/uview-ui/components/u-switch/u-switch",
+    "u-time-picker": "/node-modules/uview-ui/components/u-time-picker/u-time-picker",
+    "u-select": "/node-modules/uview-ui/components/u-select/u-select"
+  }
+}

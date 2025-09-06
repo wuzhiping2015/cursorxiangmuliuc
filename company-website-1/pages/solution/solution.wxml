@@ -1,0 +1,38 @@
+<!--pages/solution/solution.wxml-->
+<view class="container">
+  <!-- 顶部Banner -->
+  <view class="banner">
+    <view class="banner-content">
+      <text class="banner-title">产品方案</text>
+      <text class="banner-subtitle">为您提供专业的解决方案</text>
+    </view>
+  </view>
+
+  <!-- 产品列表 -->
+  <view class="products">
+    <view class="product-card" wx:for="{{products}}" wx:key="id" bindtap="showProductDetail" data-id="{{item.id}}">
+      <image class="product-image" src="{{item.image}}" mode="aspectFill"></image>
+      <view class="product-info">
+        <text class="product-title">{{item.title}}</text>
+        <text class="product-desc">{{item.description}}</text>
+        <view class="product-features">
+          <view class="feature-item" wx:for="{{item.features}}" wx:for-item="feature" wx:key="*this">
+            <text class="feature-dot">•</text>
+            <text class="feature-text">{{feature}}</text>
+          </view>
+        </view>
+        <view class="product-price">{{item.price}}</view>
+        <button class="detail-btn">了解详情</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 咨询部分 -->
+  <view class="consultation">
+    <view class="consultation-content">
+      <text class="consultation-title">需要定制方案？</text>
+      <text class="consultation-desc">我们的专业团队随时为您服务</text>
+      <button class="consultation-btn" bindtap="navigateToContact">立即咨询</button>
+    </view>
+  </view>
+</view>

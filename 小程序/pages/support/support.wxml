@@ -1,0 +1,66 @@
+<!--pages/support/support.wxml-->
+<view class="container">
+  <!-- 顶部Banner -->
+  <view class="banner">
+    <view class="banner-content">
+      <text class="banner-title">售后支持</text>
+      <text class="banner-subtitle">专业的售后服务团队为您保驾护航</text>
+    </view>
+  </view>
+
+  <!-- 服务流程 -->
+  <view class="section">
+    <view class="section-title">服务流程</view>
+    <view class="process-list">
+      <view class="process-item" wx:for="{{serviceProcess}}" wx:key="title">
+        <image class="process-icon" src="{{item.icon}}" mode="aspectFit"></image>
+        <text class="process-title">{{item.title}}</text>
+        <text class="process-desc">{{item.description}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 常见问题 -->
+  <view class="section">
+    <view class="section-title">常见问题</view>
+    <view class="faq-list">
+      <view class="faq-item {{item.show ? 'active' : ''}}" 
+            wx:for="{{faqList}}" 
+            wx:key="question"
+            bindtap="toggleFaq"
+            data-index="{{index}}">
+        <view class="faq-question">
+          <text>{{item.question}}</text>
+          <text class="arrow">{{item.show ? '▼' : '▶'}}</text>
+        </view>
+        <view class="faq-answer" hidden="{{!item.show}}">
+          {{item.answer}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 联系方式 -->
+  <view class="section">
+    <view class="section-title">联系方式</view>
+    <view class="contact-info">
+      <view class="contact-item">
+        <text class="contact-label">服务热线：</text>
+        <text class="contact-value">400-123-4567</text>
+      </view>
+      <view class="contact-item">
+        <text class="contact-label">服务时间：</text>
+        <text class="contact-value">周一至周日 9:00-18:00</text>
+      </view>
+      <view class="contact-item">
+        <text class="contact-label">邮箱地址：</text>
+        <text class="contact-value">support@company.com</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 在线提交 -->
+  <view class="submit-section">
+    <button class="submit-btn" bindtap="navigateToContact">在线提交售后申请</button>
+  </view>
+</view>

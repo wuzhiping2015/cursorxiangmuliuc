@@ -1,0 +1,31 @@
+<!--index.wxml-->
+<view class="welcome-container">
+  <view class="welcome-bg">
+    <image class="bg-image" src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?w=600&fit=crop" mode="aspectFill"></image>
+  </view>
+  
+  <view class="welcome-content">
+    <view class="brand">
+      <image class="logo" src="https://images.unsplash.com/photo-1507904953637-96429a46b039?w=200&h=200&fit=crop" mode="aspectFit"></image>
+      <text class="app-name">掌控习惯</text>
+      <text class="slogan">养成好习惯，改变好人生</text>
+    </view>
+    
+    <view class="features">
+      <view class="feature-item">
+        <image class="feature-icon" src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=100&h=100&fit=crop" mode="aspectFit"></image>
+        <text class="feature-text">记录每日进步</text>
+      </view>
+      <view class="feature-item">
+        <image class="feature-icon" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=100&h=100&fit=crop" mode="aspectFit"></image>
+        <text class="feature-text">数据可视分析</text>
+      </view>
+      <view class="feature-item">
+        <image class="feature-icon" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=100&h=100&fit=crop" mode="aspectFit"></image>
+        <text class="feature-text">智能习惯提醒</text>
+      </view>
+    </view>
+
+    <button class="start-btn" bindtap="onStart">开始使用</button>
+  </view>
+</view> 

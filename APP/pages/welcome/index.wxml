@@ -1,0 +1,13 @@
+<view class="welcome-container">
+  <view class="logo">
+    <image class="logo-img" src="/static/images/logo.png" mode="aspectFit"></image>
+    <text class="app-name">掌控习惯</text>
+  </view>
+  
+  <view class="motto">{{motto}}</view>
+  
+  <view class="action-area">
+    <button class="start-btn" bindtap="startUse">开始使用</button>
+    <view class="login-tip">已有账号，去登录</view>
+  </view>
+</view> 

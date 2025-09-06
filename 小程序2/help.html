@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>互助广场 - 社区信息共享</title>
+    <style>
+        /* 全局样式 */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            background-color: #f6f6f6;
+            color: #333;
+            line-height: 1.5;
+            max-width: 414px;
+            margin: 0 auto;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        .container {
+            padding: 0;
+            background-color: #f6f6f6;
+            min-height: 100vh;
+        }
+        /* 顶部导航栏 */
+        
+        .header {
+            padding: 10px 15px;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .back-button {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        
+        .header-right {
+            width: 24px;
+            height: 24px;
+        }
+        /* 分类筛选区 */
+        
+        .filter-section {
+            background-color: #fff;
+            padding: 10px 15px;
+            display: flex;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            /* Firefox */
+        }
+        
+        .filter-section::-webkit-scrollbar {
+            display: none;
+            /* Chrome/Safari/Opera */
+        }
+        
+        .filter-item {
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 13px;
+            color: #666;
+            background-color: #f5f5f5;
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+        
+        .filter-item.active {
+            color: #fff;
+            background-color: #07c160;
+        }
+        /* 分类统计区 */
+        
+        .stats-section {
+            display: flex;
+            background-color: #fff;
+            margin-top: 10px;
+            padding: 15px 0;
+        }
+        
+        .stats-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .stats-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 10px;
+            bottom: 10px;
+            width: 1px;
+            background-color: #eee;
+        }
+        
+        .stats-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #07c160;
+            margin-bottom: 5px;
+        }
+        
+        .stats-label {
+            font-size: 12px;
+            color: #999;
+        }
+        /* 帮助卡片 */
+        
+        .help-list {
+            padding: 10px;
+        }
+        
+        .help-item {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .help-header {
+            display: flex;
+            padding: 15px;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .user-info {
+            flex: 1;
+        }
+        
+        .user-name {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .help-time {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .help-status {
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            height: fit-content;
+        }
+        
+        .status-pending {
+            background-color: #FFF8E6;
+            color: #FFAA00;
+        }
+        
+        .status-progress {
+            background-color: #E6F7FF;
+            color: #1890FF;
+        }
+        
+        .status-completed {
+            background-color: #E6FFED;
+            color: #07c160;
+        }
+        
+        .help-content {
+            padding: 15px;
+        }
+        
+        .help-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .help-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .help-details {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        
+        .help-detail-item {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+            margin-bottom: 5px;
+        }
+        
+        .detail-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+        }
+        
+        .detail-text {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .help-actions {
+            display: flex;
+            border-top: 1px solid #f5f5f5;
+            padding: 10px 15px;
+        }
+        
+        .action-button {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 35px;
+            border-radius: 17px;
+            font-size: 14px;
+        }
+        
+        .primary-action {
+            background-color: #07c160;
+            color: #fff;
+            margin-left: 10px;
+        }
+        
+        .secondary-action {
+            background-color: #f5f5f5;
+            color: #666;
+        }
+        /* 悬浮发布按钮 */
+        
+        .float-button {
+            position: fixed;
+            right: 15px;
+            bottom: 50px;
+            width: 50px;
+            height: 50px;
+            background-color: #07c160;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(7, 193, 96, 0.3);
+            z-index: 50;
+        }
+        
+        .float-button img {
+            width: 25px;
+            height: 25px;
+        }
+        /* 加载状态 */
+        
+        .loading,
+        .no-more {
+            text-align: center;
+            padding: 15px;
+            color: #999999;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 顶部导航栏 -->
+        <div class="header">
+            <img class="back-button" src="https://www.gstatic.com/images/icons/material/system_gm/1x/arrow_back_gm_grey600_24dp.png" alt="返回">
+            <div class="header-title">互助广场</div>
+            <img class="header-right" src="https://www.gstatic.com/images/icons/material/system_gm/1x/search_gm_grey600_24dp.png" alt="搜索">
+        </div>
+
+        <!-- 分类筛选区 -->
+        <div class="filter-section">
+            <div class="filter-item active">全部</div>
+            <div class="filter-item">紧急求助</div>
+            <div class="filter-item">技能分享</div>
+            <div class="filter-item">生活帮助</div>
+            <div class="filter-item">社区服务</div>
+            <div class="filter-item">志愿活动</div>
+        </div>
+
+        <!-- 分类统计区 -->
+        <div class="stats-section">
+            <div class="stats-item">
+                <div class="stats-value">28</div>
+                <div class="stats-label">待解决</div>
+            </div>
+            <div class="stats-item">
+                <div class="stats-value">15</div>
+                <div class="stats-label">进行中</div>
+            </div>
+            <div class="stats-item">
+                <div class="stats-value">124</div>
+                <div class="stats-label">已完成</div>
+            </div>
+        </div>
+
+        <!-- 帮助列表 -->
+        <div class="help-list">
+            <!-- 帮助卡片1：需要帮助状态 -->
+            <div class="help-item">
+                <div class="help-header">
+                    <img class="user-avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="用户头像">
+                    <div class="user-info">
+                        <div class="user-name">张先生</div>
+                        <div class="help-time">今天 14:30</div>
+                    </div>
+                    <div class="help-status status-pending">待帮助</div>
+                </div>
+                <div class="help-content">
+                    <div class="help-title">帮忙照看宠物猫咪三天</div>
+                    <div class="help-desc">因临时出差三天，需要有爱心人士帮忙照看我家猫咪，提供猫粮和猫砂，希望有养猫经验。地点在幸福花园5栋，感谢！</div>
+                    <div class="help-details">
+                        <div class="help-detail-item">
+                            <img class="detail-icon" src="https://www.gstatic.com/images/icons/material/system_gm/1x/event_gm_grey600_24dp.png" alt="时间">
+                            <span class="detail-text">8月10日-8月12日</span>
+                        </div>
+                        <div class="help-detail-item">
+                            <img class="detail-icon" src="https://www.gstatic.com/images/icons/material/system_gm/1x/place_gm_grey600_24dp.png" alt="地点">
+                            <span class="detail-text">幸福花园5栋</span>
+                        </div>
+                        <div class="help-detail-item">
+                            <img class="detail-icon" src="https://www.gstatic.com/images/icons/material/system_gm/1x/monetization_on_gm_grey600_24dp.png" alt="报酬">
+                            <span class="detail-text">感谢费200元</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="help-actions">
+                    <div class="action-button secondary-action">联系TA</div>
+                    <div class="action-button primary-action">我来帮忙</div>
+                </div>
+            </div>
+
+            <!-- 帮助卡片2：进行中状态 -->
+            <div class="help-item">
+                <div class="help-header">
+                    <img class="user-avatar" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="用户头像">
+                    <div class="user-info">
+                        <div class="user-name">李阿姨</div>
+                        <div class="help-time">今天 10:15</div>
+                    </div>
+                    <div class="help-status status-progress">进行中</div>
+                </div>
+                <div class="help-content">
+                    <div class="help-title">教长辈使用智能手机</div>
+                    <div class="help-desc">年龄大了，智能手机很多功能不会用，希望有年轻人能教一下如何使用微信、支付宝和拍照功能，谢谢！</div>
+                    <div class="help-details">
+                        <div class="help-detail-item">
+                            <img class="detail-icon" src="https://www.gstatic.com/images/icons/material/system_gm/1x/event_gm_grey600_24dp.png" alt="时间">
+                            <span class="detail-text">周末空闲时间</span>
+                        </div>
+                        <div class="help-detail-item">
+                            <img class="detail-icon" src="https://www.gstatic.com/images/icons/material/system_gm/1x/place_gm_grey600_24dp.png" alt="地点">
+                            <span class="detail-text">幸福花园社区活动室</span>
+                        </div>
+                        <div class="help-detail-item">
+                            <img class="detail-icon" src="https://www.gstatic.com/images/icons/material/system_gm/1x/people_alt_gm_grey600_24dp.png" alt="帮助者">
+                            <span class="detail-text">小王已接单</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="help-actions">
+                    <div class="action-button secondary-action">查看详情</div>
+                </div>
+            </div>
+
+            <!-- 帮助卡片3：已完成状态 -->
+            <div class="help-item">
+                <div class="help-header">
+                    <img class="user-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="用户头像">
+                    <div class="user-info">
+                        <div class="user-name">王女士</div>
+                        <div class="help-time">昨天 16:45</div>
+                    </div>
+                    <div class="help-status status-completed">已完成</div>
+                </div>
+                <div class="help-content">
+                    <div class="help-title">急需跑腿取快递</div>
+                    <div class="help-desc">因工作原因无法去小区快递点取件，希望附近邻居帮忙，快递在小区南门快递柜，密码会私信告知。</div>
+                    <div class="help-details">
+                        <div class="help-detail-item">
+                            <img class="detail-icon" src="https://www.gstatic.com/images/icons/material/system_gm/1x/place_gm_grey600_24dp.png" alt="地点">
+                            <span class="detail-text">小区南门快递柜</span>
+                        </div>
+                        <div class="help-detail-item">
+                            <img class="detail-icon" src="https://www.gstatic.com/images/icons/material/system_gm/1x/people_alt_gm_grey600_24dp.png" alt="帮助者">
+                            <span class="detail-text">张先生已完成</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="help-actions">
+                    <div class="action-button secondary-action">查看详情</div>
+                </div>
+            </div>
+
+            <div class="no-more">没有更多内容了</div>
+        </div>
+    </div>
+
+    <!-- 悬浮发布按钮 -->
+    <div class="float-button">
+        <img src="https://www.gstatic.com/images/icons/material/system_gm/1x/add_gm_white_24dp.png" alt="发布">
+    </div>
+
+    <script>
+        // 分类切换效果
+        const filterItems = document.querySelectorAll('.filter-item');
+        filterItems.forEach(item => {
+            item.addEventListener('click', function() {
+                filterItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 返回按钮
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('click', function() {
+            window.history.back();
+        });
+    </script>
+</body>
+
+</html>

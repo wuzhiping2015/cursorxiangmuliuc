@@ -1,0 +1,137 @@
+/* Header Styles */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    width: 80px;
+}
+
+
+/* Navigation */
+
+.main-nav {
+    margin: 0 auto;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+.nav-item a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-item a:hover {
+    color: #034f8a;
+}
+
+.nav-item.active a {
+    color: #034f8a;
+}
+
+
+/* Header Actions */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-btn,
+.language-btn {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: opacity 0.3s ease;
+}
+
+.search-btn:hover,
+.language-btn:hover {
+    opacity: 0.7;
+}
+
+.search-btn img,
+.language-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+.language-btn span {
+    font-size: 14px;
+    color: #333;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 992px) {
+    .nav-list {
+        gap: 20px;
+    }
+    .nav-item a {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        height: 60px;
+    }
+    .logo {
+        height: 30px;
+    }
+    .main-nav {
+        display: none;
+    }
+    .header-actions {
+        gap: 15px;
+    }
+}
+
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-item a,
+    .search-btn,
+    .language-btn {
+        transition: none;
+    }
+}

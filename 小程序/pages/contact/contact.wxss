@@ -1,0 +1,249 @@
+/* 页面容器 */
+.container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  padding-bottom: env(safe-area-inset-bottom); /* 适配底部安全区域 */
+  box-sizing: border-box;
+}
+
+/* Banner样式 */
+.banner {
+  height: 300rpx; /* 调整高度更合适移动端 */
+  background: linear-gradient(135deg, #1890ff, #1d39c4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+}
+
+.banner-title {
+  font-size: calc(32rpx + 2vw); /* 使用vw单位实现字体大小自适应 */
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.banner-subtitle {
+  font-size: calc(24rpx + 1vw);
+  opacity: 0.9;
+}
+
+/* 联系信息卡片 */
+.contact-cards {
+  margin: -40rpx 20rpx 20rpx; /* 调整边距 */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300rpx, 1fr)); /* 自适应列数 */
+  gap: 20rpx;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+}
+
+.card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  min-height: 120rpx; /* 设置最小高度 */
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+.card-icon {
+  width: 60rpx; /* 调整图标大小 */
+  height: 60rpx;
+  margin-right: 16rpx;
+  flex-shrink: 0; /* 防止图标被压缩 */
+}
+
+.card-content {
+  flex: 1;
+  overflow: hidden; /* 防止内容溢出 */
+}
+
+.card-title {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+  display: block;
+  white-space: nowrap; /* 防止标题换行 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-value {
+  font-size: 26rpx;
+  color: #333;
+  font-weight: bold;
+  display: block;
+  word-break: break-all; /* 允许长文本换行 */
+}
+
+/* 表单部分 */
+.section {
+  margin: 20rpx;
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05);
+}
+
+.section-title {
+  margin-bottom: 30rpx;
+}
+
+.title-text {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.title-desc {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.form-group {
+  margin-bottom: 20rpx;
+  width: 100%;
+}
+
+.form-input {
+  width: 100%;
+  height: 80rpx;
+  background: #f5f7fa;
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  font-size: 26rpx;
+  color: #333;
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: #1890ff;
+  background: white;
+}
+
+.form-textarea {
+  width: 100%;
+  height: 180rpx;
+  background: #f5f7fa;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  font-size: 26rpx;
+  color: #333;
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-textarea:focus {
+  border-color: #1890ff;
+  background: white;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #1890ff, #1d39c4);
+  color: white;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 20rpx 0;
+  margin-top: 40rpx;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:active {
+  opacity: 0.9;
+  transform: scale(0.98);
+}
+
+/* 地图部分 */
+.map {
+  width: 100%;
+  height: 400rpx; /* 调整地图高度 */
+  margin-top: 20rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+
+.map-tip {
+  text-align: center;
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 10rpx;
+}
+
+/* 页脚 */
+.footer {
+  text-align: center;
+  padding: 40rpx 0;
+  color: #666;
+}
+
+.company-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.copyright {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+/* 动画效果 */
+.animate-item {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 响应式布局媒体查询 */
+@media screen and (max-width: 375px) {
+  .contact-cards {
+    grid-template-columns: 1fr; /* 在小屏幕上单列显示 */
+  }
+  
+  .banner {
+    height: 240rpx;
+  }
+  
+  .banner-title {
+    font-size: 36rpx;
+  }
+  
+  .banner-subtitle {
+    font-size: 24rpx;
+  }
+}
+
+/* 适配不同设备的地图大小 */
+@media screen and (min-width: 768px) {
+  .map {
+    height: 600rpx;
+  }
+}

@@ -1,0 +1,76 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <!-- 顶部轮播图 -->
+  <swiper class="banner" indicator-dots autoplay circular>
+    <swiper-item wx:for="{{bannerList}}" wx:key="id">
+      <image src="{{item.imageUrl}}" mode="widthFix" class="banner-image"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 服务分类导航 -->
+  <view class="nav-grid">
+    <view class="nav-item" wx:for="{{navItems}}" wx:key="id" bindtap="navigateToService" data-id="{{item.id}}">
+      <image src="{{item.icon}}" mode="aspectFit" class="nav-icon"></image>
+      <text>{{item.title}}</text>
+    </view>
+  </view>
+
+  <!-- 公司简介 -->
+  <view class="company-intro">
+    <view class="section-title">关于我们</view>
+    <view class="intro-content">
+      <image src="{{companyImage}}" mode="aspectFill" class="intro-image"></image>
+      <text class="intro-text">{{companyIntro}}</text>
+    </view>
+  </view>
+
+  <!-- 产品展示 -->
+  <view class="products">
+    <view class="section-title">产品展示</view>
+    <scroll-view scroll-x class="product-scroll">
+      <view class="product-list">
+        <view class="product-item" wx:for="{{products}}" wx:key="id" bindtap="showProduct" data-id="{{item.id}}">
+          <image src="{{item.image}}" mode="aspectFill" class="product-image"></image>
+          <view class="product-info">
+            <text class="product-name">{{item.name}}</text>
+            <text class="product-desc">{{item.description}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 新闻动态 -->
+  <view class="news">
+    <view class="section-title">新闻动态</view>
+    <view class="news-list">
+      <view class="news-item" wx:for="{{newsList}}" wx:key="id" bindtap="showNews" data-id="{{item.id}}">
+        <image src="{{item.image}}" mode="aspectFill" class="news-image"></image>
+        <view class="news-info">
+          <text class="news-title">{{item.title}}</text>
+          <text class="news-date">{{item.date}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 联系我们 -->
+  <view class="contact">
+    <view class="section-title">联系我们</view>
+    <view class="contact-info">
+      <view class="info-item">
+        <text class="icon">📞</text>
+        <text>联系电话：{{contactPhone}}</text>
+      </view>
+      <view class="info-item">
+        <text class="icon">📧</text>
+        <text>邮箱：{{contactEmail}}</text>
+      </view>
+      <view class="info-item">
+        <text class="icon">📍</text>
+        <text>地址：{{contactAddress}}</text>
+      </view>
+    </view>
+  </view>
+ 
+</scroll-view>

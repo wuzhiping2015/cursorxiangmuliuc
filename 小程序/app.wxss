@@ -1,0 +1,180 @@
+/**app.wxss**/
+page {
+  --primary-color: #4080FF;
+  --success-color: #67C23A;
+  --warning-color: #E6A23C;
+  --danger-color: #F56C6C;
+  --text-main: #303133;
+  --text-normal: #606266;
+  --text-minor: #909399;
+  --border-color: #DCDFE6;
+  --bg-color: #F5F7FA;
+  
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-main);
+  background-color: var(--bg-color);
+}
+
+/* 通用容器 */
+.container {
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 32rpx 32rpx 0 0;
+  overflow: hidden;
+}
+
+/* 卡片样式 */
+.card {
+  margin: 20rpx;
+  padding: 30rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 主标题 */
+.title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 20rpx;
+}
+
+/* 次标题 */
+.subtitle {
+  font-size: 28rpx;
+  color: var(--text-normal);
+  margin-bottom: 16rpx;
+}
+
+/* 描述文本 */
+.desc {
+  font-size: 24rpx;
+  color: var(--text-minor);
+}
+
+/* 主要按钮 */
+.btn-primary {
+  background: var(--primary-color);
+  color: #fff;
+  border-radius: 44rpx;
+  padding: 20rpx 40rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  text-align: center;
+  border: none;
+}
+
+/* 次要按钮 */
+.btn-default {
+  background: #fff;
+  color: var(--text-normal);
+  border: 2rpx solid var(--border-color);
+  border-radius: 44rpx;
+  padding: 20rpx 40rpx;
+  font-size: 32rpx;
+  text-align: center;
+}
+
+/* 标签样式 */
+.tag {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  font-size: 24rpx;
+  border-radius: 8rpx;
+}
+
+.tag-success {
+  background-color: #f0f9eb;
+  color: var(--success-color);
+  border: 2rpx solid #e1f3d8;
+}
+
+.tag-warning {
+  background-color: #fdf6ec;
+  color: var(--warning-color);
+  border: 2rpx solid #faecd8;
+}
+
+.tag-info {
+  background-color: #f4f4f5;
+  color: var(--text-minor);
+  border: 2rpx solid #e9e9eb;
+}
+
+/* 分割线 */
+.divider {
+  height: 2rpx;
+  background-color: var(--border-color);
+  margin: 20rpx 0;
+}
+
+/* flex布局工具类 */
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* 间距工具类 */
+.mt-20 {
+  margin-top: 20rpx;
+}
+
+.mb-20 {
+  margin-bottom: 20rpx;
+}
+
+.ml-20 {
+  margin-left: 20rpx;
+}
+
+.mr-20 {
+  margin-right: 20rpx;
+}
+
+/* 文本工具类 */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-bold {
+  font-weight: 600;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-success {
+  color: var(--success-color);
+}
+
+.text-warning {
+  color: var(--warning-color);
+}
+
+.text-danger {
+  color: var(--danger-color);
+} 

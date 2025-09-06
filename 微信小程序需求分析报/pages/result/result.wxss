@@ -1,0 +1,96 @@
+/* result 页面样式 */
+.container {
+  padding: 40rpx 20rpx;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.title {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.result-card {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 2rpx solid #ecf0f1;
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-size: 32rpx;
+  color: #34495e;
+  font-weight: 500;
+}
+
+.value {
+  font-size: 32rpx;
+  color: #3498db;
+  font-weight: 500;
+}
+
+.share-btn {
+  margin-top: 60rpx;
+  width: 80%;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  font-size: 34rpx;
+  padding: 24rpx 0;
+  border-radius: 40rpx;
+  box-shadow: 0 4rpx 12rpx rgba(46, 204, 113, 0.3);
+  transition: all 0.3s ease;
+}
+
+.share-btn:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 6rpx rgba(46, 204, 113, 0.2);
+}
+
+text {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.analysis-card {
+  margin-top: 30rpx;
+}
+
+.analysis-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid #ecf0f1;
+}
+
+.analysis-content {
+  font-size: 30rpx;
+  color: #34495e;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.analysis-content.loading {
+  color: #7f8c8d;
+  font-style: italic;
+}

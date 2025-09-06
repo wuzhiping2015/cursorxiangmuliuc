@@ -1,0 +1,93 @@
+/* 侧边栏样式 */
+.main-container {
+    display: flex;
+    gap: 20px;
+}
+
+.sidebar {
+    width: 200px;
+    flex-shrink: 0;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 15px 0;
+    height: fit-content;
+}
+
+.content-area {
+    flex: 1;
+}
+
+.sidebar-item {
+    padding: 0 15px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+    color: #333;
+}
+
+.sidebar-link:hover {
+    background-color: #f0f5ff;
+    color: #1890ff;
+}
+
+.sidebar-link i:first-child {
+    margin-right: 10px;
+    width: 16px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.sidebar-link span {
+    flex: 1;
+    font-size: 14px;
+}
+
+.sidebar-link i:last-child {
+    font-size: 12px;
+    opacity: 0.5;
+}
+
+.sidebar-divider {
+    height: 1px;
+    background-color: #f0f0f0;
+    margin: 10px 15px;
+}
+
+.sidebar-all, .sidebar-hot {
+    font-weight: 500;
+}
+
+.sidebar-all {
+    color: #52c41a;
+}
+
+.sidebar-all i:first-child {
+    color: #52c41a;
+}
+
+.sidebar-hot {
+    color: #fa541c;
+}
+
+.sidebar-hot i:first-child {
+    color: #fa541c;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

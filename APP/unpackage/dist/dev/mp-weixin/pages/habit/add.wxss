@@ -1,0 +1,96 @@
+.add-habit-container.data-v-d0e98346 {
+  min-height: 100vh;
+  background: var(--background-color);
+  padding-bottom: 40rpx;
+}
+.add-habit-container .form-content.data-v-d0e98346 {
+  padding: 20rpx 30rpx;
+}
+.add-habit-container .form-section.data-v-d0e98346 {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+.add-habit-container .form-section .section-title.data-v-d0e98346 {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 30rpx;
+}
+.add-habit-container .icon-grid.data-v-d0e98346 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20rpx;
+  margin-top: 20rpx;
+}
+.add-habit-container .icon-grid .icon-item.data-v-d0e98346 {
+  width: 80rpx;
+  height: 80rpx;
+  background: #f5f7fa;
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+.add-habit-container .icon-grid .icon-item.active.data-v-d0e98346 {
+  background: var(--primary-color);
+}
+.add-habit-container .color-grid.data-v-d0e98346 {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 20rpx;
+}
+.add-habit-container .color-grid .color-item.data-v-d0e98346 {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  border: 4rpx solid transparent;
+  transition: all 0.3s;
+}
+.add-habit-container .color-grid .color-item.active.data-v-d0e98346 {
+  border-color: var(--text-color);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+.add-habit-container .week-select.data-v-d0e98346 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+.add-habit-container .week-select .week-item.data-v-d0e98346 {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  background: #f5f7fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: var(--text-color);
+  transition: all 0.3s;
+}
+.add-habit-container .week-select .week-item.active.data-v-d0e98346 {
+  background: var(--primary-color);
+  color: #ffffff;
+}
+.add-habit-container .time-select.data-v-d0e98346 {
+  height: 80rpx;
+  background: #f5f7fa;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: var(--text-color);
+}
+.add-habit-container .stacking-info.data-v-d0e98346 {
+  font-size: 24rpx;
+  color: var(--text-color-secondary);
+  line-height: 1.5;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+}

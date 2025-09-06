@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>资源详情 - 社区信息共享</title>
+    <style>
+        /* 全局样式 */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            background-color: #f6f6f6;
+            color: #333;
+            line-height: 1.5;
+            max-width: 414px;
+            margin: 0 auto;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            padding: 0;
+            background-color: #f6f6f6;
+            min-height: 100vh;
+            padding-bottom: 70px;
+            /* 为底部操作区留出空间 */
+        }
+        /* 顶部导航栏 */
+        
+        .header {
+            padding: 12px 15px;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .icon-button {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .back-button {
+            margin-right: 10px;
+        }
+        
+        .share-button {
+            margin-left: 10px;
+        }
+        /* 图片轮播 */
+        
+        .swiper {
+            width: 100%;
+            height: 250px;
+            position: relative;
+            background-color: #f0f0f0;
+        }
+        
+        .swiper-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .swiper-indicator {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+        }
+        
+        .indicator-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .indicator-dot.active {
+            background-color: #fff;
+            width: 15px;
+            border-radius: 3px;
+        }
+        
+        .swiper-counter {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+        /* 信息卡片 */
+        
+        .info-card {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .info-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+        
+        .price-box {
+            display: flex;
+            align-items: baseline;
+            margin: 12px 0;
+        }
+        
+        .price {
+            font-size: 24px;
+            font-weight: 600;
+            color: #ff4d4f;
+        }
+        
+        .price-unit {
+            font-size: 14px;
+            margin-left: 3px;
+            color: #ff4d4f;
+        }
+        
+        .old-price {
+            margin-left: 10px;
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+        }
+        
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .tag {
+            padding: 2px 8px;
+            font-size: 12px;
+            color: #ff4d4f;
+            background-color: #fff1f0;
+            border-radius: 4px;
+        }
+        
+        .info-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #999;
+            font-size: 12px;
+            margin-top: 12px;
+        }
+        /* 位置信息 */
+        
+        .location-card {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .location-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        
+        .location-text {
+            flex: 1;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .distance {
+            font-size: 14px;
+            color: #999;
+        }
+        /* 详情描述 */
+        
+        .description-card {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title::before {
+            content: "";
+            display: inline-block;
+            width: 3px;
+            height: 16px;
+            background-color: #07c160;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        
+        .description-content {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .description-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .description-image {
+            width: calc(50% - 4px);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .description-image img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+        /* 用户信息 */
+        
+        .user-card {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .user-info {
+            flex: 1;
+        }
+        
+        .user-name {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .user-meta {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .contact-btn {
+            padding: 7px 15px;
+            border-radius: 4px;
+            background-color: #07c160;
+            color: white;
+            font-size: 14px;
+            border: none;
+        }
+        /* 相关推荐 */
+        
+        .related-card {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .related-list {
+            display: flex;
+            overflow-x: auto;
+            gap: 12px;
+            scrollbar-width: none;
+            /* Firefox */
+            padding-bottom: 10px;
+        }
+        
+        .related-list::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari, Opera */
+        }
+        
+        .related-item {
+            width: 120px;
+            flex-shrink: 0;
+        }
+        
+        .related-image {
+            width: 100%;
+            height: 90px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        
+        .related-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .related-title {
+            font-size: 13px;
+            line-height: 1.3;
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            height: 34px;
+        }
+        
+        .related-price {
+            font-size: 14px;
+            font-weight: 500;
+            color: #ff4d4f;
+            margin-top: 5px;
+        }
+        /* 底部操作区 */
+        
+        .bottom-action {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-width: 414px;
+            margin: 0 auto;
+            padding: 10px 15px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.05);
+            z-index: 90;
+        }
+        
+        .action-button {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .action-icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 3px;
+        }
+        
+        .action-button.fav.active {
+            color: #ff4d4f;
+        }
+        
+        .share-action {
+            flex: 0 0 24px;
+            margin: 0 15px;
+        }
+        
+        .contact-action {
+            flex: 0 0 auto;
+            padding: 10px 20px;
+            background-color: #07c160;
+            color: white;
+            font-size: 14px;
+            border-radius: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 顶部导航栏 -->
+        <div class="header">
+            <div class="icon-button back-button">
+                <img src="https://www.gstatic.com/images/icons/material/system_gm/1x/arrow_back_gm_grey600_24dp.png" alt="返回">
+            </div>
+            <div class="header-title">资源详情</div>
+            <div class="icon-button share-button">
+                <img src="https://www.gstatic.com/images/icons/material/system_gm/1x/share_gm_grey600_24dp.png" alt="分享">
+            </div>
+        </div>
+
+        <!-- 图片轮播 -->
+        <div class="swiper">
+            <img class="swiper-img" src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="资源图片">
+            <div class="swiper-indicator">
+                <div class="indicator-dot active"></div>
+                <div class="indicator-dot"></div>
+                <div class="indicator-dot"></div>
+                <div class="indicator-dot"></div>
+            </div>
+            <div class="swiper-counter">1/4</div>
+        </div>
+
+        <!-- 信息卡片 -->
+        <div class="info-card">
+            <h1 class="info-title">二手自行车九成新，适合通勤代步</h1>
+            <div class="price-box">
+                <span class="price">258</span>
+                <span class="price-unit">元</span>
+                <span class="old-price">380元</span>
+            </div>
+            <div class="tag-list">
+                <span class="tag">九成新</span>
+                <span class="tag">免费配送</span>
+                <span class="tag">随时看车</span>
+            </div>
+            <div class="info-meta">
+                <span>发布时间：2023-10-15</span>
+                <span>浏览量：235</span>
+            </div>
+        </div>
+
+        <!-- 位置信息 -->
+        <div class="location-card">
+            <img class="location-icon" src="https://www.gstatic.com/images/icons/material/system_gm/1x/place_gm_grey600_24dp.png" alt="位置">
+            <div class="location-text">幸福花园小区3栋</div>
+            <div class="distance">距离：500m</div>
+        </div>
+
+        <!-- 详情描述 -->
+        <div class="description-card">
+            <div class="section-title">详情描述</div>
+            <div class="description-content">
+                这是一辆使用不到一年的自行车，因为换了电动车所以转让。车况非常好，轮胎是全新的，刚换过。车锁和车筐都赠送。可以自取，也可以帮忙送到小区内。有意者请直接联系我，价格可以再商量。
+            </div>
+            <div class="description-images">
+                <div class="description-image">
+                    <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="详情图片">
+                </div>
+                <div class="description-image">
+                    <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="详情图片">
+                </div>
+                <div class="description-image">
+                    <img src="https://images.unsplash.com/photo-1593091861575-5444389a2d44?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="详情图片">
+                </div>
+            </div>
+        </div>
+
+        <!-- 用户信息 -->
+        <div class="user-card">
+            <div class="user-avatar">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="用户头像">
+            </div>
+            <div class="user-info">
+                <div class="user-name">张小明</div>
+                <div class="user-meta">发布了32件物品 · 已认证用户</div>
+            </div>
+            <button class="contact-btn">查看主页</button>
+        </div>
+
+        <!-- 相关推荐 -->
+        <div class="related-card">
+            <div class="section-title">相关推荐</div>
+            <div class="related-list">
+                <div class="related-item">
+                    <div class="related-image">
+                        <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="相关推荐">
+                    </div>
+                    <div class="related-title">折叠自行车可收纳小型单车</div>
+                    <div class="related-price">¥320</div>
+                </div>
+                <div class="related-item">
+                    <div class="related-image">
+                        <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="相关推荐">
+                    </div>
+                    <div class="related-title">高配置山地车越野自行车</div>
+                    <div class="related-price">¥550</div>
+                </div>
+                <div class="related-item">
+                    <div class="related-image">
+                        <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="相关推荐">
+                    </div>
+                    <div class="related-title">复古城市通勤自行车</div>
+                    <div class="related-price">¥420</div>
+                </div>
+                <div class="related-item">
+                    <div class="related-image">
+                        <img src="https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="相关推荐">
+                    </div>
+                    <div class="related-title">儿童自行车带辅助轮</div>
+                    <div class="related-price">¥180</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部操作区 -->
+    <div class="bottom-action">
+        <div class="action-button fav">
+            <img class="action-icon" src="https://www.gstatic.com/images/icons/material/system_gm/1x/favorite_border_gm_grey600_24dp.png" alt="收藏">
+            <span>收藏</span>
+        </div>
+        <div class="action-button">
+            <img class="action-icon" src="https://www.gstatic.com/images/icons/material/system_gm/1x/chat_gm_grey600_24dp.png" alt="留言">
+            <span>留言</span>
+        </div>
+        <div class="share-action">
+            <img class="action-icon" src="https://www.gstatic.com/images/icons/material/system_gm/1x/share_gm_grey600_24dp.png" alt="分享">
+        </div>
+        <div class="contact-action">联系卖家</div>
+    </div>
+
+    <script>
+        // 返回按钮
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('click', function() {
+            window.history.back();
+        });
+
+        // 收藏按钮
+        const favButton = document.querySelector('.fav');
+        favButton.addEventListener('click', function() {
+            this.classList.toggle('active');
+            const favIcon = this.querySelector('.action-icon');
+            if (this.classList.contains('active')) {
+                favIcon.src = "https://www.gstatic.com/images/icons/material/system_gm/1x/favorite_gm_red600_24dp.png";
+            } else {
+                favIcon.src = "https://www.gstatic.com/images/icons/material/system_gm/1x/favorite_border_gm_grey600_24dp.png";
+            }
+        });
+
+        // 联系卖家按钮
+        const contactButton = document.querySelector('.contact-action');
+        contactButton.addEventListener('click', function() {
+            alert('即将跳转到聊天页面...');
+        });
+
+        // 分享按钮
+        const shareButtons = document.querySelectorAll('.share-button, .share-action');
+        shareButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                alert('分享功能开发中...');
+            });
+        });
+
+        // 相关推荐点击
+        const relatedItems = document.querySelectorAll('.related-item');
+        relatedItems.forEach(item => {
+            item.addEventListener('click', function() {
+                alert('即将查看该商品...');
+            });
+        });
+    </script>
+</body>
+
+</html>

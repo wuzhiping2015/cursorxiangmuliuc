@@ -1,0 +1,29 @@
+{
+    "name": "mass-message-client",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "lint": "eslint . --ext .js,.vue --fix",
+        "json:server": "json-server --watch db.json --port 3000"
+    },
+    "dependencies": {
+        "@element-plus/icons-vue": "^2.3.1",
+        "axios": "^1.6.7",
+        "axios-retry": "^4.0.0",
+        "crypto-js": "^4.2.0",
+        "element-plus": "^2.5.6",
+        "pinia": "^2.1.7",
+        "vue": "^3.4.15",
+        "vue-router": "^4.2.5"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^5.0.3",
+        "eslint": "^8.56.0",
+        "eslint-plugin-vue": "^9.21.1",
+        "json-server": "^0.17.4",
+        "vite": "^5.0.11"
+    }
+}

@@ -1,0 +1,37 @@
+<view class="container">
+  <view class="header">
+    <text class="title">命理分析结果</text>
+  </view>
+
+  <view class="card result-card">
+    <view class="result-item">
+      <text class="label">农历日期</text>
+      <text class="value">{{lunarDate}}</text>
+    </view>
+    <view class="result-item">
+      <text class="label">生肖</text>
+      <text class="value">{{zodiac}}</text>
+    </view>
+    <view class="result-item">
+      <text class="label">天干地支</text>
+      <text class="value">{{ganzhi}}</text>
+    </view>
+    <view class="result-item">
+      <text class="label">五行分布</text>
+      <text class="value">{{wuxing}}</text>
+    </view>
+    <view class="result-item">
+      <text class="label">五行缺失</text>
+      <text class="value">{{missingWuxing}}</text>
+    </view>
+  </view>
+
+  <view class="card analysis-card">
+    <view class="analysis-title">AI个性化分析</view>
+    <view class="analysis-content {{loading ? 'loading' : ''}}">
+      {{aiAnalysis}}
+    </view>
+  </view>
+
+  <button class="share-btn" bindtap="onShare">分享结果</button>
+</view> 

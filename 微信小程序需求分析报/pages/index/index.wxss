@@ -1,0 +1,132 @@
+/* index 页面样式 */
+.container {
+  padding: 40rpx 30rpx;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60rpx;
+  padding: 20rpx;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: 600;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 16rpx;
+  text-shadow: 0 2rpx 4rpx rgba(0,0,0,0.1);
+}
+
+.subtitle {
+  font-size: 32rpx;
+  color: #7f8c8d;
+  letter-spacing: 2rpx;
+}
+
+.input-card {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 40rpx 30rpx;
+  margin: 30rpx 0;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+}
+
+.input-item {
+  margin-bottom: 40rpx;
+  position: relative;
+}
+
+.input-item:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  font-size: 36rpx;
+  color: #34495e;
+  display: block;
+  margin-bottom: 20rpx;
+  font-weight: 500;
+}
+
+.picker-value {
+  padding: 30rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  font-size: 34rpx;
+  color: #2c3e50;
+  box-shadow: inset 0 2rpx 6rpx rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.picker-value:active {
+  background: #f0f2f5;
+}
+
+.picker-value.placeholder {
+  color: #95a5a6;
+}
+
+.error-tip {
+  font-size: 26rpx;
+  color: #e74c3c;
+  margin-top: 12rpx;
+  display: block;
+  padding-left: 10rpx;
+}
+
+.calculate-btn {
+  margin-top: 80rpx;
+  width: 85%;
+  height: 100rpx;
+  line-height: 70rpx;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  font-size: 36rpx;
+  font-weight: 500;
+  letter-spacing: 4rpx;
+  border-radius: 50rpx;
+  box-shadow: 0 8rpx 20rpx rgba(52, 152, 219, 0.3);
+  transition: all 0.3s ease;
+}
+
+.calculate-btn.disabled {
+  background: linear-gradient(135deg, #bdc3c7, #95a5a6);
+  box-shadow: none;
+  opacity: 0.8;
+}
+
+.calculate-btn:active:not(.disabled) {
+  transform: translateY(2rpx);
+  box-shadow: 0 4rpx 10rpx rgba(52, 152, 219, 0.2);
+}
+
+.input-item picker[disabled] {
+  opacity: 0.6;
+}
+
+/* 添加选择框的动画效果 */
+.picker-value {
+  position: relative;
+  overflow: hidden;
+}
+
+.picker-value::after {
+  content: '';
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16rpx;
+  height: 16rpx;
+  border-right: 4rpx solid #95a5a6;
+  border-bottom: 4rpx solid #95a5a6;
+  transform: translateY(-50%) rotate(45deg);
+  transition: all 0.3s ease;
+}
+
+.picker-value:active::after {
+  transform: translateY(-50%) rotate(45deg) scale(0.9);
+}

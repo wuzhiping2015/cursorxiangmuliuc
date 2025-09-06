@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .content-scroll {
+            height: calc(100vh - 83px);
+            overflow-y: auto;
+        }
+        
+        .nav-bar {
+            height: 83px;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        .profile-header {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('https://images.pexels.com/photos/3075993/pexels-photo-3075993.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+        /* 添加图片加载错误处理 */
+        
+        img.error {
+            background: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        
+        .video-duration {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .video-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-card img {
+            transition: transform 0.3s ease;
+        }
+        
+        .video-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .profile-header.error {
+            background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
+        }
+    </style>
+    <script>
+        // 图片加载错误处理
+        function handleImageError(img) {
+            img.classList.add('error');
+            img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"%3E%3Cpath fill="%23666" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/%3E%3C/svg%3E';
+        }
+
+        // 背景图片加载错误处理
+        window.addEventListener('load', function() {
+            const header = document.querySelector('.profile-header');
+            const img = new Image();
+            img.onerror = function() {
+                header.classList.add('error');
+            };
+            img.src = header.style.backgroundImage.slice(5, -2);
+        });
+    </script>
+</head>
+
+<body class="bg-black text-white">
+    <div class="content-scroll">
+        <!-- 个人资料头部 -->
+        <div class="profile-header h-64 relative">
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+                <div class="flex items-end space-x-4">
+                    <img src="https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg" alt="头像" class="w-20 h-20 rounded-full border-2 border-white object-cover" onerror="handleImageError(this)">
+                    <div>
+                        <h1 class="text-2xl font-bold">张三</h1>
+                        <p class="text-sm text-gray-300">@zhangsan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 用户数据 -->
+        <div class="flex justify-around py-6 border-b border-gray-800">
+            <div class="text-center">
+                <div class="text-xl font-bold">258</div>
+                <div class="text-sm text-gray-400">关注</div>
+            </div>
+            <div class="text-center">
+                <div class="text-xl font-bold">1,234</div>
+                <div class="text-sm text-gray-400">粉丝</div>
+            </div>
+            <div class="text-center">
+                <div class="text-xl font-bold">56</div>
+                <div class="text-sm text-gray-400">作品</div>
+            </div>
+        </div>
+
+        <!-- 个人简介 -->
+        <div class="p-6">
+            <p class="text-gray-300">热爱生活，分享美好 🌟</p>
+            <div class="flex space-x-2 mt-4">
+                <button class="flex-1 bg-red-600 text-white py-2 rounded-full font-semibold">编辑资料</button>
+                <button class="w-12 h-12 border border-gray-600 rounded-full flex items-center justify-center">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 作品展示 -->
+        <div class="px-4">
+            <div class="flex border-b border-gray-800">
+                <button class="flex-1 py-4 text-white font-semibold border-b-2 border-red-600">作品</button>
+                <button class="flex-1 py-4 text-gray-400">收藏</button>
+                <button class="flex-1 py-4 text-gray-400">喜欢</button>
+            </div>
+            <div class="grid grid-cols-3 gap-1 mt-4">
+                <div class="aspect-square video-card">
+                    <img src="https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg" alt="科幻电影场景" class="w-full h-full object-cover" onerror="handleImageError(this)">
+                    <div class="video-duration">2:15</div>
+                </div>
+                <div class="aspect-square video-card">
+                    <img src="https://images.pexels.com/photos/3062541/pexels-photo-3062541.jpeg" alt="城市夜景" class="w-full h-full object-cover" onerror="handleImageError(this)">
+                    <div class="video-duration">1:45</div>
+                </div>
+                <div class="aspect-square video-card">
+                    <img src="https://images.pexels.com/photos/1938348/pexels-photo-1938348.jpeg" alt="自然风光" class="w-full h-full object-cover" onerror="handleImageError(this)">
+                    <div class="video-duration">3:20</div>
+                </div>
+                <div class="aspect-square video-card">
+                    <img src="https://images.pexels.com/photos/3075993/pexels-photo-3075993.jpeg" alt="太空场景" class="w-full h-full object-cover" onerror="handleImageError(this)">
+                    <div class="video-duration">2:40</div>
+                </div>
+                <div class="aspect-square video-card">
+                    <img src="https://images.pexels.com/photos/1738434/pexels-photo-1738434.jpeg" alt="城市建筑" class="w-full h-full object-cover" onerror="handleImageError(this)">
+                    <div class="video-duration">1:30</div>
+                </div>
+                <div class="aspect-square video-card">
+                    <img src="https://images.pexels.com/photos/2387418/pexels-photo-2387418.jpeg" alt="自然风景" class="w-full h-full object-cover" onerror="handleImageError(this)">
+                    <div class="video-duration">4:15</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <div class="flex justify-around items-center h-full">
+            <a href="home.html" class="flex flex-col items-center text-gray-400">
+                <i class="fas fa-home text-xl"></i>
+                <span class="text-xs mt-1">首页</span>
+            </a>
+            <a href="discover.html" class="flex flex-col items-center text-gray-400">
+                <i class="fas fa-compass text-xl"></i>
+                <span class="text-xs mt-1">发现</span>
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400">
+                <i class="fas fa-plus-circle text-3xl"></i>
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400">
+                <i class="fas fa-heart text-xl"></i>
+                <span class="text-xs mt-1">收藏</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center text-white">
+                <i class="fas fa-user text-xl"></i>
+                <span class="text-xs mt-1">我的</span>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

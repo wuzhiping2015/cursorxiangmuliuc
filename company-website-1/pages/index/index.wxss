@@ -1,0 +1,215 @@
+/**index.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+  width: 80%;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.avatar-wrapper {
+  padding: 0;
+  width: 56px !important;
+  border-radius: 8px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.avatar {
+  display: block;
+  width: 56px;
+  height: 56px;
+}
+
+.nickname-wrapper {
+  display: flex;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  border-top: .5px solid rgba(0, 0, 0, 0.1);
+  border-bottom: .5px solid rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+.nickname-label {
+  width: 105px;
+}
+
+.nickname-input {
+  flex: 1;
+}
+
+.banner {
+  width: 100%;
+  height: 400rpx;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner swiper-item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 30rpx;
+  background: #fff;
+  gap: 20rpx;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 10rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 30rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.company-intro {
+  background: #fff;
+  padding: 0 30rpx 30rpx;
+}
+
+.intro-image {
+  width: 100%;
+  border-radius: 10rpx;
+}
+
+.intro-text {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #666;
+}
+
+.product-scroll {
+  white-space: nowrap;
+  padding: 0 30rpx;
+  background: #fff;
+}
+
+.product-list {
+  display: inline-flex;
+  padding: 20rpx 0;
+}
+
+.product-item {
+  width: 300rpx;
+  margin-right: 20rpx;
+}
+
+.product-image {
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 10rpx;
+}
+
+.product-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-top: 10rpx;
+  display: block;
+}
+
+.product-desc {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+}
+
+.news-list {
+  background: #fff;
+  padding: 0 30rpx;
+}
+
+.news-item {
+  display: flex;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.news-image {
+  width: 200rpx;
+  height: 140rpx;
+  border-radius: 10rpx;
+}
+
+.news-info {
+  flex: 1;
+  margin-left: 20rpx;
+}
+
+.news-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  display: block;
+}
+
+.news-date {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+  display: block;
+}
+
+.contact {
+  background: #fff;
+  padding-bottom: 30rpx;
+}
+
+.contact-info {
+  padding: 0 30rpx;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.icon {
+  margin-right: 10rpx;
+}

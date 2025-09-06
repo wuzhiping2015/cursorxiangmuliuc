@@ -1,0 +1,49 @@
+.mine-container.data-v-4bd6864f {
+  min-height: 100vh;
+  background: var(--background-color);
+  padding-bottom: 40rpx;
+}
+.mine-container .user-card.data-v-4bd6864f {
+  background: #ffffff;
+  padding: 40rpx 30rpx;
+  margin-bottom: 20rpx;
+}
+.mine-container .user-card .user-info.data-v-4bd6864f {
+  display: flex;
+  align-items: center;
+  gap: 30rpx;
+}
+.mine-container .user-card .user-info .info-content.data-v-4bd6864f {
+  flex: 1;
+}
+.mine-container .user-card .user-info .info-content .nickname.data-v-4bd6864f {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 10rpx;
+}
+.mine-container .user-card .user-info .info-content .bio.data-v-4bd6864f {
+  font-size: 26rpx;
+  color: var(--text-color-secondary);
+}
+.mine-container .settings-group.data-v-4bd6864f {
+  margin-bottom: 20rpx;
+}
+.mine-container .settings-group .group-title.data-v-4bd6864f {
+  padding: 20rpx 30rpx;
+  font-size: 26rpx;
+  color: var(--text-color-secondary);
+}
+.mine-container .settings-group :deep(.u-cell) .cell-icon.data-v-4bd6864f {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+.mine-container .logout-button.data-v-4bd6864f {
+  margin: 60rpx 30rpx;
+}

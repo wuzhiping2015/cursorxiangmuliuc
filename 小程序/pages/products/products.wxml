@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">产品展示</view>
+    <view class="header-desc">我们提供多种高质量的产品，满足您的各种需求</view>
+  </view>
+
+  <view class="product-list">
+    <view class="product-item" wx:for="{{products}}" wx:key="id">
+      <image src="{{item.image}}" mode="aspectFill"></image>
+      <view class="product-info">
+        <view class="product-name">{{item.name}}</view>
+        <view class="product-desc">{{item.description}}</view>
+        <view class="product-features">
+          <view class="feature" wx:for="{{item.features}}" wx:for-item="feature" wx:key="*this">
+            <text>{{feature}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <text>© 2024 公司名称. 版权所有</text>
+  </view>
+</view>

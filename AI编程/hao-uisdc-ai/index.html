@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI导航 - 精选AI工具导航 | 优设AI导航</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/sidebar.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="./images/logo.png" alt="优设AI导航" />
+                </a>
+            </div>
+            <div class="search-box header-search">
+                <input type="text" placeholder="搜索AI工具..." id="search-input" />
+                <button type="button" id="search-btn">
+            <i class="fas fa-search"></i>
+          </button>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">AI导航</a></li>
+                    <li><a href="#">设计导航</a></li>
+                    <li><a href="#">优设网</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="#" class="login-btn">登录/注册</a>
+                <a href="#" class="user-icon">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-banner">
+        <div class="container">
+            <h1 class="banner-title">百万用户都在使用的AI工具导航</h1>
+            <div class="banner-search">
+                <div class="search-tabs">
+                    <a href="#" class="active">常用</a>
+                    <a href="#">百度</a>
+                    <a href="#">Google</a>
+                    <a href="#">优设问</a>
+                    <a href="#">优优教程</a>
+                </div>
+                <div class="search-box banner-search-box">
+                    <input type="text" placeholder="优设网 | 国内专业设计师平台" id="banner-search-input" />
+                    <button type="button" id="banner-search-btn">百度一下</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hot-tags-section">
+        <div class="container">
+            <div class="section-header">
+                <h3>热门标签</h3>
+            </div>
+            <div class="hot-tags-container" id="hot-tags-container">
+                <!-- 热门标签将通过JavaScript动态生成 -->
+                <a href="#" class="hot-tag"><i class="fas fa-tag"></i> 国内AI绘画</a>
+                <a href="#" class="hot-tag"><i class="fas fa-tag"></i> GPT-4</a>
+                <a href="#" class="hot-tag"><i class="fas fa-tag"></i> deepseek</a>
+                <a href="#" class="hot-tag"><i class="fas fa-tag"></i> midjourney</a>
+                <a href="#" class="hot-tag"><i class="fas fa-tag"></i> 付费版</a>
+                <a href="#" class="hot-tag"><i class="fas fa-tag"></i> AIGC</a>
+                <a href="#" class="hot-tag"><i class="fas fa-tag"></i> Flux</a>
+                <a href="#" class="hot-tag"><i class="fas fa-tag"></i> ComfyUI</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="ai-platform-section">
+        <div class="container">
+            <div class="section-header with-more">
+                <h2>优设AI自学平台</h2>
+                <a href="#" class="more-link">更多 <i class="fas fa-angle-right"></i
+          ></a>
+            </div>
+            <div class="platform-cards">
+                <div class="platform-card">
+                    <div class="platform-card-image">
+                        <img src="./images/placeholder.svg" alt="AI导航" />
+                        <div class="platform-card-tag">热门</div>
+                    </div>
+                    <div class="platform-card-content">
+                        <h3>AI导航</h3>
+                        <p>专业设计！数万设计师都在用的AI工具导航</p>
+                        <div class="platform-card-number">No.1</div>
+                    </div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-card-image">
+                        <img src="./images/placeholder.svg" alt="AI教程" />
+                        <div class="platform-card-tag">新课</div>
+                    </div>
+                    <div class="platform-card-content">
+                        <h3>零基础入门AI绘画</h3>
+                        <p>掌握行业大咖技能技术，轻松上手AI绘画</p>
+                        <div class="platform-card-number">No.2</div>
+                    </div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-card-image">
+                        <img src="./images/placeholder.svg" alt="GPT-4教程" />
+                        <div class="platform-card-tag">热门</div>
+                    </div>
+                    <div class="platform-card-content">
+                        <h3>GPT-4实战教程</h3>
+                        <p>8节主打实用性的GPT-4实战教程</p>
+                        <div class="platform-card-number">No.3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="container main-container">
+            <div class="sidebar">
+                <div class="sidebar-item">
+                    <a href="#" class="sidebar-link sidebar-all">
+                        <i class="fas fa-th-large"></i>
+                        <span>全部网站导航</span>
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#" class="sidebar-link sidebar-hot">
+                        <i class="fas fa-fire"></i>
+                        <span>热门推荐</span>
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
+                <div class="sidebar-divider"></div>
+                <div class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-paint-brush"></i>
+                        <span>AI绘画</span>
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-comment-dots"></i>
+                        <span>AI聊天</span>
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-desktop"></i>
+                        <span>AI图像处理</span>
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-pencil-alt"></i>
+                        <span>UI设计</span>
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-layer-group"></i>
+                        <span>平面设计</span>
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-file-alt"></i>
+                        <span>AI智能写作</span>
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-video"></i>
+                        <span>AI视频</span>
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-cube"></i>
+                        <span>3D设计</span>
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>AI学习</span>
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-building"></i>
+                        <span>AI办公</span>
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-language"></i>
+                        <span>AI翻译</span>
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="content-area">
+                <div class="section-header">
+                    <h2>AI工具导航</h2>
+                </div>
+                <div class="category-nav">
+                    <ul>
+                        <li><a href="#" class="active" data-category="all">全部</a></li>
+                        <li><a href="#" data-category="chatgpt">ChatGPT</a></li>
+                        <li><a href="#" data-category="image">AI绘画</a></li>
+                        <li><a href="#" data-category="writing">AI写作</a></li>
+                        <li><a href="#" data-category="video">AI视频</a></li>
+                        <li><a href="#" data-category="audio">AI音频</a></li>
+                        <li><a href="#" data-category="design">AI设计</a></li>
+                        <li><a href="#" data-category="code">AI编程</a></li>
+                        <li><a href="#" data-category="other">其他工具</a></li>
+                    </ul>
+                </div>
+
+                <div class="tools-container" id="tools-container">
+                    <div class="tool-card">
+                        <div class="tool-card-image">
+                            <img src="https://真实图片链接/chatgpt.jpg" alt="ChatGPT" />
+                        </div>
+                        <div class="tool-card-content">
+                            <div class="tool-card-title">
+                                <a href="https://chat.openai.com/" target="_blank">ChatGPT</a>
+                                <span class="hot-badge">HOT</span>
+                            </div>
+                            <div class="tool-card-description">
+                                OpenAI开发的大型语言模型聊天机器人，能够生成类似人类的文本对话
+                            </div>
+                            <div class="tool-card-tags">
+                                <span>热门</span><span>AI对话</span>
+                            </div>
+                            <a href="https://chat.openai.com/" class="tool-card-link" target="_blank">访问网站</a
+                >
+              </div>
+            </div>
+
+            <!-- 新增 Claude 卡片 -->
+            <div class="tool-card">
+              <div class="tool-card-image">
+                <img
+                  src="https://真实图片链接/claude.jpg"
+                  alt="Claude"
+                />
+              </div>
+              <div class="tool-card-content">
+                <div class="tool-card-title">
+                  <a href="https://claude.ai/" target="_blank">Claude</a>
+                            <span class="hot-badge">HOT</span>
+                        </div>
+                        <div class="tool-card-description">
+                            Anthropic开发的AI助手，擅长写作、分析和编程，支持文件上传和长对话
+                        </div>
+                        <div class="tool-card-tags">
+                            <span>热门</span><span>免费</span>
+                        </div>
+                        <a href="https://claude.ai/" class="tool-card-link" target="_blank">访问网站</a
+                >
+              </div>
+            </div>
+
+            <!-- 新增 Gemini 卡片 -->
+            <div class="tool-card">
+              <div class="tool-card-image">
+                <img
+                  src="https://真实图片链接/gemini.jpg"
+                  alt="Gemini"
+                />
+              </div>
+              <div class="tool-card-content">
+                <div class="tool-card-title">
+                  <a href="https://gemini.google.com/" target="_blank"
+                    >Gemini</a
+                  >
+                  <span class="hot-badge">NEW</span>
+                </div>
+                <div class="tool-card-description">
+                  Google最新推出的AI模型，支持多模态理解，可处理文本、图像、音频等
+                </div>
+                <div class="tool-card-tags">
+                  <span>新品</span><span>免费</span>
+                </div>
+                <a
+                  href="https://gemini.google.com/"
+                  class="tool-card-link"
+                  target="_blank"
+                  >访问网站</a
+                >
+              </div>
+            </div>
+
+            <!-- 新增 Copilot 卡片 -->
+            <div class="tool-card">
+              <div class="tool-card-image">
+                <img
+                  src="https://真实图片链接/copilot.jpg"
+                  alt="Microsoft Copilot"
+                />
+              </div>
+              <div class="tool-card-content">
+                <div class="tool-card-title">
+                  <a href="https://copilot.microsoft.com/" target="_blank"
+                    >Microsoft Copilot</a
+                  >
+                  <span class="hot-badge">HOT</span>
+                </div>
+                <div class="tool-card-description">
+                  微软推出的AI助手，集成GPT-4，支持图像生成和Office全套应用
+                </div>
+                <div class="tool-card-tags">
+                  <span>热门</span><span>免费</span>
+                </div>
+                <a
+                  href="https://copilot.microsoft.com/"
+                  class="tool-card-link"
+                  target="_blank"
+                  >访问网站</a
+                >
+              </div>
+            </div>
+
+            <!-- 新增 文心一言 卡片 -->
+            <div class="tool-card">
+              <div class="tool-card-image">
+                <img
+                  src="https://真实图片链接/wenxin.jpg"
+                  alt="文心一言"
+                />
+              </div>
+              <div class="tool-card-content">
+                <div class="tool-card-title">
+                  <a href="https://yiyan.baidu.com/" target="_blank"
+                    >文心一言</a
+                  >
+                  <span class="hot-badge">HOT</span>
+                </div>
+                <div class="tool-card-description">
+                  百度推出的AI对话模型，中文表现优秀，支持图文创作和知识问答
+                </div>
+                <div class="tool-card-tags">
+                  <span>国产</span><span>免费</span>
+                </div>
+                <a
+                  href="https://yiyan.baidu.com/"
+                  class="tool-card-link"
+                  target="_blank"
+                  >访问网站</a
+                >
+              </div>
+            </div>
+
+            <!-- 新增 通义千问 卡片 -->
+            <div class="tool-card">
+              <div class="tool-card-image">
+                <img
+                  src="https://真实图片链接/qianwen.jpg"
+                  alt="通义千问"
+                />
+              </div>
+              <div class="tool-card-content">
+                <div class="tool-card-title">
+                  <a href="https://qianwen.aliyun.com/" target="_blank"
+                    >通义千问</a
+                  >
+                </div>
+                <div class="tool-card-description">
+                  阿里云推出的AI模型，擅长中文创作和商业应用，支持多模态交互
+                </div>
+                <div class="tool-card-tags">
+                  <span>国产</span><span>免费</span>
+                </div>
+                <a
+                  href="https://qianwen.aliyun.com/"
+                  class="tool-card-link"
+                  target="_blank"
+                  >访问网站</a
+                >
+              </div>
+            </div>
+
+            <!-- 新增 讯飞星火 卡片 -->
+            <div class="tool-card">
+              <div class="tool-card-image">
+                <img src="https://真实图片链接/xinghuo.jpg" alt="讯飞星火" />
+              </div>
+              <div class="tool-card-content">
+                <div class="tool-card-title">
+                  <a href="https://xinghuo.xfyun.cn/" target="_blank"
+                    >讯飞星火</a
+                  >
+                </div>
+                <div class="tool-card-description">
+                  科大讯飞推出的认知大模型，专注中文理解和语音交互
+                </div>
+                <div class="tool-card-tags">
+                  <span>国产</span><span>免费</span>
+                </div>
+                <a
+                  href="https://xinghuo.xfyun.cn/"
+                  class="tool-card-link"
+                  target="_blank"
+                  >访问网站</a
+                >
+              </div>
+            </div>
+
+            <!-- 新增 Anthropic Claude 2 卡片 -->
+            <div class="tool-card">
+              <div class="tool-card-image">
+                <img src="https://真实图片链接/claude2.jpg" alt="Claude 2" />
+              </div>
+              <div class="tool-card-content">
+                <div class="tool-card-title">
+                  <a href="https://www.anthropic.com/claude" target="_blank"
+                    >Claude 2</a
+                  >
+                  <span class="hot-badge">PRO</span>
+                </div>
+                <div class="tool-card-description">
+                  Claude的专业版本，支持更长对话、更准确的分析和更强的编程能力
+                </div>
+                <div class="tool-card-tags">
+                  <span>付费</span><span>专业</span>
+                </div>
+                <a
+                  href="https://www.anthropic.com/claude"
+                  class="tool-card-link"
+                  target="_blank"
+                  >访问网站</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <section class="recommended-section">
+      <div class="container">
+        <div class="section-header with-more">
+          <h2>推荐工具</h2>
+          <a href="#" class="more-link"
+            >更多 <i class="fas fa-angle-right"></i
+          ></a>
+                    </div>
+                    <div class="tools-container" id="tools-container">
+                        <div class="tool-card">
+                            <div class="tool-card-image">
+                                <img src="https://真实图片链接/chatgpt.jpg" alt="ChatGPT" />
+                            </div>
+                            <div class="tool-card-content">
+                                <div class="tool-card-title">
+                                    <a href="https://chat.openai.com/" target="_blank">ChatGPT</a>
+                                    <span class="hot-badge">HOT</span>
+                                </div>
+                                <div class="tool-card-description">
+                                    OpenAI开发的大型语言模型聊天机器人，能够生成类似人类的文本对话
+                                </div>
+                                <div class="tool-card-tags">
+                                    <span>热门</span><span>AI对话</span>
+                                </div>
+                                <a href="https://chat.openai.com/" class="tool-card-link" target="_blank">访问网站</a
+              >
+            </div>
+          </div>
+
+          <!-- 新增 Claude 卡片 -->
+          <div class="tool-card">
+            <div class="tool-card-image">
+              <img
+                src="https://真实图片链接/claude.jpg"
+                alt="Claude"
+              />
+            </div>
+            <div class="tool-card-content">
+              <div class="tool-card-title">
+                <a href="https://claude.ai/" target="_blank">Claude</a>
+                                <span class="hot-badge">HOT</span>
+                            </div>
+                            <div class="tool-card-description">
+                                Anthropic开发的AI助手，擅长写作、分析和编程，支持文件上传和长对话
+                            </div>
+                            <div class="tool-card-tags">
+                                <span>热门</span><span>免费</span>
+                            </div>
+                            <a href="https://claude.ai/" class="tool-card-link" target="_blank">访问网站</a
+              >
+            </div>
+          </div>
+
+          <!-- 新增 Gemini 卡片 -->
+          <div class="tool-card">
+            <div class="tool-card-image">
+              <img
+                src="https://真实图片链接/gemini.jpg"
+                alt="Gemini"
+              />
+            </div>
+            <div class="tool-card-content">
+              <div class="tool-card-title">
+                <a href="https://gemini.google.com/" target="_blank"
+                  >Gemini</a
+                >
+                <span class="hot-badge">NEW</span>
+              </div>
+              <div class="tool-card-description">
+                Google最新推出的AI模型，支持多模态理解，可处理文本、图像、音频等
+              </div>
+              <div class="tool-card-tags">
+                <span>新品</span><span>免费</span>
+              </div>
+              <a
+                href="https://gemini.google.com/"
+                class="tool-card-link"
+                target="_blank"
+                >访问网站</a
+              >
+            </div>
+          </div>
+
+          <!-- 新增 Copilot 卡片 -->
+          <div class="tool-card">
+            <div class="tool-card-image">
+              <img
+                src="https://真实图片链接/copilot.jpg"
+                alt="Microsoft Copilot"
+              />
+            </div>
+            <div class="tool-card-content">
+              <div class="tool-card-title">
+                <a href="https://copilot.microsoft.com/" target="_blank"
+                  >Microsoft Copilot</a
+                >
+                <span class="hot-badge">HOT</span>
+              </div>
+              <div class="tool-card-description">
+                微软推出的AI助手，集成GPT-4，支持图像生成和Office全套应用
+              </div>
+              <div class="tool-card-tags">
+                <span>热门</span><span>免费</span>
+              </div>
+              <a
+                href="https://copilot.microsoft.com/"
+                class="tool-card-link"
+                target="_blank"
+                >访问网站</a
+              >
+            </div>
+          </div>
+
+          <!-- 新增 文心一言 卡片 -->
+          <div class="tool-card">
+            <div class="tool-card-image">
+              <img
+                src="https://真实图片链接/wenxin.jpg"
+                alt="文心一言"
+              />
+            </div>
+            <div class="tool-card-content">
+              <div class="tool-card-title">
+                <a href="https://yiyan.baidu.com/" target="_blank"
+                  >文心一言</a
+                >
+                <span class="hot-badge">HOT</span>
+              </div>
+              <div class="tool-card-description">
+                百度推出的AI对话模型，中文表现优秀，支持图文创作和知识问答
+              </div>
+              <div class="tool-card-tags">
+                <span>国产</span><span>免费</span>
+              </div>
+              <a
+                href="https://yiyan.baidu.com/"
+                class="tool-card-link"
+                target="_blank"
+                >访问网站</a
+              >
+            </div>
+          </div>
+
+          <!-- 新增 通义千问 卡片 -->
+          <div class="tool-card">
+            <div class="tool-card-image">
+              <img
+                src="https://真实图片链接/qianwen.jpg"
+                alt="通义千问"
+              />
+            </div>
+            <div class="tool-card-content">
+              <div class="tool-card-title">
+                <a href="https://qianwen.aliyun.com/" target="_blank"
+                  >通义千问</a
+                >
+              </div>
+              <div class="tool-card-description">
+                阿里云推出的AI模型，擅长中文创作和商业应用，支持多模态交互
+              </div>
+              <div class="tool-card-tags">
+                <span>国产</span><span>免费</span>
+              </div>
+              <a
+                href="https://qianwen.aliyun.com/"
+                class="tool-card-link"
+                target="_blank"
+                >访问网站</a
+              >
+            </div>
+          </div>
+
+          <!-- 新增 讯飞星火 卡片 -->
+          <div class="tool-card">
+            <div class="tool-card-image">
+              <img src="https://真实图片链接/xinghuo.jpg" alt="讯飞星火" />
+            </div>
+            <div class="tool-card-content">
+              <div class="tool-card-title">
+                <a href="https://xinghuo.xfyun.cn/" target="_blank"
+                  >讯飞星火</a
+                >
+              </div>
+              <div class="tool-card-description">
+                科大讯飞推出的认知大模型，专注中文理解和语音交互
+              </div>
+              <div class="tool-card-tags">
+                <span>国产</span><span>免费</span>
+              </div>
+              <a
+                href="https://xinghuo.xfyun.cn/"
+                class="tool-card-link"
+                target="_blank"
+                >访问网站</a
+              >
+            </div>
+          </div>
+
+          <!-- 新增 Anthropic Claude 2 卡片 -->
+          <div class="tool-card">
+            <div class="tool-card-image">
+              <img src="https://真实图片链接/claude2.jpg" alt="Claude 2" />
+            </div>
+            <div class="tool-card-content">
+              <div class="tool-card-title">
+                <a href="https://www.anthropic.com/claude" target="_blank"
+                  >Claude 2</a
+                >
+                <span class="hot-badge">PRO</span>
+              </div>
+              <div class="tool-card-description">
+                Claude的专业版本，支持更长对话、更准确的分析和更强的编程能力
+              </div>
+              <div class="tool-card-tags">
+                <span>付费</span><span>专业</span>
+              </div>
+              <a
+                href="https://www.anthropic.com/claude"
+                class="tool-card-link"
+                target="_blank"
+                >访问网站</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="friend-links-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>友情链接</h2>
+        </div>
+        <div class="friend-links">
+          <a href="#" class="friend-link">优设网</a>
+                            <a href="#" class="friend-link">优优教程网</a>
+                            <a href="#" class="friend-link">设计导航</a>
+                            <a href="#" class="friend-link">优设大课堂</a>
+                            <a href="#" class="friend-link">优优设计学院</a>
+                            <a href="#" class="friend-link">设计师招聘</a>
+                            <a href="#" class="friend-link">设计素材</a>
+                            <a href="#" class="friend-link">字体下载</a>
+                            <a href="#" class="friend-link">配色工具</a>
+                            <a href="#" class="friend-link">AI工具集</a>
+                        </div>
+                    </div>
+                    </section>
+
+                    <footer class="footer">
+                        <div class="container">
+                            <div class="footer-info">
+                                <p>© 2023 优设AI导航 - 精选AI工具导航 | 静态复刻版</p>
+                                <p>
+                                    本站仅作为学习用途，原站：<a href="https://hao.uisdc.com/ai/" target="_blank">https://hao.uisdc.com/ai/</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./js/data.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>

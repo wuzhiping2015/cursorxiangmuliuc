@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梅花主题数据大屏</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <!-- 引入 ECharts -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+
+<body class="dashboard-theme">
+    <div class="dashboard-container">
+        <!-- 顶部标题区 -->
+        <header class="dashboard-header">
+            <h1>梅花主题数据分析平台</h1>
+            <div class="time-display" id="currentTime"></div>
+        </header>
+
+        <!-- 主要内容区 -->
+        <main class="dashboard-content">
+            <!-- 左侧数据面板 -->
+            <section class="panel panel-left">
+                <div class="data-card">
+                    <h3>销售业绩</h3>
+                    <div class="chart-container" id="salesChart"></div>
+                </div>
+                <div class="data-card">
+                    <h3>地区分布</h3>
+                    <div class="chart-container" id="regionChart"></div>
+                </div>
+            </section>
+
+            <!-- 中间数据面板 -->
+            <section class="panel panel-center">
+                <div class="data-overview">
+                    <div class="data-item">
+                        <h4>总销售额</h4>
+                        <div class="number-group">
+                            <span class="number" id="totalSales">0</span>
+                            <span class="unit">万</span>
+                        </div>
+                    </div>
+                    <div class="data-item">
+                        <h4>订单数量</h4>
+                        <div class="number-group">
+                            <span class="number" id="orderCount">0</span>
+                            <span class="unit">个</span>
+                        </div>
+                    </div>
+                    <div class="data-item">
+                        <h4>客户数量</h4>
+                        <div class="number-group">
+                            <span class="number" id="customerCount">0</span>
+                            <span class="unit">位</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container" id="chinaMap"></div>
+            </section>
+
+            <!-- 右侧数据面板 -->
+            <section class="panel panel-right">
+                <div class="data-card">
+                    <h3>产品分类</h3>
+                    <div class="chart-container" id="categoryChart"></div>
+                </div>
+                <div class="data-card">
+                    <h3>实时订单</h3>
+                    <div class="realtime-list" id="orderList">
+                        <!-- 实时订单数据将通过JS动态插入 -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 底部装饰区 -->
+        <footer class="dashboard-footer">
+            <div class="plum-decoration left"></div>
+            <div class="data-summary">
+                <div class="summary-item">
+                    <span class="label">系统运行时间：</span>
+                    <span class="value" id="runningTime">0天0小时0分</span>
+                </div>
+                <div class="summary-item">
+                    <span class="label">数据更新频率：</span>
+                    <span class="value">5分钟</span>
+                </div>
+            </div>
+            <div class="plum-decoration right"></div>
+        </footer>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

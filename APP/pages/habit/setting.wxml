@@ -1,0 +1,46 @@
+<view class="setting-container">
+  <view class="form-group">
+    <text class="label">习惯名称</text>
+    <input class="input" 
+           placeholder="请输入习惯名称" 
+           value="{{habitName}}"
+           bindinput="onNameInput" />
+  </view>
+
+  <view class="form-group">
+    <text class="label">提醒时间</text>
+    <picker mode="time" 
+            value="{{selectedTime}}" 
+            bindchange="onTimeChange"
+            class="time-picker">
+      <view class="picker-value">{{selectedTime}}</view>
+    </picker>
+  </view>
+
+  <view class="form-group">
+    <text class="label">重复周期</text>
+    <view class="days-select">
+      <view class="day-item {{selectedDays.includes(index) ? 'selected' : ''}}"
+            wx:for="{{repeatDays}}"
+            wx:key="index"
+            bindtap="toggleDay"
+            data-index="{{index}}">
+        {{item}}
+      </view>
+    </view>
+  </view>
+
+  <view class="form-group">
+    <view class="custom-repeat">
+      <text class="label">自定义重复</text>
+      <switch checked="{{customRepeat}}" 
+              bindchange="toggleCustomRepeat"
+              color="#4080FF" />
+    </view>
+    <text class="tip">将会在每次完成后自动添加下一个习惯</text>
+  </view>
+
+  <view class="btn-group">
+    <button class="save-btn" bindtap="saveHabit">保存</button>
+  </view>
+</view> 

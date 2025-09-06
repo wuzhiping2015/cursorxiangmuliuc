@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们 - 公司名称</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- 页面头部 -->
+    <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <div class="logo">
+                    <img src="images/abb-logo-lockup_desktop-tablet-version.webp" alt="公司logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="products.html">产品展示</a></li>
+                    <li><a href="contact.html" class="active">联系我们</a></li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main>
+        <!-- 页面标题区域 -->
+        <section class="page-header">
+            <div class="container">
+                <h1>联系我们</h1>
+                <p class="subtitle">期待与您沟通交流</p>
+                <div class="header-decoration"></div>
+            </div>
+        </section>
+
+        <!-- 联系信息和表单区域 -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-container">
+                    <!-- 联系方式信息 -->
+                    <div class="contact-info">
+                        <h2 class="section-title">联系方式</h2>
+                        <div class="info-card">
+                            <div class="info-item">
+                                <i class="icon location"></i>
+                                <div class="info-content">
+                                    <h3>公司地址</h3>
+                                    <p>XX省XX市XX区XX街道XX号</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="icon phone"></i>
+                                <div class="info-content">
+                                    <h3>联系电话</h3>
+                                    <p>+86 XXX-XXXX-XXXX</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="icon email"></i>
+                                <div class="info-content">
+                                    <h3>电子邮箱</h3>
+                                    <p>contact@company.com</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="icon time"></i>
+                                <div class="info-content">
+                                    <h3>工作时间</h3>
+                                    <p>周一至周五 9:00-18:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="social-media">
+                            <h3>关注我们</h3>
+                            <div class="social-icons">
+                                <a href="#" class="social-icon weixin"></a>
+                                <a href="#" class="social-icon weibo"></a>
+                                <a href="#" class="social-icon douyin"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 在线留言表单 -->
+                    <div class="contact-form">
+                        <h2 class="section-title">在线留言</h2>
+                        <form id="messageForm" onsubmit="return submitForm(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">姓名</label>
+                                    <input type="text" id="name" name="name" placeholder="请输入您的姓名" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">邮箱</label>
+                                    <input type="email" id="email" name="email" placeholder="请输入您的邮箱" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">电话</label>
+                                <input type="tel" id="phone" name="phone" placeholder="请输入您的联系电话" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">主题</label>
+                                <select id="subject" name="subject">
+                                    <option value="咨询">产品咨询</option>
+                                    <option value="合作">商务合作</option>
+                                    <option value="建议">意见建议</option>
+                                    <option value="其他">其他</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">留言内容</label>
+                                <textarea id="message" name="message" rows="5" placeholder="请输入您的留言内容" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">提交留言</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 地图区域 -->
+        <section class="map-section">
+            <div class="container">
+                <h2 class="section-title">公司位置</h2>
+                <div class="map-container">
+                    <div id="map" class="map">
+                        <!-- 这里可以嵌入地图，如百度地图或高德地图 -->
+                        <img src="images/map-placeholder.jpg" alt="公司地图位置">
+                    </div>
+                    <div class="map-info">
+                        <h3>交通指南</h3>
+                        <p>地铁：X号线至X站X出口，步行约X分钟</p>
+                        <p>公交：X路、X路至X站下车，步行约X分钟</p>
+                        <p>自驾：导航至XX省XX市XX区XX街道XX号</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚区域 -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/abb-logo-lockup_desktop-tablet-version.webp" alt="公司logo">
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                        <li><a href="products.html">产品展示</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <p>电话：+86 XXX-XXXX-XXXX</p>
+                    <p>邮箱：contact@company.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 公司名称. 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 脚本引用 -->
+    <script src="js/main.js"></script>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            // 表单验证
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            if (!name || !email || !phone || !message) {
+                alert('请填写完整信息！');
+                return false;
+            }
+
+            // 这里添加表单提交逻辑
+            alert('感谢您的留言，我们会尽快与您联系！');
+            document.getElementById('messageForm').reset();
+        }
+    </script>
+</body>
+
+</html>

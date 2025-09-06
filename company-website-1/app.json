@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/service/service",
+    "pages/solution/solution",
+    "pages/support/support",
+    "pages/contact/contact",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "企业官网",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "tabBar": {
+    "custom": false,
+    "color": "#999999",
+    "selectedColor": "#1890ff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "pages/index/images/h.png",
+        "selectedIconPath": "pages/index/images/h1.png"
+      },
+      {
+        "pagePath": "pages/service/service",
+        "text": "技术服务",
+        "iconPath": "pages/index/images/a.png",
+        "selectedIconPath": "pages/index/images/a.png"
+      },
+      {
+        "pagePath": "pages/solution/solution",
+        "text": "产品方案",
+        "iconPath": "pages/index/images/b.png",
+        "selectedIconPath": "pages/index/images/b.png"
+      },
+      {
+        "pagePath": "pages/support/support",
+        "text": "售后支持",
+       "iconPath": "pages/index/images/c.png",
+        "selectedIconPath": "pages/index/images/c.png"
+      },
+      {
+        "pagePath": "pages/contact/contact",
+        "text": "联系我们",
+        "iconPath": "pages/index/images/e.png",
+        "selectedIconPath": "pages/index/images/e.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

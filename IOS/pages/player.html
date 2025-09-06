@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .content-scroll {
+            height: calc(100vh - 83px);
+            overflow-y: auto;
+        }
+        
+        .nav-bar {
+            height: 83px;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            /* 16:9 宽高比 */
+            background-image: url('https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+        /* 图片加载错误处理 */
+        
+        img.error {
+            background: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        /* 图片加载动画 */
+        
+        .image-loading {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-loading::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        .video-container.error {
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .play-button {
+            width: 72px;
+            height: 72px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 3px solid rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .play-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+        
+        .play-button:active {
+            transform: scale(0.95);
+        }
+        /* 视频信息标签 */
+        
+        .video-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            backdrop-filter: blur(4px);
+        }
+        /* 互动按钮效果 */
+        
+        .interaction-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .interaction-btn:hover {
+            color: #ef4444;
+            transform: scale(1.1);
+        }
+        
+        .interaction-btn:active {
+            transform: scale(0.95);
+        }
+        /* 关注按钮效果 */
+        
+        .follow-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .follow-btn:hover {
+            transform: scale(1.05);
+            background-color: rgb(220, 38, 38);
+        }
+        
+        .follow-btn:active {
+            transform: scale(0.95);
+        }
+        /* 评论区样式 */
+        
+        .comment-input {
+            transition: all 0.3s ease;
+        }
+        
+        .comment-input:focus {
+            background-color: #374151;
+            box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+        }
+        
+        .comment-action {
+            transition: all 0.2s ease;
+        }
+        
+        .comment-action:hover {
+            color: #ef4444;
+        }
+        /* 底部导航项悬停效果 */
+        
+        .bottom-nav-item {
+            transition: all 0.3s ease;
+        }
+        
+        .bottom-nav-item:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+    <script>
+        // 图片加载错误处理
+        function handleImageError(img) {
+            img.classList.add('error');
+            img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"%3E%3Cpath fill="%23666" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/%3E%3C/svg%3E';
+        }
+
+        // 图片加载开始时添加加载动画
+        function handleImageLoading(img) {
+            img.parentElement.classList.add('image-loading');
+        }
+
+        // 图片加载完成时移除加载动画
+        function handleImageLoaded(img) {
+            img.parentElement.classList.remove('image-loading');
+        }
+
+        // 视频封面加载错误处理
+        window.addEventListener('load', function() {
+            const container = document.querySelector('.video-container');
+            const img = new Image();
+            img.onerror = function() {
+                container.classList.add('error');
+            };
+            img.src = container.style.backgroundImage.slice(5, -2);
+
+            // 初始化所有图片的加载状态
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                if (!img.complete) {
+                    handleImageLoading(img);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body class="bg-black text-white">
+    <div class="content-scroll">
+        <!-- 视频播放区域 -->
+        <div class="video-container">
+            <div class="video-overlay">
+                <div class="play-button">
+                    <i class="fas fa-play text-white text-3xl"></i>
+                </div>
+            </div>
+            <div class="video-tag">
+                <i class="fas fa-film mr-1"></i> 4K HDR
+            </div>
+        </div>
+
+        <!-- 视频信息 -->
+        <div class="px-4 mb-6">
+            <h1 class="text-xl font-bold mb-2 mt-4">《流浪地球3》首支预告片</h1>
+            <p class="text-gray-400 text-sm mb-4">
+                <span>1.2万次观看</span>
+                <span class="mx-2">·</span>
+                <span>2024年春节上映</span>
+            </p>
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center">
+                    <div class="relative w-10 h-10">
+                        <img src="https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg" alt="官方账号头像" class="w-10 h-10 rounded-full object-cover" onload="handleImageLoaded(this)" onerror="handleImageError(this)">
+                    </div>
+                    <div class="ml-3">
+                        <p class="font-semibold">中国电影官方</p>
+                        <p class="text-gray-400 text-sm">100万粉丝</p>
+                    </div>
+                </div>
+                <button class="follow-btn bg-red-600 px-4 py-2 rounded-full">
+                    <i class="fas fa-plus mr-2"></i>关注
+                </button>
+            </div>
+        </div>
+
+        <!-- 互动控件 -->
+        <div class="flex justify-around px-4 py-3 border-t border-b border-gray-800">
+            <button class="interaction-btn flex flex-col items-center">
+                <i class="fas fa-heart text-2xl"></i>
+                <span class="text-xs mt-1">8.2万</span>
+            </button>
+            <button class="interaction-btn flex flex-col items-center">
+                <i class="fas fa-comment text-2xl"></i>
+                <span class="text-xs mt-1">2.4万</span>
+            </button>
+            <button class="interaction-btn flex flex-col items-center">
+                <i class="fas fa-share text-2xl"></i>
+                <span class="text-xs mt-1">分享</span>
+            </button>
+            <button class="interaction-btn flex flex-col items-center">
+                <i class="fas fa-bookmark text-2xl"></i>
+                <span class="text-xs mt-1">收藏</span>
+            </button>
+        </div>
+
+        <!-- 评论区 -->
+        <div class="px-4 py-4">
+            <h2 class="text-lg font-bold mb-4">评论 · 2.4万</h2>
+            <!-- 评论输入框 -->
+            <div class="flex items-center mb-6">
+                <div class="relative w-8 h-8">
+                    <img src="https://images.pexels.com/photos/1484794/pexels-photo-1484794.jpeg" alt="用户头像" class="w-8 h-8 rounded-full object-cover" onload="handleImageLoaded(this)" onerror="handleImageError(this)">
+                </div>
+                <input type="text" placeholder="说点什么..." class="comment-input ml-3 flex-1 bg-gray-800 rounded-full px-4 py-2 focus:outline-none">
+                <button class="ml-3 text-gray-400 hover:text-red-500 transition-colors">发送</button>
+            </div>
+            <!-- 评论列表 -->
+            <div class="space-y-4">
+                <div class="flex">
+                    <div class="relative w-8 h-8">
+                        <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg" alt="评论者头像" class="w-8 h-8 rounded-full object-cover" onload="handleImageLoaded(this)" onerror="handleImageError(this)">
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <p class="font-semibold">科幻迷</p>
+                        <p class="text-gray-400 text-sm mb-1">期待这部电影！特效看起来很震撼，希望能超越前作！</p>
+                        <div class="flex items-center text-gray-400 text-xs">
+                            <span>2小时前</span>
+                            <span class="mx-2">·</span>
+                            <button class="comment-action"><i class="fas fa-heart mr-1"></i>2.4k</button>
+                            <button class="comment-action ml-4"><i class="fas fa-comment mr-1"></i>回复</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="relative w-8 h-8">
+                        <img src="https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg" alt="评论者头像" class="w-8 h-8 rounded-full object-cover" onload="handleImageLoaded(this)" onerror="handleImageError(this)">
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <p class="font-semibold">电影爱好者</p>
+                        <p class="text-gray-400 text-sm mb-1">前作很精彩，这部的视觉效果看起来更震撼了！</p>
+                        <div class="flex items-center text-gray-400 text-xs">
+                            <span>3小时前</span>
+                            <span class="mx-2">·</span>
+                            <button class="comment-action"><i class="fas fa-heart mr-1"></i>1.8k</button>
+                            <button class="comment-action ml-4"><i class="fas fa-comment mr-1"></i>回复</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <div class="flex justify-around items-center h-full">
+            <a href="home.html" class="bottom-nav-item flex flex-col items-center text-gray-400">
+                <i class="fas fa-home text-xl"></i>
+                <span class="text-xs mt-1">首页</span>
+            </a>
+            <a href="discover.html" class="bottom-nav-item flex flex-col items-center text-gray-400">
+                <i class="fas fa-compass text-xl"></i>
+                <span class="text-xs mt-1">发现</span>
+            </a>
+            <a href="#" class="bottom-nav-item flex flex-col items-center text-gray-400">
+                <i class="fas fa-plus-circle text-3xl"></i>
+            </a>
+            <a href="#" class="bottom-nav-item flex flex-col items-center text-gray-400">
+                <i class="fas fa-heart text-xl"></i>
+                <span class="text-xs mt-1">收藏</span>
+            </a>
+            <a href="profile.html" class="bottom-nav-item flex flex-col items-center text-gray-400">
+                <i class="fas fa-user text-xl"></i>
+                <span class="text-xs mt-1">我的</span>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

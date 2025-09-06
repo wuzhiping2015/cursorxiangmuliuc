@@ -1,0 +1,97 @@
+<view class="container">
+  <!-- 顶部Banner -->
+  <view class="banner">
+    <view class="banner-content animate-item">
+      <text class="banner-title">联系我们</text>
+      <text class="banner-subtitle">随时恭候您的咨询，我们将竭诚为您服务</text>
+    </view>
+  </view>
+
+  <!-- 联系信息卡片 -->
+  <view class="contact-cards">
+    <view class="card animate-item" hover-class="card-hover" bindtap="makePhoneCall">
+      <image class="card-icon" src="{{contactIcons.phone}}" mode="aspectFit"></image>
+      <view class="card-content">
+        <text class="card-title">电话咨询</text>
+        <text class="card-value">{{companyInfo.phone}}</text>
+      </view>
+    </view>
+    
+    <view class="card animate-item" bindtap="copyText" data-text="{{companyInfo.email}}">
+      <image class="card-icon" src="{{contactIcons.email}}" mode="aspectFit"></image>
+      <view class="card-content">
+        <text class="card-title">电子邮箱</text>
+        <text class="card-value">{{companyInfo.email}}</text>
+      </view>
+    </view>
+    
+    <view class="card animate-item" bindtap="openLocation">
+      <image class="card-icon" src="{{contactIcons.address}}" mode="aspectFit"></image>
+      <view class="card-content">
+        <text class="card-title">公司地址</text>
+        <text class="card-value">{{companyInfo.address}}</text>
+      </view>
+    </view>
+    
+    <view class="card animate-item">
+      <image class="card-icon" src="{{contactIcons.time}}" mode="aspectFit"></image>
+      <view class="card-content">
+        <text class="card-title">工作时间</text>
+        <text class="card-value">{{companyInfo.workTime}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 表单部分使用scroll-view包裹，确保在小屏幕上可以滚动 -->
+  <scroll-view scroll-y="{{true}}" class="form-container">
+    <view class="section message-section animate-item">
+      <view class="section-title">
+        <text class="title-text">在线留言</text>
+        <text class="title-desc">填写以下信息，我们会尽快与您联系</text>
+      </view>
+      
+      <form bindsubmit="submitForm">
+        <view class="form-group">
+          <input class="form-input" name="name" placeholder="您的姓名" />
+        </view>
+        
+        <view class="form-group">
+          <input class="form-input" name="phone" type="number" placeholder="联系电话" />
+        </view>
+        
+        <view class="form-group">
+          <input class="form-input" name="email" placeholder="电子邮箱" />
+        </view>
+        
+        <view class="form-group">
+          <textarea class="form-textarea" name="message" placeholder="请输入您的留言内容"></textarea>
+        </view>
+        
+        <button class="submit-btn" form-type="submit">提交留言</button>
+      </form>
+    </view>
+  </scroll-view>
+
+  <!-- 地图部分 -->
+  <view class="section map-section">
+    <view class="section-title">公司位置</view>
+    <map 
+      class="map" 
+      longitude="{{longitude}}" 
+      latitude="{{latitude}}" 
+      markers="{{markers}}" 
+      scale="{{mapConfig.scale}}"
+      show-location="{{mapConfig.showLocation}}"
+      enable-zoom="{{mapConfig.enableZoom}}"
+      enable-scroll="{{mapConfig.enableScroll}}"
+      bindtap="openLocation"
+    ></map>
+    <view class="map-tip">点击地图可以打开导航</view>
+  </view>
+
+  <!-- 页脚 -->
+  <view class="footer animate-item">
+    <text class="company-name">{{companyInfo.name}}</text>
+    <text class="copyright">© 2024 版权所有</text>
+  </view>
+</view>

@@ -1,0 +1,156 @@
+.detail-container.data-v-918ac776 {
+  min-height: 100vh;
+  background: var(--background-color);
+  padding-bottom: 180rpx;
+}
+.detail-container .habit-header.data-v-918ac776 {
+  padding: 40rpx;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.detail-container .habit-header .habit-icon.data-v-918ac776 {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20rpx;
+}
+.detail-container .habit-header .habit-name.data-v-918ac776 {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 10rpx;
+}
+.detail-container .habit-header .habit-desc.data-v-918ac776 {
+  font-size: 26rpx;
+  color: var(--text-color-secondary);
+  max-width: 80%;
+}
+.detail-container .stats-grid.data-v-918ac776 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: #ffffff;
+  padding: 30rpx 0;
+  margin-bottom: 20rpx;
+}
+.detail-container .stats-grid .stat-item.data-v-918ac776 {
+  text-align: center;
+  border-right: 1px solid var(--border-color);
+}
+.detail-container .stats-grid .stat-item.data-v-918ac776:last-child {
+  border-right: none;
+}
+.detail-container .stats-grid .stat-item .value.data-v-918ac776 {
+  display: block;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 8rpx;
+}
+.detail-container .stats-grid .stat-item .label.data-v-918ac776 {
+  font-size: 24rpx;
+  color: var(--text-color-secondary);
+}
+.detail-container .calendar-card.data-v-918ac776 {
+  background: #ffffff;
+  margin: 20rpx;
+  padding: 30rpx;
+  border-radius: 16rpx;
+}
+.detail-container .calendar-card .card-header.data-v-918ac776 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.detail-container .calendar-card .card-header .title.data-v-918ac776 {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: var(--text-color);
+}
+.detail-container .calendar-card .card-header .month-select.data-v-918ac776 {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  font-size: 26rpx;
+  color: var(--text-color);
+}
+.detail-container .calendar-card .calendar-header.data-v-918ac776 {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+.detail-container .calendar-card .calendar-header text.data-v-918ac776 {
+  font-size: 24rpx;
+  color: var(--text-color-secondary);
+}
+.detail-container .calendar-card .calendar-body.data-v-918ac776 {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10rpx;
+}
+.detail-container .calendar-card .calendar-body .calendar-day.data-v-918ac776 {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  background: #f5f7fa;
+  border-radius: 50%;
+  color: var(--text-color);
+}
+.detail-container .calendar-card .calendar-body .calendar-day.completed.data-v-918ac776 {
+  background: var(--success-color);
+  color: #ffffff;
+}
+.detail-container .calendar-card .calendar-body .calendar-day.missed.data-v-918ac776 {
+  background: var(--error-color);
+  color: #ffffff;
+}
+.detail-container .calendar-card .calendar-body .calendar-day.empty.data-v-918ac776 {
+  background: transparent;
+}
+.detail-container .detail-card.data-v-918ac776 {
+  background: #ffffff;
+  margin: 20rpx;
+  padding: 30rpx;
+  border-radius: 16rpx;
+}
+.detail-container .detail-card .detail-item.data-v-918ac776 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1px solid var(--border-color);
+}
+.detail-container .detail-card .detail-item.data-v-918ac776:last-child {
+  border-bottom: none;
+}
+.detail-container .detail-card .detail-item .label.data-v-918ac776 {
+  font-size: 28rpx;
+  color: var(--text-color);
+}
+.detail-container .detail-card .detail-item .value.data-v-918ac776 {
+  font-size: 28rpx;
+  color: var(--text-color-secondary);
+}
+.detail-container .bottom-actions.data-v-918ac776 {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20rpx 30rpx;
+  background: #ffffff;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 20rpx;
+}
+.detail-container .bottom-actions.data-v-918ac776 :deep(.u-button) {
+  flex: 1;
+}

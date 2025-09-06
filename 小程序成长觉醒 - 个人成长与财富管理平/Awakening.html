@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自我觉醒 - 成长觉醒平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+         :root {
+            --primary-color: #5B5FFE;
+            --secondary-color: #00C9A7;
+            --accent-color: #FFC75F;
+            --dark-color: #333333;
+            --light-color: #FFFFFF;
+            --gray-color: #F8F9FA;
+            --text-color: #4A4A4A;
+            --success-color: #4CAF50;
+            --warning-color: #FF9800;
+            --font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --border-radius: 16px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            color: var(--text-color);
+            background-color: var(--gray-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 80px;
+        }
+        /* 头部样式 */
+        
+        header {
+            background-color: var(--light-color);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+        
+        .logo i {
+            font-size: 28px;
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .notification-bell {
+            position: relative;
+            font-size: 22px;
+            color: var(--dark-color);
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-image: url('https://randomuser.me/api/portraits/men/32.jpg');
+            background-size: cover;
+            border: 2px solid var(--primary-color);
+        }
+        /* 卡片通用样式 */
+        
+        .card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        /* 页面标题 */
+        
+        .page-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin: 20px 0;
+            color: var(--dark-color);
+        }
+        /* 冥想练习卡片 */
+        
+        .meditation-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .meditation-card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .meditation-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .meditation-img {
+            height: 160px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .meditation-img-1 {
+            background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWVkaXRhdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60');
+        }
+        
+        .meditation-img-2 {
+            background-image: url('https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bWVkaXRhdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60');
+        }
+        
+        .meditation-img-3 {
+            background-image: url('https://images.unsplash.com/photo-1604881991720-f91add269bed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bWVkaXRhdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60');
+        }
+        
+        .meditation-img-4 {
+            background-image: url('https://images.unsplash.com/photo-1600618528240-fb9fc964b853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8eW9nYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60');
+        }
+        
+        .meditation-content {
+            padding: 20px;
+        }
+        
+        .meditation-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .meditation-description {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+        
+        .meditation-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .meditation-duration {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .meditation-level {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .level-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+        
+        .level-dot.empty {
+            background-color: #e0e0e0;
+        }
+        /* 情绪跟踪 */
+        
+        .mood-tracker {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .mood-date {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .date-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .date-control {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--gray-color);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .date-control:hover {
+            background-color: rgba(91, 95, 254, 0.1);
+        }
+        
+        .mood-icons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+        
+        .mood-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .mood-icon:hover {
+            background-color: rgba(91, 95, 254, 0.05);
+        }
+        
+        .mood-icon.selected {
+            background-color: rgba(91, 95, 254, 0.1);
+        }
+        
+        .mood-icon i {
+            font-size: 32px;
+        }
+        
+        .mood-icon.happy i {
+            color: #4CAF50;
+        }
+        
+        .mood-icon.good i {
+            color: #8BC34A;
+        }
+        
+        .mood-icon.neutral i {
+            color: #FFC107;
+        }
+        
+        .mood-icon.sad i {
+            color: #FF9800;
+        }
+        
+        .mood-icon.angry i {
+            color: #F44336;
+        }
+        
+        .mood-name {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .mood-notes {
+            margin-top: 20px;
+        }
+        
+        .mood-notes-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .mood-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+            resize: none;
+            font-family: var(--font-family);
+            font-size: 15px;
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .mood-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .mood-save-btn {
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: auto;
+        }
+        
+        .mood-save-btn:hover {
+            background-color: #4a4ee0;
+        }
+        /* 心灵日记 */
+        
+        .journal-history {
+            margin-top: 20px;
+        }
+        
+        .journal-entry {
+            padding: 20px;
+            background-color: var(--gray-color);
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .journal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .journal-date {
+            font-size: 15px;
+            font-weight: 500;
+        }
+        
+        .journal-mood {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+        
+        .journal-mood i {
+            color: #FFC107;
+        }
+        
+        .journal-content {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .journal-more {
+            color: var(--primary-color);
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .new-journal-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 15px;
+            background-color: rgba(91, 95, 254, 0.1);
+            color: var(--primary-color);
+            border: 1px dashed var(--primary-color);
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .new-journal-btn:hover {
+            background-color: rgba(91, 95, 254, 0.15);
+        }
+        /* 进度统计 */
+        
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .stat-card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+        
+        .stat-progress {
+            width: 100%;
+            height: 6px;
+            background-color: var(--gray-color);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .stat-progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+        
+        .stat-comparison {
+            font-size: 14px;
+            color: var(--success-color);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .stat-comparison.negative {
+            color: var(--warning-color);
+        }
+        /* 底部导航栏 */
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--light-color);
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 100;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #888;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nav-item.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-icon {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-label {
+            font-size: 12px;
+        }
+        /* 响应式设计 */
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .meditation-cards {
+                grid-template-columns: 1fr;
+            }
+            .mood-icons {
+                grid-template-columns: repeat(5, 1fr);
+            }
+            .progress-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 页面头部 -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="ri-seedling-fill"></i>
+                <span>成长觉醒</span>
+            </div>
+            <div class="user-profile">
+                <div class="notification-bell">
+                    <i class="ri-notification-3-line"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                <div class="avatar"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <div class="container">
+        <h1 class="page-title">自我觉醒</h1>
+
+        <!-- 冥想练习卡片 -->
+        <div class="card">
+            <h2 class="section-title">
+                <i class="ri-mental-health-line"></i> 今日推荐冥想练习
+            </h2>
+            <div class="meditation-cards">
+                <div class="meditation-card">
+                    <div class="meditation-img meditation-img-1"></div>
+                    <div class="meditation-content">
+                        <h3 class="meditation-title">正念呼吸冥想</h3>
+                        <p class="meditation-description">专注呼吸，培养觉知力，缓解压力与焦虑</p>
+                        <div class="meditation-meta">
+                            <div class="meditation-duration">
+                                <i class="ri-time-line"></i>
+                                <span>15分钟</span>
+                            </div>
+                            <div class="meditation-level">
+                                <div class="level-dot"></div>
+                                <div class="level-dot"></div>
+                                <div class="level-dot empty"></div>
+                                <span>中级</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="meditation-card">
+                    <div class="meditation-img meditation-img-2"></div>
+                    <div class="meditation-content">
+                        <h3 class="meditation-title">身体扫描放松</h3>
+                        <p class="meditation-description">系统性放松全身肌肉，改善睡眠质量</p>
+                        <div class="meditation-meta">
+                            <div class="meditation-duration">
+                                <i class="ri-time-line"></i>
+                                <span>20分钟</span>
+                            </div>
+                            <div class="meditation-level">
+                                <div class="level-dot"></div>
+                                <div class="level-dot empty"></div>
+                                <div class="level-dot empty"></div>
+                                <span>初级</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="meditation-card">
+                    <div class="meditation-img meditation-img-3"></div>
+                    <div class="meditation-content">
+                        <h3 class="meditation-title">慈悲心冥想</h3>
+                        <p class="meditation-description">培养对自己和他人的善意与慈悲</p>
+                        <div class="meditation-meta">
+                            <div class="meditation-duration">
+                                <i class="ri-time-line"></i>
+                                <span>18分钟</span>
+                            </div>
+                            <div class="meditation-level">
+                                <div class="level-dot"></div>
+                                <div class="level-dot"></div>
+                                <div class="level-dot"></div>
+                                <span>高级</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="meditation-card">
+                    <div class="meditation-img meditation-img-4"></div>
+                    <div class="meditation-content">
+                        <h3 class="meditation-title">晨间唤醒瑜伽</h3>
+                        <p class="meditation-description">温和的晨间瑜伽练习，激活身心</p>
+                        <div class="meditation-meta">
+                            <div class="meditation-duration">
+                                <i class="ri-time-line"></i>
+                                <span>25分钟</span>
+                            </div>
+                            <div class="meditation-level">
+                                <div class="level-dot"></div>
+                                <div class="level-dot"></div>
+                                <div class="level-dot empty"></div>
+                                <span>中级</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 情绪跟踪 -->
+        <div class="card">
+            <h2 class="section-title">
+                <i class="ri-emotion-line"></i> 今日情绪跟踪
+            </h2>
+            <div class="mood-tracker">
+                <div class="mood-date">
+                    <span>2025年4月13日 星期日</span>
+                    <div class="date-controls">
+                        <div class="date-control">
+                            <i class="ri-arrow-left-s-line"></i>
+                        </div>
+                        <div class="date-control">
+                            <i class="ri-arrow-right-s-line"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="mood-icons">
+                    <div class="mood-icon happy">
+                        <i class="ri-emotion-laugh-line"></i>
+                        <span class="mood-name">开心</span>
+                    </div>
+                    <div class="mood-icon good selected">
+                        <i class="ri-emotion-happy-line"></i>
+                        <span class="mood-name">满足</span>
+                    </div>
+                    <div class="mood-icon neutral">
+                        <i class="ri-emotion-normal-line"></i>
+                        <span class="mood-name">平静</span>
+                    </div>
+                    <div class="mood-icon sad">
+                        <i class="ri-emotion-unhappy-line"></i>
+                        <span class="mood-name">低落</span>
+                    </div>
+                    <div class="mood-icon angry">
+                        <i class="ri-emotion-sad-line"></i>
+                        <span class="mood-name">焦虑</span>
+                    </div>
+                </div>
+                <div class="mood-notes">
+                    <h3 class="mood-notes-title">今日心情笔记</h3>
+                    <textarea class="mood-textarea" placeholder="写下今天的感受和思考...">今天完成了两个重要工作任务，感到很满足。早上的冥想帮助我保持了一天的专注。晚上和朋友小聚，聊得很开心。不过对投资计划还有些担忧，需要进一步研究。</textarea>
+                    <button class="mood-save-btn">
+                        <i class="ri-save-line"></i>
+                        <span>保存记录</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 心灵日记 -->
+        <div class="card">
+            <h2 class="section-title">
+                <i class="ri-book-2-line"></i> 心灵日记
+            </h2>
+            <div class="journal-history">
+                <div class="journal-entry">
+                    <div class="journal-header">
+                        <div class="journal-date">2025年4月12日</div>
+                        <div class="journal-mood">
+                            <i class="ri-emotion-normal-line"></i>
+                            <span>平静</span>
+                        </div>
+                    </div>
+                    <div class="journal-content">
+                        今天读完了《原子习惯》最后几章，有几点很受启发：1. 身份认同比目标更重要，应该专注于"成为什么样的人"而非"完成什么目标"；2. 习惯是复利效应的体现，日积月累的微小进步最终会带来巨大改变... <span class="journal-more">查看更多</span>
+                    </div>
+                </div>
+                <div class="journal-entry">
+                    <div class="journal-header">
+                        <div class="journal-date">2025年4月10日</div>
+                        <div class="journal-mood">
+                            <i class="ri-emotion-happy-line"></i>
+                            <span>满足</span>
+                        </div>
+                    </div>
+                    <div class="journal-content">
+                        今天是连续冥想的第30天！坚持下来感觉真好。注意到自己对压力的反应已经有了明显变化，不再那么容易被琐事困扰。工作中也更容易进入心流状态... <span class="journal-more">查看更多</span>
+                    </div>
+                </div>
+                <button class="new-journal-btn">
+                    <i class="ri-add-line"></i>
+                    <span>创建新日记</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 进度统计 -->
+        <div class="card">
+            <h2 class="section-title">
+                <i class="ri-line-chart-line"></i> 觉醒进度统计
+            </h2>
+            <div class="progress-stats">
+                <div class="stat-card">
+                    <div class="stat-value">26</div>
+                    <div class="stat-label">本月冥想次数</div>
+                    <div class="stat-progress">
+                        <div class="stat-progress-bar" style="width: 85%;"></div>
+                    </div>
+                    <div class="stat-comparison">
+                        <i class="ri-arrow-up-s-line"></i>
+                        <span>比上月增加18%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">462</div>
+                    <div class="stat-label">累计冥想分钟</div>
+                    <div class="stat-progress">
+                        <div class="stat-progress-bar" style="width: 65%;"></div>
+                    </div>
+                    <div class="stat-comparison">
+                        <i class="ri-arrow-up-s-line"></i>
+                        <span>比上月增加24%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">14</div>
+                    <div class="stat-label">情绪记录天数</div>
+                    <div class="stat-progress">
+                        <div class="stat-progress-bar" style="width: 45%;"></div>
+                    </div>
+                    <div class="stat-comparison negative">
+                        <i class="ri-arrow-down-s-line"></i>
+                        <span>比上月减少8%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">心灵日记数量</div>
+                    <div class="stat-progress">
+                        <div class="stat-progress-bar" style="width: 40%;"></div>
+                    </div>
+                    <div class="stat-comparison">
+                        <i class="ri-arrow-up-s-line"></i>
+                        <span>比上月增加2篇</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <div class="nav-item">
+            <div class="nav-icon">
+                <i class="ri-home-5-line"></i>
+            </div>
+            <div class="nav-label">首页</div>
+        </div>
+        <div class="nav-item active">
+            <div class="nav-icon">
+                <i class="ri-mental-health-fill"></i>
+            </div>
+            <div class="nav-label">觉醒</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">
+                <i class="ri-calendar-check-line"></i>
+            </div>
+            <div class="nav-label">习惯</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">
+                <i class="ri-coins-line"></i>
+            </div>
+            <div class="nav-label">财富</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">
+                <i class="ri-user-line"></i>
+            </div>
+            <div class="nav-label">我的</div>
+        </div>
+    </div>
+</body>
+
+</html>

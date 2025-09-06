@@ -1,0 +1,73 @@
+<view class="container">
+  <!-- 习惯信息卡片 -->
+  <view class="habit-card card">
+    <view class="habit-header">
+      <view class="habit-icon-wrapper" style="background-color: {{habit.iconBg}};">
+        <image class="habit-icon" src="{{habit.icon}}" mode="aspectFit"></image>
+      </view>
+      <view class="habit-info">
+        <text class="habit-name">{{habit.name}}</text>
+        <text class="habit-desc">{{habit.desc}}</text>
+      </view>
+    </view>
+    
+    <view class="habit-stats">
+      <view class="stat-item">
+        <text class="stat-value">{{habit.days}}</text>
+        <text class="stat-label">总天数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{habit.streak}}</text>
+        <text class="stat-label">连续</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{habit.rate}}%</text>
+        <text class="stat-label">完成率</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 打卡记录 -->
+  <view class="checkin-records card">
+    <view class="section-header">
+      <text class="section-title">打卡记录</text>
+    </view>
+    
+    <view class="calendar-wrapper">
+      <view class="calendar-months">
+        <view class="month-item">
+          <text class="month-name">7月</text>
+          
+          <view class="weekdays">
+            <text class="weekday">日</text>
+            <text class="weekday">一</text>
+            <text class="weekday">二</text>
+            <text class="weekday">三</text>
+            <text class="weekday">四</text>
+            <text class="weekday">五</text>
+            <text class="weekday">六</text>
+          </view>
+          
+          <view class="days-grid">
+            <block wx:for="{{monthDays}}" wx:key="index">
+              <view class="day-cell {{item.isToday ? 'today' : ''}} {{item.isChecked ? 'checked' : ''}}">
+                <text class="day-text">{{item.day}}</text>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 今日打卡按钮 -->
+  <view class="check-button {{habit.todayChecked ? 'checked' : ''}}" bindtap="checkInToday">
+    <text>{{habit.todayChecked ? '今日已打卡' : '今日打卡'}}</text>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-actions">
+    <button class="action-btn edit" bindtap="editHabit">编辑习惯</button>
+    <button class="action-btn delete" bindtap="deleteHabit">删除习惯</button>
+  </view>
+</view> 

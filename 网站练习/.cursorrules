@@ -1,0 +1,74 @@
+﻿# HTML 静态页面编码规则
+# 适用于 *.html、*.css、*.js 文件
+
+# 1. 文件命名规范
+file-naming:
+  - pattern: *.html
+    rule: kebab-case.html
+  - pattern: assets/css/*.css
+    rule: kebab-case.css
+  - pattern: assets/js/*.js
+    rule: kebab-case.js
+
+# 2. HTML 结构规范
+html:
+  - pattern: *.html
+    rule:
+      doctype: html
+      charset: utf-8
+      lang: en
+      meta:
+        viewport: "width=device-width, initial-scale=1.0"
+
+# 3. 语义化标签
+semantic:
+  - pattern: *.html
+    rule:
+      header: required
+      nav: required
+      main: required
+      footer: required
+      avoid:
+        - div
+        - span
+
+# 4. CSS 规范
+css:
+  - pattern: *.css
+    rule:
+      indent: 2
+      quotes: single
+      nesting: false
+      media-queries: mobile-first
+
+# 5. 代码质量规则
+code-quality:
+  - pattern: *.html
+    rule:
+      closing-tags: required
+      indent: 2
+      avoid-inline-style: true
+
+  - pattern: *.js
+    rule:
+      no-eval: true
+      no-unused-vars: true
+
+# 6. 性能优化
+performance:
+  - pattern: *.html
+    rule:
+      lazy-loading-images: recommended
+      compress-images: required
+      minimize-html: true
+
+# 7. 注释规范
+comments:
+  - pattern: *.html
+    rule:
+      section-comments: required
+      example: "<!-- Main Content -->"
+
+  - pattern: *.css
+    rule:
+      block-comments: required

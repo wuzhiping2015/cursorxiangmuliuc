@@ -1,0 +1,45 @@
+.welcome-container.data-v-7eddcc88 {
+  min-height: 100vh;
+  padding: 60rpx;
+  background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.welcome-container .welcome-content.data-v-7eddcc88 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15vh;
+}
+.welcome-container .welcome-content .logo-box.data-v-7eddcc88 {
+  width: 120rpx;
+  height: 120rpx;
+  background: var(--primary-color);
+  border-radius: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30rpx;
+}
+.welcome-container .welcome-content .title.data-v-7eddcc88 {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 20rpx;
+}
+.welcome-container .welcome-content .subtitle.data-v-7eddcc88 {
+  font-size: 28rpx;
+  color: var(--text-color-secondary);
+  text-align: center;
+  line-height: 1.5;
+}
+.welcome-container .button-group.data-v-7eddcc88 {
+  width: 100%;
+}
+.welcome-container .button-group.data-v-7eddcc88 :deep(.u-button) {
+  margin-bottom: 30rpx;
+}
+.welcome-container .button-group.data-v-7eddcc88 :deep(.u-button--plain) {
+  background: rgba(255, 255, 255, 0.9);
+}

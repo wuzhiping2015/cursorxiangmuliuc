@@ -1,0 +1,42 @@
+// 重置样式
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    background: $background-dark;
+    color: $text-primary;
+    line-height: 1.6;
+}
+
+// 滚动条样式
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    &:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+}
+
+// 主题切换
+.light-theme {
+    background: $background-light;
+    .navbar {
+        background: rgba(255, 255, 255, 0.8);
+    }
+    .chart-card {
+        background: rgba(255, 255, 255, 0.9);
+    }
+}

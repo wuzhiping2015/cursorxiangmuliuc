@@ -1,0 +1,132 @@
+<!-- 页面容器 -->
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="header">
+    <view class="location-selector" bindtap="switchCommunity">
+      <text class="location-name">{{currentCommunity}}</text>
+      <image class="location-icon" src="/images/location.png"></image>
+    </view>
+    <view class="search-bar">
+      <image class="search-icon" src="/images/search.png"></image>
+      <input type="text" placeholder="搜索社区信息" confirm-type="search" bindinput="onSearchInput" bindconfirm="onSearchConfirm" />
+    </view>
+    <view class="msg-icon" bindtap="navigateTo" data-url="/pages/notification/notification">
+      <image src="/images/message.png"></image>
+      <view class="badge" wx:if="{{unreadCount > 0}}">{{unreadCount}}</view>
+    </view>
+  </view>
+
+  <!-- 轮播图 -->
+  <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="500">
+    <swiper-item wx:for="{{bannerList}}" wx:key="id">
+      <image src="{{item.imageUrl}}" class="banner-image" bindtap="navigateTo" data-url="{{item.linkUrl}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 功能区导航 -->
+  <view class="function-nav">
+    <view class="function-item" bindtap="navigateTo" data-url="/pages/help/help">
+      <image src="/images/help.png"></image>
+      <text>互助广场</text>
+    </view>
+    <view class="function-item" bindtap="navigateTo" data-url="/pages/resource/resource">
+      <image src="/images/resource.png"></image>
+      <text>资源共享</text>
+    </view>
+    <view class="function-item" bindtap="navigateTo" data-url="/pages/notice/notice">
+      <image src="/images/notice.png"></image>
+      <text>小区公告</text>
+    </view>
+    <view class="function-item" bindtap="navigateTo" data-url="/pages/community/community">
+      <image src="/images/community.png"></image>
+      <text>切换小区</text>
+    </view>
+  </view>
+
+  <!-- 社区活动专区 -->
+  <view class="activity-section" wx:if="{{activityList.length > 0}}">
+    <view class="section-header">
+      <text class="section-title">社区活动</text>
+      <text class="more-link" bindtap="navigateTo" data-url="/pages/activity/activity">更多 ></text>
+    </view>
+    <scroll-view scroll-x="true" class="activity-list">
+      <view class="activity-item" wx:for="{{activityList}}" wx:key="id" bindtap="viewActivity" data-id="{{item.id}}">
+        <image class="activity-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="activity-info">
+          <text class="activity-title">{{item.title}}</text>
+          <text class="activity-time">{{item.time}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 内容分类标签 -->
+  <view class="content-tabs">
+    <view class="tab {{activeTab === 'all' ? 'active' : ''}}" bindtap="switchTab" data-tab="all">全部</view>
+    <view class="tab {{activeTab === 'neighbor' ? 'active' : ''}}" bindtap="switchTab" data-tab="neighbor">邻里互动</view>
+    <view class="tab {{activeTab === 'service' ? 'active' : ''}}" bindtap="switchTab" data-tab="service">生活服务</view>
+    <view class="tab {{activeTab === 'activity' ? 'active' : ''}}" bindtap="switchTab" data-tab="activity">社区活动</view>
+  </view>
+
+  <!-- 信息流内容 -->
+  <scroll-view scroll-y="true" class="content-feed" bindscrolltolower="loadMore" refresher-enabled="true" refresher-triggered="{{refreshing}}" bindrefresherrefresh="onRefresh">
+    <block wx:if="{{feedList.length > 0}}">
+      <view class="feed-item" wx:for="{{feedList}}" wx:key="id" bindtap="viewDetail" data-id="{{item.id}}">
+        <view class="feed-header">
+          <image class="avatar" src="{{item.avatar}}" catchtap="viewUserProfile" data-userid="{{item.userId}}"></image>
+          <view class="user-info">
+            <text class="username">{{item.username}}</text>
+            <text class="time">{{item.time}}</text>
+          </view>
+          <view class="category-tag">{{item.category}}</view>
+        </view>
+        <view class="feed-content">
+          <text class="content-text">{{item.content}}</text>
+          <view class="image-container" wx:if="{{item.images.length > 0}}">
+            <block wx:if="{{item.images.length === 1}}">
+              <image src="{{item.images[0]}}" mode="aspectFill" class="single-image" catchtap="previewImage" data-urls="{{item.images}}" data-current="{{item.images[0]}}"></image>
+            </block>
+            <block wx:else>
+              <image wx:for="{{item.images}}" wx:for-item="img" wx:key="*this" wx:for-index="imgIndex" src="{{img}}" mode="aspectFill" catchtap="previewImage" data-urls="{{item.images}}" data-current="{{img}}"></image>
+            </block>
+          </view>
+        </view>
+        <view class="feed-location" wx:if="{{item.location}}">
+          <image src="/images/location-small.png"></image>
+          <text>{{item.location}}</text>
+        </view>
+        <view class="feed-actions">
+          <view class="action-item {{item.hasLiked ? 'active' : ''}}" catchtap="toggleLike" data-id="{{item.id}}">
+            <image src="{{item.hasLiked ? '/images/like-filled.png' : '/images/like.png'}}"></image>
+            <text>{{item.likes || '点赞'}}</text>
+          </view>
+          <view class="action-item" catchtap="navigateToComment" data-id="{{item.id}}">
+            <image src="/images/comment.png"></image>
+            <text>{{item.comments || '评论'}}</text>
+          </view>
+          <view class="action-item" catchtap="shareFeed" data-id="{{item.id}}">
+            <image src="/images/share.png"></image>
+            <text>分享</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="empty-state" wx:if="{{feedList.length === 0 && !isLoading}}">
+      <image src="/images/empty.png" class="empty-image"></image>
+      <text>暂无内容</text>
+      <button class="refresh-btn" bindtap="loadFeedData">刷新</button>
+    </view>
+    <view class="loading" wx:if="{{isLoading}}">加载中...</view>
+    <view class="no-more" wx:if="{{noMore && feedList.length > 0}}">到底啦，没有更多内容了~</view>
+  </scroll-view>
+</view>
+
+<!-- 悬浮发布按钮 -->
+<view class="float-button" bindtap="navigateTo" data-url="/pages/post/post">
+  <image src="/images/add.png"></image>
+</view>
+
+<!-- 返回顶部按钮 -->
+<view class="back-to-top" bindtap="scrollToTop" wx:if="{{showBackToTop}}">
+  <image src="/images/top.png"></image>
+</view> 

@@ -1,0 +1,30 @@
+{
+    "name": "smart-translator",
+    "version": "1.0.0",
+    "description": "智能翻译助手 - 一款免费好用的多功能翻译软件",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "build": "electron-builder --dir"
+    },
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^1.6.0",
+        "electron-store": "^8.1.0"
+    },
+    "devDependencies": {
+        "electron-builder": "^24.9.0",
+        "electron": "^28.0.0"
+    },
+    "build": {
+        "appId": "com.smarttranslator.app",
+        "productName": "Smart-Translator",
+        "directories": {
+            "output": "build"
+        },
+        "win": {
+            "target": "portable"
+        }
+    }
+}

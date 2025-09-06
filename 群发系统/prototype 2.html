@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacOS风格群发系统原型</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 整体样式 */
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        /* 导航栏样式 */
+        
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        nav ul li {
+            margin-right: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        /* 内容区域样式 */
+        
+        main {
+            padding: 20px;
+        }
+        /* 按钮样式 */
+        
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        /* 用户管理界面样式 */
+        
+        .user-list {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .user-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .user-list table th,
+        .user-list table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        /* 消息管理界面样式 */
+        
+        .message-editor {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .message-editor textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+        /* 群发设置界面样式 */
+        
+        .send-settings {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        /* 发送记录界面样式 */
+        
+        .send-record {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .send-record table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .send-record table th,
+        .send-record table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="#user-management">用户管理</a></li>
+            <li><a href="#message-management">消息管理</a></li>
+            <li><a href="#send-settings">群发设置</a></li>
+            <li><a href="#send-record">发送记录</a></li>
+        </ul>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <main>
+        <!-- 用户管理界面 -->
+        <section id="user-management" class="user-list">
+            <h2>用户管理</h2>
+            <button><i class="fa-solid fa-user-plus"></i> 添加用户</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>用户名</th>
+                        <th>邮箱</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>用户1</td>
+                        <td>user1@example.com</td>
+                        <td><button><i class="fa-solid fa-pen"></i> 编辑</button> <button><i
+                                    class="fa-solid fa-trash"></i> 删除</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 消息管理界面 -->
+        <section id="message-management" class="message-editor">
+            <h2>消息管理</h2>
+            <textarea placeholder="请输入消息内容"></textarea>
+            <button><i class="fa-solid fa-floppy-disk"></i> 保存</button>
+            <button><i class="fa-solid fa-trash"></i> 删除</button>
+        </section>
+
+        <!-- 群发设置界面 -->
+        <section id="send-settings" class="send-settings">
+            <h2>群发设置</h2>
+            <label for="send-to">发送对象:</label>
+            <select id="send-to">
+                <option value="all">全部用户</option>
+                <option value="group1">用户组1</option>
+            </select>
+            <br>
+            <label for="send-time">发送时间:</label>
+            <input type="datetime-local" id="send-time">
+            <br>
+            <button><i class="fa-solid fa-paper-plane"></i> 发送</button>
+        </section>
+
+        <!-- 发送记录界面 -->
+        <section id="send-record" class="send-record">
+            <h2>发送记录</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>消息内容</th>
+                        <th>发送时间</th>
+                        <th>发送状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>测试消息1</td>
+                        <td>2025-03-30 10:00:00</td>
+                        <td>已发送</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+
+</html>

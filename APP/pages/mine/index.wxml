@@ -1,0 +1,86 @@
+<view class="container">
+  <!-- 用户资料卡片 -->
+  <view class="user-card card">
+    <view class="user-info">
+      <image class="avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop" mode="aspectFill"></image>
+      <view class="user-detail">
+        <text class="nickname">季明</text>
+        <text class="user-desc">让每一个小习惯都有改变的力量</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 设置列表 -->
+  <view class="settings-section">
+    <text class="section-title">账号设置</text>
+    
+    <view class="settings-list">
+      <!-- 个人资料 -->
+      <view class="setting-item card" bindtap="goToProfile">
+        <view class="setting-left">
+          <view class="setting-icon" style="background-color: #4080FF;">
+            <image src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=100&h=100&fit=crop" mode="aspectFill"></image>
+          </view>
+          <text class="setting-name">个人资料</text>
+        </view>
+        <view class="setting-right">
+          <text class="setting-value">修改头像、昵称</text>
+          <text class="arrow">></text>
+        </view>
+      </view>
+      
+      <!-- 通知设置 -->
+      <view class="setting-item card" bindtap="goToNotifications">
+        <view class="setting-left">
+          <view class="setting-icon" style="background-color: #49D2C2;">
+            <image src="https://images.unsplash.com/photo-1538036985724-51942a0dcc93?w=100&h=100&fit=crop" mode="aspectFill"></image>
+          </view>
+          <text class="setting-name">通知设置</text>
+        </view>
+        <view class="setting-right">
+          <text class="setting-value">提醒方式</text>
+          <text class="arrow">></text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="settings-section">
+    <text class="section-title">应用设置</text>
+    
+    <view class="settings-list">
+      <!-- 主题设置 -->
+      <view class="setting-item card" bindtap="goToTheme">
+        <view class="setting-left">
+          <view class="setting-icon" style="background-color: #F5A623;">
+            <image src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=100&h=100&fit=crop" mode="aspectFill"></image>
+          </view>
+          <text class="setting-name">主题设置</text>
+        </view>
+        <view class="setting-right">
+          <text class="setting-value">切换外观模式</text>
+          <text class="arrow">></text>
+        </view>
+      </view>
+      
+      <!-- 隐私设置 -->
+      <view class="setting-item card" bindtap="goToPrivacy">
+        <view class="setting-left">
+          <view class="setting-icon" style="background-color: #7983FF;">
+            <image src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=100&h=100&fit=crop" mode="aspectFill"></image>
+          </view>
+          <text class="setting-name">隐私设置</text>
+        </view>
+        <view class="setting-right">
+          <text class="setting-value">数据管理与隐私</text>
+          <text class="arrow">></text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出登录按钮 -->
+  <view class="logout-btn" bindtap="logout">
+    <text>退出登录</text>
+  </view>
+</view> 

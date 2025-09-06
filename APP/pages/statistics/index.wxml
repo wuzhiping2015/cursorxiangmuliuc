@@ -1,0 +1,79 @@
+<view class="container">
+  <!-- 数据概览卡片 -->
+  <view class="stats-overview card">
+    <view class="overview-header">
+      <text class="overview-title">数据分析</text>
+    </view>
+    
+    <view class="data-section">
+      <canvas canvas-id="completionChart" class="completion-chart"></canvas>
+    </view>
+  </view>
+
+  <!-- 习惯完成趋势 -->
+  <view class="habits-trends card">
+    <view class="trends-header">
+      <text class="trends-title">习惯完成趋势</text>
+      <view class="trends-legend">
+        <view class="legend-item">
+          <view class="legend-color" style="background-color: #4080FF;"></view>
+          <text>晨间步行</text>
+        </view>
+        <view class="legend-item">
+          <view class="legend-color" style="background-color: #F5A623;"></view>
+          <text>阅读30分钟</text>
+        </view>
+        <view class="legend-item">
+          <view class="legend-color" style="background-color: #49D2C2;"></view>
+          <text>喝水2000ml</text>
+        </view>
+      </view>
+    </view>
+    
+    <view class="trends-chart">
+      <view class="chart-content">
+        <view class="chart-item" wx:for="{{trendData}}" wx:key="date">
+          <text class="chart-date">{{item.date}}</text>
+          <view class="chart-bars">
+            <view class="bar-group">
+              <view class="chart-bar" style="height: {{item.walkingRate * 160}}rpx; background-color: #4080FF;"></view>
+              <text class="bar-value">{{item.walkingRate * 100}}%</text>
+            </view>
+            <view class="bar-group">
+              <view class="chart-bar" style="height: {{item.readingRate * 160}}rpx; background-color: #F5A623;"></view>
+              <text class="bar-value">{{item.readingRate * 100}}%</text>
+            </view>
+            <view class="bar-group">
+              <view class="chart-bar" style="height: {{item.waterRate * 160}}rpx; background-color: #49D2C2;"></view>
+              <text class="bar-value">{{item.waterRate * 100}}%</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 习惯完成情况 -->
+  <view class="habit-status card">
+    <view class="status-header">
+      <text class="status-title">习惯完成情况</text>
+    </view>
+    
+    <view class="status-list">
+      <view class="status-item" wx:for="{{habitStatus}}" wx:key="id">
+        <view class="status-left">
+          <view class="status-icon" style="background-color: {{item.color}};">
+            <image class="habit-icon" src="{{item.icon}}" mode="aspectFit"></image>
+          </view>
+          <text class="status-name">{{item.name}}</text>
+        </view>
+        <view class="status-right">
+          <view class="status-progress">
+            <view class="progress-bar" style="width: {{item.rate * 200}}rpx; background-color: {{item.color}};"></view>
+          </view>
+          <text class="status-rate">{{item.rate * 100}}%</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> 

@@ -1,0 +1,44 @@
+{
+    "pages": [
+        "pages/welcome/index",
+        "pages/home/index",
+        "pages/habit/detail",
+        "pages/habit/setting",
+        "pages/statistics/index",
+        "pages/mine/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "掌控习惯",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#999999",
+        "selectedColor": "#4080FF",
+        "backgroundColor": "#ffffff",
+        "list": [{
+                "pagePath": "pages/home/index",
+                "text": "首页",
+                "iconPath": "static/images/home.png",
+                "selectedIconPath": "static/images/home-active.png"
+            },
+            {
+                "pagePath": "pages/statistics/index",
+                "text": "统计",
+                "iconPath": "static/images/stats.png",
+                "selectedIconPath": "static/images/stats-active.png"
+            },
+            {
+                "pagePath": "pages/mine/index",
+                "text": "我的",
+                "iconPath": "static/images/mine.png",
+                "selectedIconPath": "static/images/mine-active.png"
+            }
+        ]
+    },
+    "style": "v2",
+    "componentFramework": "glass-easel",
+    "sitemapLocation": "sitemap.json",
+    "lazyCodeLoading": "requiredComponents"
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="160" viewBox="0 0 280 160">
+  <rect width="280" height="160" fill="#000000"/>
+  <path d="M80,60 L140,120 L200,60" stroke="#7289da" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="80" cy="60" r="10" fill="#7289da"/>
+  <circle cx="140" cy="120" r="10" fill="#7289da"/>
+  <circle cx="200" cy="60" r="10" fill="#7289da"/>
+  <text x="140" y="140" font-family="Arial" font-size="16" font-weight="bold" fill="white" text-anchor="middle">Midjourney</text>
+</svg>

@@ -1,0 +1,102 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin",
+      "email": "admin@example.com",
+      "role": "admin",
+      "status": "active",
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "username": "user1",
+      "password": "123456",
+      "email": "user1@example.com",
+      "role": "user",
+      "status": "active",
+      "createdAt": "2024-01-02T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "username": "user2",
+      "password": "123456",
+      "email": "user2@example.com",
+      "role": "user",
+      "status": "inactive",
+      "createdAt": "2024-01-03T00:00:00.000Z"
+    },
+    {
+      "username": "11",
+      "password": "111",
+      "role": "user",
+      "createdAt": "2025-03-30T07:32:25.868Z",
+      "status": "active",
+      "id": 4
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "title": "系统更新通知",
+      "content": "系统将于今晚22:00进行例行维护更新",
+      "type": "system",
+      "status": "sent",
+      "createdAt": "2024-01-01T10:00:00.000Z",
+      "sendTime": "2024-01-01T10:30:00.000Z",
+      "recipients": [
+        "all"
+      ],
+      "sender": "admin"
+    },
+    {
+      "id": 2,
+      "title": "活动通知",
+      "content": "新年活动即将开始，请各位做好准备",
+      "type": "activity",
+      "status": "draft",
+      "createdAt": "2024-01-02T08:00:00.000Z",
+      "sendTime": null,
+      "recipients": [
+        "user1",
+        "user2"
+      ],
+      "sender": "admin"
+    },
+    {
+      "id": 3,
+      "title": "紧急通知",
+      "content": "请尽快完成本月工作报告提交",
+      "type": "urgent",
+      "status": "scheduled",
+      "createdAt": "2024-01-03T09:00:00.000Z",
+      "sendTime": "2024-01-04T09:00:00.000Z",
+      "recipients": [
+        "user1"
+      ],
+      "sender": "admin"
+    },
+    {
+      "title": "122",
+      "content": "12222",
+      "id": 4
+    }
+  ],
+  "records": [
+    {
+      "id": 1,
+      "messageId": 1,
+      "recipient": "all",
+      "status": "success",
+      "sendTime": "2024-01-01T10:30:00.000Z"
+    }
+  ],
+  "auth": {
+    "tokens": {
+      "admin": "mock-jwt-token-for-admin",
+      "user1": "mock-jwt-token-for-user1",
+      "user2": "mock-jwt-token-for-user2"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/welcome/index",
+    "pages/home/index",
+    "pages/habit/add",
+    "pages/habit/detail",
+    "pages/statistics/index",
+    "pages/mine/index"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "掌控习惯",
+    "navigationBarBackgroundColor": "rgba(255, 255, 255, 0.8)",
+    "backgroundColor": "#F2F2F7",
+    "backgroundColorTop": "#F2F2F7",
+    "backgroundColorBottom": "#F2F2F7"
+  },
+  "tabBar": {
+    "color": "#8E8E93",
+    "selectedColor": "#007AFF",
+    "backgroundColor": "rgba(255, 255, 255, 0.8)",
+    "borderStyle": "white",
+    "blurEffect": "light",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "static/images/tabbar/home.png",
+        "selectedIconPath": "static/images/tabbar/home-active.png"
+      },
+      {
+        "pagePath": "pages/statistics/index",
+        "text": "统计",
+        "iconPath": "static/images/tabbar/stats.png",
+        "selectedIconPath": "static/images/tabbar/stats-active.png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的",
+        "iconPath": "static/images/tabbar/mine.png",
+        "selectedIconPath": "static/images/tabbar/mine-active.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

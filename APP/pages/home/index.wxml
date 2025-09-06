@@ -1,0 +1,70 @@
+<view class="container">
+  <!-- 顶部用户信息 -->
+  <view class="header">
+    <view class="season-info">
+      <image class="season-icon" src="https://images.unsplash.com/photo-1602943543007-e3f17ccc4936?w=100&h=100&fit=crop" mode="aspectFill"></image>
+      <text class="season-text">季明</text>
+    </view>
+    <view class="user-profile" bindtap="goToProfile">
+      <image class="avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" mode="aspectFill"></image>
+    </view>
+  </view>
+
+  <!-- 本周数据概览 -->
+  <view class="data-overview card">
+    <view class="overview-header">
+      <text class="overview-title">本周概览</text>
+      <view class="overview-more" bindtap="showAllData">
+        <text class="overview-more-text">查看全部</text>
+      </view>
+    </view>
+    <view class="overview-content">
+      <view class="overview-item">
+        <text class="item-value">{{weekData.total}}</text>
+        <text class="item-label">习惯总数</text>
+      </view>
+      <view class="overview-item">
+        <text class="item-value">{{weekData.completion}}%</text>
+        <text class="item-label">完成率</text>
+      </view>
+      <view class="overview-item">
+        <text class="item-value">{{weekData.streak}}</text>
+        <text class="item-label">最长连续</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 今日习惯列表 -->
+  <view class="habits-section">
+    <view class="section-header">
+      <text class="section-title">今日习惯</text>
+      <text class="section-date">{{todayDate}}</text>
+    </view>
+    
+    <view class="habits-list">
+      <block wx:for="{{habits}}" wx:key="id">
+        <view class="habit-item card" bindtap="goToDetail" data-id="{{item.id}}">
+          <view class="habit-info">
+            <view class="habit-icon-wrapper" style="background-color: {{item.iconBg}}">
+              <image class="habit-icon" src="{{item.icon}}" mode="aspectFit"></image>
+            </view>
+            <view class="habit-content">
+              <text class="habit-name">{{item.name}}</text>
+              <text class="habit-time">{{item.time}}</text>
+            </view>
+          </view>
+          <view class="habit-action" catchtap="toggleComplete" data-id="{{item.id}}">
+            <view class="checkbox {{item.completed ? 'checkbox-completed' : ''}}">
+              <icon wx:if="{{item.completed}}" class="check-icon" type="success" size="16" color="#fff"></icon>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 添加习惯按钮 -->
+  <view class="add-habit-btn" bindtap="addHabit">
+    <icon type="plus" size="24" color="#fff"></icon>
+  </view>
+</view> 

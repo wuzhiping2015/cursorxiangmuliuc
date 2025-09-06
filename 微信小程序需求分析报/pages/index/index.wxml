@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="header">
+    <text class="title">五行生肖计算器</text>
+    <text class="subtitle">探索你的命理密码</text>
+  </view>
+  
+  <view class="card input-card">
+    <view class="input-item" bindtap="onTapDateArea">
+      <text class="label">出生日期</text>
+      <picker mode="date" id="datePicker" bindchange="onDateChange" start="1900-01-01" end="2100-12-31">
+        <view class="picker-value {{date === '请选择日期' ? 'placeholder' : ''}}">
+          <text>{{date}}</text>
+        </view>
+      </picker>
+      <text class="error-tip" wx:if="{{date === '请选择日期'}}">请选择出生日期</text>
+    </view>
+    
+    <view class="input-item">
+      <text class="label">出生时辰</text>
+      <picker mode="selector" range="{{timeRanges}}" bindchange="onTimeChange" disabled="{{date === '请选择日期'}}">
+        <view class="picker-value {{time === '请选择时辰' ? 'placeholder' : ''}}">
+          <text>{{time}}</text>
+        </view>
+      </picker>
+      <text class="error-tip" wx:if="{{time === '请选择时辰' && date !== '请选择日期'}}">请选择出生时辰</text>
+    </view>
+  </view>
+
+  <button class="calculate-btn {{date === '请选择日期' || time === '请选择时辰' ? 'disabled' : ''}}" bindtap="navigateToResult">
+    开始计算
+  </button>
+</view> 
