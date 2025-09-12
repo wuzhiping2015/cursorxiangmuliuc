@@ -23,6 +23,14 @@ export default defineNuxtConfig({
     '~/assets/css/main.css'
   ],
 
+  // Components aвто-импорт конфигурация
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    },
+  ],
+
   // 模块配置
   modules: [
     // UI 组件库
@@ -39,7 +47,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     
     // 图标库
-    'nuxt-icon',
+    '@nuxt/icon',
     
     // 状态管理
     '@pinia/nuxt',

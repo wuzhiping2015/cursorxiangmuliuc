@@ -1,0 +1,20 @@
+{
+  "name": "AI Frontend Engineer Blog",
+  "short_name": "AI FE Blog",
+  "description": "将AI融入前端开发工作流，提升开发效率",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
