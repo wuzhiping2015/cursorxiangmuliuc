@@ -23,6 +23,62 @@ html {
 
   // custom color example
   --custom-example-color: #ff4d4f;
+
+  // ==================== 新增色系变量 ====================
+  // Color Scheme Variables - 色系变量
+  // Default Color Scheme (Original Blue) - 默认色系
+  --scheme-primary-color: #0960bd;
+  --scheme-primary-hover: #1976d2;
+  --scheme-primary-active: #0d47a1;
+  --scheme-success-color: #55D187;
+  --scheme-warning-color: #EFBD47;
+  --scheme-error-color: #ED6F6F;
+}
+
+// ==================== 色系主题切换 ====================
+// Warm Color Scheme - 暖色调主题
+html[data-color-scheme='warm'] {
+  --scheme-primary-color: #FF6B35;
+  --scheme-primary-hover: #ff8a50;
+  --scheme-primary-active: #e55a2b;
+  --scheme-success-color: #8BC34A;
+  --scheme-warning-color: #FFA726;
+  --scheme-error-color: #F44336;
+  
+  // 更新系统级变量
+  --header-bg-color: #FF6B35;
+  --header-bg-hover-color: #ff8a50;
+  --header-active-menu-bg-color: #e55a2b;
+}
+
+// Cool Color Scheme - 冷色调主题
+html[data-color-scheme='cool'] {
+  --scheme-primary-color: #1E88E5;
+  --scheme-primary-hover: #42A5F5;
+  --scheme-primary-active: #1565C0;
+  --scheme-success-color: #66BB6A;
+  --scheme-warning-color: #29B6F6;
+  --scheme-error-color: #EF5350;
+  
+  // 更新系统级变量
+  --header-bg-color: #1E88E5;
+  --header-bg-hover-color: #42A5F5;
+  --header-active-menu-bg-color: #1565C0;
+}
+
+// Business Color Scheme - 商务主题
+html[data-color-scheme='business'] {
+  --scheme-primary-color: #6A4C93;
+  --scheme-primary-hover: #8E24AA;
+  --scheme-primary-active: #4A148C;
+  --scheme-success-color: #43A047;
+  --scheme-warning-color: #AB47BC;
+  --scheme-error-color: #E91E63;
+  
+  // 更新系统级变量
+  --header-bg-color: #6A4C93;
+  --header-bg-hover-color: #8E24AA;
+  --header-active-menu-bg-color: #4A148C;
 }
 
 @white: #fff;

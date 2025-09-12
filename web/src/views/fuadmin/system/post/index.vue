@@ -9,7 +9,7 @@
             preIcon="ant-design:plus-outlined"
             @click="handleCreate"
           >
-            {{ t('common.addText') }}
+            {{ t('common.addText') }}====
           </a-button>
           <a-button
             type="error"
@@ -75,7 +75,7 @@
   import { usePermission } from '/@/hooks/web/usePermission';
   import { useDrawer } from '/@/components/Drawer';
   import ButtonDrawer from './PostDrawer.vue';
-  import { Space } from 'ant-design-vue';
+  import { Space, message } from 'ant-design-vue';
   import { BasicUpload } from '/@/components/Upload';
   import {
     deleteItem,
@@ -84,10 +84,10 @@
     importData,
   } from '/@/views/fuadmin/system/post/post.api';
   import { columns, searchFormSchema } from '/@/views/fuadmin/system/post/post.data';
-  import { message } from 'ant-design-vue';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { downloadByData } from '/@/utils/file/download';
   import { useI18n } from '/@/hooks/web/useI18n';
+
   export default defineComponent({
     name: 'PostManagement',
     components: { BasicTable, ButtonDrawer, TableAction, BasicUpload, Space },

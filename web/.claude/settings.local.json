@@ -15,7 +15,9 @@
       "Bash(corepack prepare:*)",
       "Bash(timeout 15 pnpm dev)",
       "Bash(npx vite:*)",
-      "Bash(timeout 20 npx vite --force --debug)"
+      "Bash(timeout 20 npx vite --force --debug)",
+      "Bash(claude mcp add context7 \"npx @upstash/context7-mcp@latest\")",
+      "Bash(claude mcp:*)"
     ],
     "deny": [],
     "ask": []

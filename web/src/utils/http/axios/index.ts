@@ -184,7 +184,6 @@ const transform: AxiosTransform = {
     const err: string = error?.toString?.() ?? '';
     let errMessage = '';
 
-
     if (axios.isCancel(error)) {
       return Promise.reject(error);
     }

@@ -32,3 +32,25 @@ package-lock.json
 pnpm-lock.yaml
 
 .history
+mpvb*.mdc
+mpvb*.md
+.DS_Store
+node_modules
+*.log
+*.local
+dist
+.output
+.nuxt
+.idea/
+components.d.ts
+public/assets/fonts
+work.md
+nuxt*.mdc
+nuxt*.md
+.cursor\rules\nuxt.mdc
+claude*.md
+.claude
+CHANGELOG.md
+.cursor
+docs
+docs/*.md

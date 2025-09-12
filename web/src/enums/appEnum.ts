@@ -14,6 +14,14 @@ export enum ThemeEnum {
   LIGHT = 'light',
 }
 
+// Color scheme theme enum - 色系主题枚举
+export enum ColorSchemeEnum {
+  DEFAULT = 'default',   // 默认色系 (蓝色)
+  WARM = 'warm',         // 暖色调 (橙色系)
+  COOL = 'cool',         // 冷色调 (蓝绿系)
+  BUSINESS = 'business', // 商务色系 (紫色系)
+}
+
 export enum SettingButtonPositionEnum {
   AUTO = 'auto',
   HEADER = 'header',

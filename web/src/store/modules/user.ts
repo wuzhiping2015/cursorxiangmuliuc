@@ -101,6 +101,8 @@ export const useUserStore = defineStore({
       }
     },
     async afterLoginAction(goHome?: boolean): Promise<GetUserInfoModel | null> {
+      // 检查是否存在token，如果没有则直接返回null
+
       if (!this.getToken) return null;
       // get user info
       const userInfo = await this.getUserInfoAction();
