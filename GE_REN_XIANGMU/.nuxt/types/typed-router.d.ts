@@ -19,6 +19,7 @@ declare module 'vue-router/auto-routes' {
    */
   export interface RouteNamedMap {
     'index': RouteRecordInfo<'index', '/', Record<never, never>, Record<never, never>>,
+    'projects': RouteRecordInfo<'projects', '/projects', Record<never, never>, Record<never, never>>,
     'tools': RouteRecordInfo<'tools', '/tools', Record<never, never>, Record<never, never>>,
   }
 
@@ -35,6 +36,10 @@ declare module 'vue-router/auto-routes' {
   export interface _RouteFileInfoMap {
     'pages/index.vue': {
       routes: 'index'
+      views: never
+    }
+    'pages/projects/index.vue': {
+      routes: 'projects'
       views: never
     }
     'pages/tools/index.vue': {

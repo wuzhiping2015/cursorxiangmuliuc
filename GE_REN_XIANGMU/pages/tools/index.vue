@@ -82,34 +82,85 @@
           <div
             v-for="tool in paginatedTools"
             :key="tool.id"
-            class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 cursor-pointer"
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 cursor-pointer group border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400"
             @click="openToolDetail(tool)"
           >
-            <div class="flex items-start justify-between mb-3">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                {{ tool.name }}
-              </h3>
-              <div class="flex items-center">
-                <span v-if="tool.free" class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full mr-2">
-                  免费
-                </span>
+            <!-- 工具图标和头部 -->
+            <div class="flex items-start justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                  <Icon v-if="tool.icon" :name="tool.icon" class="w-6 h-6 text-white" />
+                  <Icon v-else name="heroicons:cpu-chip" class="w-6 h-6 text-white" />
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {{ tool.name }}
+                  </h3>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">{{ tool.category }}</p>
+                </div>
+              </div>
+              
+              <!-- 评分和标签 -->
+              <div class="flex flex-col items-end gap-2">
+                <div class="flex items-center gap-2">
+                  <span v-if="tool.free" class="px-2 py-1 text-xs bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full font-medium">
+                    免费
+                  </span>
+                  <span v-if="tool.featured" class="px-2 py-1 text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full font-medium">
+                    推荐
+                  </span>
+                </div>
                 <div class="flex items-center">
-                  <Icon name="heroicons:star" class="w-4 h-4 text-yellow-400" />
+                  <div class="flex">
+                    <Icon 
+                      v-for="i in 5" 
+                      :key="i" 
+                      name="heroicons:star" 
+                      :class="[
+                        'w-4 h-4',
+                        i <= tool.rating ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-600'
+                      ]" 
+                    />
+                  </div>
                   <span class="text-sm text-gray-600 dark:text-gray-400 ml-1">{{ tool.rating }}</span>
                 </div>
               </div>
             </div>
-            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+            
+            <!-- 描述 -->
+            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 leading-relaxed line-clamp-2">
               {{ tool.description }}
             </p>
-            <div class="flex flex-wrap gap-2">
+            
+            <!-- 标签 -->
+            <div class="flex flex-wrap gap-2 mb-4">
               <span
-                v-for="tag in tool.tags.slice(0, 3)"
+                v-for="tag in tool.tags.slice(0, 4)"
                 :key="tag"
-                class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full"
+                class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
               >
                 {{ tag }}
               </span>
+              <span v-if="tool.tags.length > 4" class="px-2 py-1 text-xs text-gray-500 dark:text-gray-400">
+                +{{ tool.tags.length - 4 }}
+              </span>
+            </div>
+            
+            <!-- 操作按钮 -->
+            <div class="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
+              <button 
+                @click.stop="openToolDetail(tool)"
+                class="text-blue-600 dark:text-blue-400 font-medium text-sm hover:underline"
+              >
+                查看详情
+              </button>
+              <button 
+                @click.stop="visitTool(tool)"
+                class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-lg transition-colors flex items-center gap-1"
+              >
+                <span>立即使用</span>
+                <Icon name="heroicons:arrow-top-right-on-square" class="w-3 h-3" />
+              </button>
             </div>
           </div>
         </div>
@@ -140,6 +191,147 @@
         </div>
       </div>
     </section>
+
+    <!-- 工具详情模态框 -->
+    <Dialog 
+      v-model:visible="showToolDetail" 
+      modal 
+      :header="selectedTool?.name"
+      class="max-w-2xl"
+    >
+      <div v-if="selectedTool" class="space-y-6">
+        <!-- 工具基本信息 -->
+        <div class="flex items-start gap-4">
+          <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
+            <Icon v-if="selectedTool.icon" :name="selectedTool.icon" class="w-8 h-8 text-white" />
+            <Icon v-else name="heroicons:cpu-chip" class="w-8 h-8 text-white" />
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+              {{ selectedTool.name }}
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-3">
+              {{ selectedTool.description }}
+            </p>
+            <div class="flex items-center gap-4">
+              <div class="flex items-center">
+                <div class="flex">
+                  <Icon 
+                    v-for="i in 5" 
+                    :key="i" 
+                    name="heroicons:star" 
+                    :class="[
+                      'w-4 h-4',
+                      i <= selectedTool.rating ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-600'
+                    ]" 
+                  />
+                </div>
+                <span class="text-sm text-gray-600 dark:text-gray-400 ml-2">{{ selectedTool.rating }}/5</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span v-if="selectedTool.free" class="px-2 py-1 text-xs bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full">
+                  免费
+                </span>
+                <span v-if="selectedTool.featured" class="px-2 py-1 text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full">
+                  推荐
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 标签 -->
+        <div>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-2">功能标签</h4>
+          <div class="flex flex-wrap gap-2">
+            <span
+              v-for="tag in selectedTool.tags"
+              :key="tag"
+              class="px-3 py-1 text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full"
+            >
+              {{ tag }}
+            </span>
+          </div>
+        </div>
+
+        <!-- 优缺点 -->
+        <div v-if="selectedTool.pros || selectedTool.cons" class="grid md:grid-cols-2 gap-4">
+          <div v-if="selectedTool.pros" class="space-y-2">
+            <h4 class="font-semibold text-green-600 dark:text-green-400 flex items-center gap-2">
+              <Icon name="heroicons:check-circle" class="w-4 h-4" />
+              优势
+            </h4>
+            <ul class="space-y-1 text-sm text-gray-600 dark:text-gray-300">
+              <li v-for="pro in selectedTool.pros" :key="pro" class="flex items-start gap-2">
+                <Icon name="heroicons:plus" class="w-3 h-3 text-green-500 mt-1 flex-shrink-0" />
+                {{ pro }}
+              </li>
+            </ul>
+          </div>
+          
+          <div v-if="selectedTool.cons" class="space-y-2">
+            <h4 class="font-semibold text-red-600 dark:text-red-400 flex items-center gap-2">
+              <Icon name="heroicons:x-circle" class="w-4 h-4" />
+              不足
+            </h4>
+            <ul class="space-y-1 text-sm text-gray-600 dark:text-gray-300">
+              <li v-for="con in selectedTool.cons" :key="con" class="flex items-start gap-2">
+                <Icon name="heroicons:minus" class="w-3 h-3 text-red-500 mt-1 flex-shrink-0" />
+                {{ con }}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 使用场景 -->
+        <div v-if="selectedTool.useCases" class="space-y-2">
+          <h4 class="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+            <Icon name="heroicons:light-bulb" class="w-4 h-4" />
+            适用场景
+          </h4>
+          <div class="grid grid-cols-2 gap-2">
+            <span
+              v-for="useCase in selectedTool.useCases"
+              :key="useCase"
+              class="px-3 py-2 text-sm bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-lg text-center"
+            >
+              {{ useCase }}
+            </span>
+          </div>
+        </div>
+
+        <!-- 个人点评 -->
+        <div v-if="selectedTool.personalNote" class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+          <h4 class="font-semibold text-blue-900 dark:text-blue-400 flex items-center gap-2 mb-2">
+            <Icon name="heroicons:user" class="w-4 h-4" />
+            个人点评
+          </h4>
+          <p class="text-blue-800 dark:text-blue-300 text-sm leading-relaxed">
+            {{ selectedTool.personalNote }}
+          </p>
+        </div>
+
+        <!-- 操作按钮 -->
+        <div class="flex gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+          <Button
+            @click="visitTool(selectedTool)"
+            class="flex-1 flex items-center justify-center gap-2"
+          >
+            <Icon name="heroicons:arrow-top-right-on-square" class="w-4 h-4" />
+            立即使用
+          </Button>
+          <Button
+            @click="shareToolUrl(selectedTool)"
+            severity="secondary"
+            outlined
+            class="flex items-center gap-2"
+          >
+            <Icon name="heroicons:share" class="w-4 h-4" />
+            分享
+          </Button>
+        </div>
+      </div>
+    </Dialog>
     
   </div>
 </template>
@@ -150,50 +342,8 @@
  * 展示308+精选AI工具，支持搜索、筛选和分类浏览
  */
 
-// 模拟工具数据 (实际项目中应从 API 或 JSON 文件获取)
-const mockToolsData = {
-  stats: { totalTools: 308 },
-  categories: [
-    {
-      id: 'ai-chat',
-      name: 'AI对话',
-      icon: 'mdi:chat',
-      color: 'blue',
-      tools: [
-        {
-          id: 'chatgpt',
-          name: 'ChatGPT',
-          description: 'OpenAI开发的强大对话AI，擅长代码生成、问题解答和创意协作',
-          url: 'https://chat.openai.com',
-          rating: 4.8,
-          free: true,
-          featured: true,
-          category: 'ai-chat',
-          tags: ['对话AI', '代码生成', '问题解答']
-        }
-      ]
-    },
-    {
-      id: 'ai-coding',
-      name: 'AI编程',
-      icon: 'mdi:code-tags',
-      color: 'green',
-      tools: [
-        {
-          id: 'cursor',
-          name: 'Cursor',
-          description: '集成AI的现代代码编辑器，支持智能代码生成和重构',
-          url: 'https://cursor.sh',
-          rating: 4.9,
-          free: false,
-          featured: true,
-          category: 'ai-coding',
-          tags: ['IDE', '代码生成', '重构']
-        }
-      ]
-    }
-  ]
-}
+// 获取AI工具数据
+const { data: toolsData } = await $fetch('/api/tools') || await import('~/content/tools/ai-tools-database.json')
 
 // 页面元数据
 useHead({
@@ -211,12 +361,16 @@ useHead({
 })
 
 // 响应式数据
-const toolsDatabase = ref(mockToolsData)
+const toolsDatabase = ref(toolsData)
 const searchQuery = ref('')
 const selectedCategory = ref<string | null>(null)
 const selectedTags = ref<string[]>([])
 const selectedRating = ref<number | null>(null)
 const freeOnly = ref(false)
+
+// 工具详情模态框
+const showToolDetail = ref(false)
+const selectedTool = ref<any>(null)
 
 // 分页相关
 const first = ref(0)
@@ -308,8 +462,27 @@ const totalPages = computed(() =>
 
 // 方法
 const openToolDetail = (tool: any) => {
+  selectedTool.value = tool
+  showToolDetail.value = true
+}
+
+const visitTool = (tool: any) => {
   // 在新窗口打开工具链接
   window.open(tool.url, '_blank')
+}
+
+const shareToolUrl = (tool: any) => {
+  if (navigator.share) {
+    navigator.share({
+      title: tool.name,
+      text: tool.description,
+      url: tool.url
+    })
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(tool.url)
+    // 可以添加提示消息
+    alert('链接已复制到剪贴板')
+  }
 }
 
 const clearFilters = () => {
