@@ -38,6 +38,9 @@ export default defineNuxtConfig({
     // 图片优化
     '@nuxt/image',
     
+    // 图标库
+    '@nuxt/icon',
+    
     // 状态管理
     '@pinia/nuxt',
     
