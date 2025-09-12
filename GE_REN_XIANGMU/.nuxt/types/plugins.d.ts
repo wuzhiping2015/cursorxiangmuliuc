@@ -15,7 +15,6 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt@3.19.1_@parcel+watcher_946c58f3e150023a9092b9314b4b403b/node_modules/nuxt/dist/app/plugins/revive-payload.server.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt@3.19.1_@parcel+watcher_946c58f3e150023a9092b9314b4b403b/node_modules/nuxt/dist/app/plugins/view-transitions.client.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt@3.19.1_@parcel+watcher_946c58f3e150023a9092b9314b4b403b/node_modules/nuxt/dist/app/plugins/chunk-reload.client.js")> &
-  InjectionType<typeof import("../../node_modules/.pnpm/@pinia+nuxt@0.5.5_magicast@_14c71aefe60b47505578e7a7f1a52f1d/node_modules/@pinia/nuxt/dist/runtime/plugin.vue3.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt@3.19.1_@parcel+watcher_946c58f3e150023a9092b9314b4b403b/node_modules/nuxt/dist/pages/runtime/plugins/prefetch.client.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt@3.19.1_@parcel+watcher_946c58f3e150023a9092b9314b4b403b/node_modules/nuxt/dist/pages/runtime/plugins/check-if-page-unused.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/@nuxt+devtools@1.7.0_rollup_691bcbb7489d0c8d70cd0c7892acd640/node_modules/@nuxt/devtools/dist/runtime/plugins/devtools.server.js")> &
@@ -33,7 +32,7 @@ declare module '#app' {
   interface NuxtApp extends NuxtAppInjections { }
 
   interface NuxtAppLiterals {
-    pluginName: 'nuxt:revive-payload:client' | 'nuxt:head' | 'nuxt:router' | 'nuxt:browser-devtools-timing' | 'nuxt:revive-payload:server' | 'nuxt:chunk-reload' | 'pinia' | 'nuxt:global-components' | 'nuxt:prefetch' | 'nuxt:checkIfPageUnused' | 'nuxt:checkIfLayoutUsed'
+    pluginName: 'nuxt:revive-payload:client' | 'nuxt:head' | 'nuxt:router' | 'nuxt:browser-devtools-timing' | 'nuxt:revive-payload:server' | 'nuxt:chunk-reload' | 'nuxt:global-components' | 'nuxt:prefetch' | 'nuxt:checkIfPageUnused' | 'nuxt:checkIfLayoutUsed'
   }
 }
 
