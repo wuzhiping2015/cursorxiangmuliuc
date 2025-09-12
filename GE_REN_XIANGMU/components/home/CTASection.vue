@@ -375,8 +375,10 @@ onMounted(() => {
 
 /* 轮廓CTA按钮样式 */
 .btn-cta-outline {
-  @apply !border-white/50 !text-white;
+  @apply border-white/50 text-white;
   backdrop-filter: blur(10px);
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: white !important;
 }
 
 /* 紧急CTA按钮样式 */
