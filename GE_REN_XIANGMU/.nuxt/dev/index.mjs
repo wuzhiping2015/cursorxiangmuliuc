@@ -12,7 +12,7 @@ import { createStorage, prefixStorage } from 'file://D:/Project/AI_PROJECT/GE_RE
 import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, joinRelativeURL, decodePath, withLeadingSlash, withoutTrailingSlash, isRelative } from 'file://D:/Project/AI_PROJECT/GE_REN_XIANGMU/node_modules/.pnpm/ufo@1.6.1/node_modules/ufo/dist/index.mjs';
 import { hash as hash$1 } from 'file://D:/Project/AI_PROJECT/GE_REN_XIANGMU/node_modules/.pnpm/ohash@1.1.6/node_modules/ohash/dist/index.mjs';
 import defu, { defuFn, defu as defu$1 } from 'file://D:/Project/AI_PROJECT/GE_REN_XIANGMU/node_modules/.pnpm/defu@6.1.4/node_modules/defu/dist/defu.mjs';
-import { extname } from 'file://D:/Project/AI_PROJECT/GE_REN_XIANGMU/node_modules/.pnpm/pathe@1.1.2/node_modules/pathe/dist/index.mjs';
+import { basename, extname } from 'file://D:/Project/AI_PROJECT/GE_REN_XIANGMU/node_modules/.pnpm/pathe@1.1.2/node_modules/pathe/dist/index.mjs';
 import { snakeCase, kebabCase, pascalCase, camelCase } from 'file://D:/Project/AI_PROJECT/GE_REN_XIANGMU/node_modules/.pnpm/scule@1.3.0/node_modules/scule/dist/index.mjs';
 import { unified } from 'file://D:/Project/AI_PROJECT/GE_REN_XIANGMU/node_modules/.pnpm/unified@11.0.5/node_modules/unified/index.js';
 import { toString as toString$1 } from 'file://D:/Project/AI_PROJECT/GE_REN_XIANGMU/node_modules/.pnpm/mdast-util-to-string@4.0.0/node_modules/mdast-util-to-string/index.js';
@@ -81,6 +81,8 @@ import { Theme } from 'file://D:/Project/AI_PROJECT/GE_REN_XIANGMU/node_modules/
 import { promises } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname as dirname$1, resolve as resolve$1, isAbsolute } from 'file://D:/Project/AI_PROJECT/GE_REN_XIANGMU/node_modules/.pnpm/pathe@2.0.3/node_modules/pathe/dist/index.mjs';
+import { getIcons } from 'file://D:/Project/AI_PROJECT/GE_REN_XIANGMU/node_modules/.pnpm/@iconify+utils@2.3.0/node_modules/@iconify/utils/lib/index.mjs';
+import { collections } from 'file://D:/Project/AI_PROJECT/GE_REN_XIANGMU/.nuxt/nuxt-icon-server-bundle.mjs';
 import { walkResolver } from 'file://D:/Project/AI_PROJECT/GE_REN_XIANGMU/node_modules/.pnpm/unhead@2.0.14/node_modules/unhead/dist/utils.mjs';
 import { ipxFSStorage, ipxHttpStorage, createIPX, createIPXH3Handler } from 'file://D:/Project/AI_PROJECT/GE_REN_XIANGMU/node_modules/.pnpm/ipx@2.1.1_db0@0.3.2_ioredis@5.7.0/node_modules/ipx/dist/index.mjs';
 
@@ -627,7 +629,194 @@ function cloneWithProxy(obj, overrides) {
 const cachedEventHandler = defineCachedEventHandler;
 
 const inlineAppConfig = {
-  "nuxt": {}
+  "nuxt": {},
+  "icon": {
+    "provider": "server",
+    "class": "",
+    "aliases": {},
+    "iconifyApiEndpoint": "https://api.iconify.design",
+    "fallbackToApi": true,
+    "cssSelectorPrefix": "i-",
+    "cssWherePseudo": true,
+    "mode": "css",
+    "attrs": {
+      "aria-hidden": true
+    },
+    "collections": [
+      "academicons",
+      "akar-icons",
+      "ant-design",
+      "arcticons",
+      "basil",
+      "bi",
+      "bitcoin-icons",
+      "bpmn",
+      "brandico",
+      "bx",
+      "bxl",
+      "bxs",
+      "bytesize",
+      "carbon",
+      "cbi",
+      "charm",
+      "ci",
+      "cib",
+      "cif",
+      "cil",
+      "circle-flags",
+      "circum",
+      "clarity",
+      "codicon",
+      "covid",
+      "cryptocurrency",
+      "cryptocurrency-color",
+      "dashicons",
+      "devicon",
+      "devicon-plain",
+      "ei",
+      "el",
+      "emojione",
+      "emojione-monotone",
+      "emojione-v1",
+      "entypo",
+      "entypo-social",
+      "eos-icons",
+      "ep",
+      "et",
+      "eva",
+      "f7",
+      "fa",
+      "fa-brands",
+      "fa-regular",
+      "fa-solid",
+      "fa6-brands",
+      "fa6-regular",
+      "fa6-solid",
+      "fad",
+      "fe",
+      "feather",
+      "file-icons",
+      "flag",
+      "flagpack",
+      "flat-color-icons",
+      "flat-ui",
+      "flowbite",
+      "fluent",
+      "fluent-emoji",
+      "fluent-emoji-flat",
+      "fluent-emoji-high-contrast",
+      "fluent-mdl2",
+      "fontelico",
+      "fontisto",
+      "formkit",
+      "foundation",
+      "fxemoji",
+      "gala",
+      "game-icons",
+      "geo",
+      "gg",
+      "gis",
+      "gravity-ui",
+      "gridicons",
+      "grommet-icons",
+      "guidance",
+      "healthicons",
+      "heroicons",
+      "heroicons-outline",
+      "heroicons-solid",
+      "humbleicons",
+      "ic",
+      "icomoon-free",
+      "icon-park",
+      "icon-park-outline",
+      "icon-park-solid",
+      "icon-park-twotone",
+      "iconamoon",
+      "iconoir",
+      "icons8",
+      "il",
+      "ion",
+      "iwwa",
+      "jam",
+      "la",
+      "lets-icons",
+      "line-md",
+      "logos",
+      "ls",
+      "lucide",
+      "mage",
+      "majesticons",
+      "maki",
+      "map",
+      "marketeq",
+      "material-symbols",
+      "material-symbols-light",
+      "mdi",
+      "mdi-light",
+      "medical-icon",
+      "memory",
+      "meteocons",
+      "mi",
+      "mingcute",
+      "mono-icons",
+      "mynaui",
+      "nimbus",
+      "nonicons",
+      "noto",
+      "noto-v1",
+      "octicon",
+      "oi",
+      "ooui",
+      "openmoji",
+      "oui",
+      "pajamas",
+      "pepicons",
+      "pepicons-pencil",
+      "pepicons-pop",
+      "pepicons-print",
+      "ph",
+      "pixelarticons",
+      "prime",
+      "ps",
+      "quill",
+      "radix-icons",
+      "raphael",
+      "ri",
+      "si-glyph",
+      "simple-icons",
+      "simple-line-icons",
+      "skill-icons",
+      "solar",
+      "streamline",
+      "streamline-emojis",
+      "subway",
+      "svg-spinners",
+      "system-uicons",
+      "tabler",
+      "tdesign",
+      "teenyicons",
+      "token",
+      "token-branded",
+      "topcoat",
+      "twemoji",
+      "typcn",
+      "uil",
+      "uim",
+      "uis",
+      "uit",
+      "uiw",
+      "unjs",
+      "vaadin",
+      "vs",
+      "vscode-icons",
+      "websymbol",
+      "whh",
+      "wi",
+      "wpf",
+      "zmdi",
+      "zondicons"
+    ]
+  }
 };
 
 
@@ -1296,6 +1485,9 @@ const _inlineRuntimeConfig = {
       "search": ""
     }
   },
+  "icon": {
+    "serverKnownCssClasses": []
+  },
   "ipx": {
     "baseURL": "/_ipx",
     "alias": {},
@@ -1327,7 +1519,12 @@ function useRuntimeConfig(event) {
   event.context.nitro.runtimeConfig = runtimeConfig;
   return runtimeConfig;
 }
-_deepFreeze(klona(appConfig));
+const _sharedAppConfig = _deepFreeze(klona(appConfig));
+function useAppConfig(event) {
+  {
+    return _sharedAppConfig;
+  }
+}
 function _deepFreeze(object) {
   const propNames = Object.getOwnPropertyNames(object);
   for (const name of propNames) {
@@ -3231,6 +3428,43 @@ const _dNmEsl = eventHandler(async (event) => {
   return await highlighter(code, lang, theme, options);
 });
 
+const warnOnceSet = /* @__PURE__ */ new Set();
+const DEFAULT_ENDPOINT = "https://api.iconify.design";
+const _4MyUlX = defineCachedEventHandler(async (ctx) => {
+  const url = ctx.node.req.url;
+  if (!url)
+    return;
+  const options = useAppConfig().icon;
+  const collectionName = ctx.context.params?.collection?.replace(/\.json$/, "");
+  const collection = collectionName ? await collections[collectionName]?.() : null;
+  const apiEndPoint = options.iconifyApiEndpoint || DEFAULT_ENDPOINT;
+  const apiUrl = new URL(basename(url), apiEndPoint);
+  const icons = apiUrl.searchParams.get("icons")?.split(",");
+  if (collection) {
+    if (icons?.length) {
+      const data = getIcons(
+        collection,
+        icons
+      );
+      consola$1.debug(`[Icon] serving ${(icons || []).map((i) => "`" + collectionName + ":" + i + "`").join(",")} from bundled collection`);
+      return data;
+    }
+  } else {
+    if (collectionName && !warnOnceSet.has(collectionName) && apiEndPoint === DEFAULT_ENDPOINT) {
+      consola$1.warn([
+        `[Icon] Collection \`${collectionName}\` is not found locally`,
+        `We suggest to install it via \`npm i -D @iconify-json/${collectionName}\` to provide the best end-user experience.`
+      ].join("\n"));
+      warnOnceSet.add(collectionName);
+    }
+  }
+  if (options.fallbackToApi) {
+    consola$1.debug(`[Icon] fetching ${(icons || []).map((i) => "`" + collectionName + ":" + i + "`").join(",")} from iconify api`);
+    const data = await $fetch(apiUrl.href);
+    return data;
+  }
+});
+
 const VueResolver = (_, value) => {
   return isRef(value) ? toValue(value) : value;
 };
@@ -3659,6 +3893,7 @@ const handlers = [
   { route: '', handler: _Q5VpMr, lazy: false, middleware: true, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_3auEVq, lazy: true, middleware: false, method: undefined },
   { route: '/api/_mdc/highlight', handler: _dNmEsl, lazy: false, middleware: false, method: undefined },
+  { route: '/api/_nuxt_icon/:collection', handler: _4MyUlX, lazy: false, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },
   { route: '/api/_content/query/:qid/**:params', handler: _JJ3Hd4, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query/:qid', handler: _JJ3Hd4, lazy: false, middleware: false, method: "get" },

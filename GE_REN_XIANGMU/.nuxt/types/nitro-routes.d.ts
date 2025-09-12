@@ -9,6 +9,9 @@ declare module "nitropack/types" {
     '/api/_mdc/highlight': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/@nuxtjs+mdc@0.9.5_magicast@0.3.5/node_modules/@nuxtjs/mdc/dist/runtime/highlighter/event-handler').default>>>>
     }
+    '/api/_nuxt_icon/:collection': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/nuxt-icon@1.0.0-beta.7_magi_33691c695d8831dc811f704aff2d3c4b/node_modules/nuxt-icon/dist/runtime/server/api').default>>>>
+    }
     '/__nuxt_island/**': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/#internal/nuxt/island-renderer').default>>>>
     }

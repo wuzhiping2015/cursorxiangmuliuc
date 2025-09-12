@@ -39,7 +39,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     
     // 图标库
-    '@nuxt/icon',
+    'nuxt-icon',
     
     // 状态管理
     '@pinia/nuxt',
