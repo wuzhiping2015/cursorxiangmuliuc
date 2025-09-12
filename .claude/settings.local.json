@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(robocopy:*)"
+      "Bash(robocopy:*)",
+      "Bash(pnpm list:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm dev:*)"
     ],
     "deny": []
   }
