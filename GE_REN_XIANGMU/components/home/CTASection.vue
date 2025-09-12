@@ -121,7 +121,7 @@
               'w-full !py-3 !text-sm !font-semibold transition-all duration-300',
               option.primary 
                 ? 'btn-cta-primary hover:scale-105' 
-                : 'btn-cta-outline hover:!bg-white/20'
+                : 'btn-cta-outline hover:bg-white/20'
             ]"
           >
             <Icon :name="option.buttonIcon" class="w-4 h-4 mr-2" />
@@ -501,12 +501,12 @@ onMounted(() => {
     padding: 1.5rem;
   }
   
-  .!px-10 {
+  .responsive-px-10 {
     padding-left: 2rem !important;
     padding-right: 2rem !important;
   }
   
-  .!text-xl {
+  .responsive-text-xl {
     font-size: 1.125rem !important;
   }
   
@@ -517,7 +517,7 @@ onMounted(() => {
 }
 
 @media (max-width: 640px) {
-  .!px-12 {
+  .responsive-px-12 {
     padding-left: 1.5rem !important;
     padding-right: 1.5rem !important;
   }
