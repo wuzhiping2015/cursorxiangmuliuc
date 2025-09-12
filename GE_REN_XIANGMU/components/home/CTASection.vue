@@ -38,7 +38,8 @@
           <Button 
             @click="startJourney"
             size="large"
-            class="btn-cta-primary !px-10 !py-5 !text-xl !font-bold transform hover:scale-105 transition-all duration-300"
+            class="btn-cta-primary px-10 py-5 text-xl font-bold transform hover:scale-105 transition-all duration-300"
+            style="padding-left: 2.5rem !important; padding-right: 2.5rem !important; padding-top: 1.25rem !important; padding-bottom: 1.25rem !important; font-size: 1.25rem !important; font-weight: 700 !important;"
           >
             <Icon name="heroicons:play" class="w-6 h-6 mr-3" />
             立即开始AI工作流
@@ -49,7 +50,8 @@
             @click="watchDemo"
             outlined
             size="large"
-            class="btn-cta-secondary !px-10 !py-5 !text-xl !font-bold !border-2 !border-white/50 !text-white hover:!bg-white/10 transform hover:scale-105 transition-all duration-300"
+            class="btn-cta-secondary px-10 py-5 text-xl font-bold border-2 border-white/50 text-white hover:bg-white/10 transform hover:scale-105 transition-all duration-300"
+            style="padding-left: 2.5rem !important; padding-right: 2.5rem !important; padding-top: 1.25rem !important; padding-bottom: 1.25rem !important; font-size: 1.25rem !important; font-weight: 700 !important; border-width: 2px !important; color: white !important;"
           >
             <Icon name="heroicons:play-circle" class="w-6 h-6 mr-3" />
             观看演示视频
@@ -165,7 +167,8 @@
             <Button 
               @click="claimOffer"
               size="large"
-              class="btn-cta-urgent !px-12 !py-5 !text-xl !font-bold transform hover:scale-105 transition-all duration-300 relative overflow-hidden"
+              class="btn-cta-urgent px-12 py-5 text-xl font-bold transform hover:scale-105 transition-all duration-300 relative overflow-hidden"
+              style="padding-left: 3rem !important; padding-right: 3rem !important; padding-top: 1.25rem !important; padding-bottom: 1.25rem !important; font-size: 1.25rem !important; font-weight: 700 !important;"
             >
               <div class="relative z-10 flex items-center">
                 <Icon name="heroicons:gift" class="w-6 h-6 mr-3" />
@@ -179,7 +182,8 @@
               @click="learnMore"
               text
               size="large"
-              class="!text-blue-200 hover:!text-white !px-6 !py-5 !text-lg underline-offset-4 hover:underline"
+              class="text-blue-200 hover:text-white px-6 py-5 text-lg underline-offset-4 hover:underline"
+              style="color: rgb(191 219 254) !important; padding-left: 1.5rem !important; padding-right: 1.5rem !important; padding-top: 1.25rem !important; padding-bottom: 1.25rem !important; font-size: 1.125rem !important;"
             >
               了解更多详情
             </Button>
