@@ -311,16 +311,20 @@ const learnMore = () => {
 }
 
 // 模拟用户数增长
+let interval: NodeJS.Timeout | null = null
+
 onMounted(() => {
-  const interval = setInterval(() => {
+  interval = setInterval(() => {
     if (currentUsers.value < totalSlots.value - 100) {
       currentUsers.value += Math.floor(Math.random() * 3) + 1
     }
   }, 5000)
+})
 
-  onUnmounted(() => {
+onUnmounted(() => {
+  if (interval) {
     clearInterval(interval)
-  })
+  }
 })
 </script>
 

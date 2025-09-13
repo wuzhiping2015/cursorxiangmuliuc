@@ -49,3 +49,4 @@ export { useImage } from '../node_modules/.pnpm/@nuxt+image@1.11.0_db0@0.3.2_ior
 export { defineStore, acceptHMRUpdate, usePinia, storeToRefs } from '../node_modules/.pnpm/@pinia+nuxt@0.5.5_magicast@_14c71aefe60b47505578e7a7f1a52f1d/node_modules/@pinia/nuxt/dist/runtime/composables';
 export { useColorMode } from '../node_modules/.pnpm/@nuxtjs+color-mode@3.5.2_magicast@0.3.5/node_modules/@nuxtjs/color-mode/dist/runtime/composables';
 export { useJsonld } from '../node_modules/.pnpm/nuxt-jsonld@2.2.1/node_modules/nuxt-jsonld/dist/runtime/composable';
+export { useNuxtDevTools } from '../node_modules/.pnpm/@nuxt+devtools@1.7.0_rollup_691bcbb7489d0c8d70cd0c7892acd640/node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';

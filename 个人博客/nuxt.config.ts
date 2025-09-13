@@ -38,7 +38,6 @@ export default defineNuxtConfig({
     
     // CSS 框架
     '@nuxtjs/tailwindcss',
-    '@unocss/nuxt',
     
     // 内容管理
     '@nuxt/content',
@@ -96,11 +95,6 @@ export default defineNuxtConfig({
     configPath: 'tailwind.config.js'
   },
 
-  // UnoCSS 配置
-  unocss: {
-    preflight: true,
-    attributify: true
-  },
 
   // 内容模块配置
   content: {

@@ -102,13 +102,13 @@
         "./primevue-style.mjs"
       ],
       "#mdc-configs": [
-        "./mdc-configs.mjs"
+        "./mdc-configs"
       ],
       "#mdc-highlighter": [
-        "./mdc-highlighter.mjs"
+        "./mdc-highlighter"
       ],
       "#mdc-imports": [
-        "./mdc-imports.mjs"
+        "./mdc-imports"
       ],
       "#image": [
         "../node_modules/.pnpm/@nuxt+image@1.11.0_db0@0.3.2_ioredis@5.7.0_magicast@0.3.5/node_modules/@nuxt/image/dist/runtime"
@@ -144,8 +144,6 @@
     "../node_modules/.pnpm/@primevue+nuxt-module@4.3.9_7445d0588b846c26ab4d31cc61b64240/node_modules/dist/runtime/server",
     "../node_modules/.pnpm/@nuxtjs+tailwindcss@6.14.0_magicast@0.3.5/node_modules/runtime/server",
     "../node_modules/.pnpm/@nuxtjs+tailwindcss@6.14.0_magicast@0.3.5/node_modules/dist/runtime/server",
-    "../node_modules/.pnpm/@unocss+nuxt@0.64.1_magicas_27156418f5537b1347e6ff4fae23526f/node_modules/runtime/server",
-    "../node_modules/.pnpm/@unocss+nuxt@0.64.1_magicas_27156418f5537b1347e6ff4fae23526f/node_modules/dist/runtime/server",
     "../node_modules/.pnpm/@nuxtjs+mdc@0.9.5_magicast@0.3.5/node_modules/runtime/server",
     "../node_modules/.pnpm/@nuxtjs+mdc@0.9.5_magicast@0.3.5/node_modules/dist/runtime/server",
     "../node_modules/.pnpm/@nuxt+content@2.13.4_db0@0._e6d547f5f258db907469c1e2dfe28f62/node_modules/runtime/server",
@@ -177,7 +175,6 @@
     "../node_modules/.pnpm/nuxt@3.19.1_@parcel+watcher_373915222a3e9ba5001e76740dbb80d1/node_modules/nuxt/node_modules",
     "../node_modules/.pnpm/@primevue+nuxt-module@4.3.9_7445d0588b846c26ab4d31cc61b64240/node_modules/@primevue/nuxt-module/node_modules",
     "../node_modules/.pnpm/@nuxtjs+tailwindcss@6.14.0_magicast@0.3.5/node_modules/@nuxtjs/tailwindcss/node_modules",
-    "../node_modules/.pnpm/@unocss+nuxt@0.64.1_magicas_27156418f5537b1347e6ff4fae23526f/node_modules/@unocss/nuxt/node_modules",
     "../node_modules/.pnpm/@nuxtjs+mdc@0.9.5_magicast@0.3.5/node_modules/@nuxtjs/mdc/node_modules",
     "../node_modules/.pnpm/@nuxt+content@2.13.4_db0@0._e6d547f5f258db907469c1e2dfe28f62/node_modules/@nuxt/content/node_modules",
     "../node_modules/.pnpm/@nuxt+image@1.11.0_db0@0.3.2_ioredis@5.7.0_magicast@0.3.5/node_modules/@nuxt/image/node_modules",
