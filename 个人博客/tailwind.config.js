@@ -145,13 +145,13 @@ export default {
 
   plugins: [
     // 表单插件
-    (await import('@tailwindcss/forms')).default,
+    require('@tailwindcss/forms'),
     
     // 排版插件
-    (await import('@tailwindcss/typography')).default,
+    require('@tailwindcss/typography'),
     
     // 容器查询插件
-    (await import('@tailwindcss/container-queries')).default,
+    require('@tailwindcss/container-queries'),
     
     // 自定义实用程序
     function({ addUtilities, addComponents, theme }) {

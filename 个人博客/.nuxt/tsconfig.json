@@ -98,13 +98,13 @@
         "./primevue-style.mjs"
       ],
       "#mdc-configs": [
-        "./mdc-configs"
+        "./mdc-configs.mjs"
       ],
       "#mdc-highlighter": [
-        "./mdc-highlighter"
+        "./mdc-highlighter.mjs"
       ],
       "#mdc-imports": [
-        "./mdc-imports"
+        "./mdc-imports.mjs"
       ],
       "#image": [
         "../node_modules/.pnpm/@nuxt+image@1.11.0_db0@0.3.2_ioredis@5.7.0_magicast@0.3.5/node_modules/@nuxt/image/dist/runtime"
@@ -131,7 +131,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/095ffd7d-2618-4b00-8832-eb149f935198.json"
+        "./manifest/meta/33003cf3-85b1-4880-8491-8f08d7ed7217.json"
       ],
       "#components": [
         "./components"
