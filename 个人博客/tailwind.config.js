@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
     "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
@@ -145,13 +145,13 @@ module.exports = {
 
   plugins: [
     // 表单插件
-    require('@tailwindcss/forms'),
+    (await import('@tailwindcss/forms')).default,
     
     // 排版插件
-    require('@tailwindcss/typography'),
+    (await import('@tailwindcss/typography')).default,
     
     // 容器查询插件
-    require('@tailwindcss/container-queries'),
+    (await import('@tailwindcss/container-queries')).default,
     
     // 自定义实用程序
     function({ addUtilities, addComponents, theme }) {

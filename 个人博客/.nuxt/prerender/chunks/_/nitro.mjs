@@ -645,7 +645,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "502d0677-a181-45c7-9ac0-0eb511d0f5d2",
+    "buildId": "ddc15a86-cd07-45b6-98f4-cf795cc77e94",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -1089,7 +1089,7 @@ const _inlineRuntimeConfig = {
     "content": {
       "locales": [],
       "defaultLocale": "",
-      "integrity": 1757750861015,
+      "integrity": 1757751757399,
       "experimental": {
         "stripQueryParameters": false,
         "advanceQuery": false,
@@ -1611,9 +1611,6 @@ function defineRenderHandler(render) {
   });
 }
 
-function baseURL() {
-  return useRuntimeConfig().app.baseURL;
-}
 function buildAssetsDir() {
   return useRuntimeConfig().app.buildAssetsDir;
 }
@@ -3106,7 +3103,7 @@ const _bq8WGW = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
-const _lazy_g_wEPq = () => import('./renderer.mjs').then(function (n) { return n.r; });
+const _lazy_g_wEPq = () => import('./renderer.mjs');
 
 const handlers = [
   { route: '', handler: _zcgkES, lazy: false, middleware: true, method: undefined },
@@ -3115,7 +3112,7 @@ const handlers = [
   { route: '/api/_content/query/:qid/**:params', handler: _RaUzdy, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query/:qid', handler: _RaUzdy, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query', handler: _RaUzdy, lazy: false, middleware: false, method: "get" },
-  { route: '/api/_content/cache.1757750861015.json', handler: _Ds72eN, lazy: false, middleware: false, method: "get" },
+  { route: '/api/_content/cache.1757751757399.json', handler: _Ds72eN, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation/:qid/**:params', handler: _vH_l1n, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation/:qid', handler: _vH_l1n, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation', handler: _vH_l1n, lazy: false, middleware: false, method: "get" },
@@ -3264,5 +3261,5 @@ function useNitroApp() {
 }
 runNitroPlugins(nitroApp);
 
-export { useRuntimeConfig as a, buildAssetsURL as b, useStorage as c, defineRenderHandler as d, parseMarkdown as e, getPreview as f, getRouteRules as g, baseURL as h, isPreview as i, publicAssetsURL as p, trapUnhandledNodeErrors as t, useNitroApp as u };
+export { useStorage as a, buildAssetsURL as b, useNitroApp as c, defineRenderHandler as d, parseMarkdown as e, getPreview as f, getRouteRules as g, isPreview as i, publicAssetsURL as p, trapUnhandledNodeErrors as t, useRuntimeConfig as u };
 //# sourceMappingURL=nitro.mjs.map

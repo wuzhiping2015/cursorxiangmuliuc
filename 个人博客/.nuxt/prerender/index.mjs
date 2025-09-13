@@ -1,4 +1,5 @@
-import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { t as trapUnhandledNodeErrors, u as useNitroApp } from './chunks/_/nitro.mjs';
+import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import './chunks/_/nitro.mjs';
+export { c as closePrerenderer, l as localFetch } from './chunks/build/client.manifest.mjs';
 import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/h3@1.15.4/node_modules/h3/dist/index.mjs';
 import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/ufo@1.6.1/node_modules/ufo/dist/index.mjs';
 import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/unified@11.0.5/node_modules/unified/index.js';
@@ -53,11 +54,6 @@ import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE
 import 'file:///D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/nuxt@3.19.1_@parcel+watcher_373915222a3e9ba5001e76740dbb80d1/node_modules/nuxt/dist/core/runtime/nitro/utils/cache-driver.js';
 import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/unstorage@1.17.1_db0@0.3.2_ioredis@5.7.0/node_modules/unstorage/drivers/fs-lite.mjs';
 import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/ohash@2.0.11/node_modules/ohash/dist/index.mjs';
-
-const nitroApp = useNitroApp();
-const localFetch = nitroApp.localFetch;
-const closePrerenderer = () => nitroApp.hooks.callHook("close");
-trapUnhandledNodeErrors();
-
-export { closePrerenderer, localFetch };
+import 'file:///D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@nuxt+vite-builder@3.19.1_@_59a8061b7861f39d97d7c94f0237c313/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs';
+import 'file:///D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@nuxt+vite-builder@3.19.1_@_59a8061b7861f39d97d7c94f0237c313/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs';
 //# sourceMappingURL=index.mjs.map

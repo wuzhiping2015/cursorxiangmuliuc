@@ -2,13 +2,63 @@ import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLin
 import { getResponseStatusText, getResponseStatus, getQuery, createError, appendResponseHeader } from 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/h3@1.15.4/node_modules/h3/dist/index.mjs';
 import { joinURL, withoutTrailingSlash, hasProtocol } from 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/ufo@1.6.1/node_modules/ufo/dist/index.mjs';
 import { renderToString } from 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/vue@3.5.21_typescript@5.9.2/node_modules/vue/server-renderer/index.mjs';
-import { b as buildAssetsURL, a as useRuntimeConfig, c as useStorage, d as defineRenderHandler, p as publicAssetsURL, g as getRouteRules, u as useNitroApp } from './nitro.mjs';
+import { b as buildAssetsURL, u as useRuntimeConfig, a as useStorage, d as defineRenderHandler, p as publicAssetsURL, g as getRouteRules, c as useNitroApp } from './nitro.mjs';
 import { createHead as createHead$1, propsToString, renderSSRHead } from 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/unhead@2.0.14/node_modules/unhead/dist/server.mjs';
 import { stringify, uneval } from 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/devalue@5.3.2/node_modules/devalue/index.js';
-import { walkResolver } from 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/unhead@2.0.14/node_modules/unhead/dist/utils.mjs';
-import { toValue, isRef, hasInjectionContext, inject, ref, watchEffect, getCurrentInstance, onBeforeUnmount, onDeactivated, onActivated } from 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/vue@3.5.21_typescript@5.9.2/node_modules/vue/index.mjs';
+import { toValue, isRef } from 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/vue@3.5.21_typescript@5.9.2/node_modules/vue/index.mjs';
 import { DeprecationsPlugin, PromisesPlugin, TemplateParamsPlugin, AliasSortingPlugin } from 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/unhead@2.0.14/node_modules/unhead/dist/plugins.mjs';
 import { relative } from 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/pathe@2.0.3/node_modules/pathe/dist/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/unified@11.0.5/node_modules/unified/index.js';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/remark-parse@11.0.0/node_modules/remark-parse/index.js';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/remark-rehype@11.1.2/node_modules/remark-rehype/index.js';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/remark-mdc@3.6.0/node_modules/remark-mdc/dist/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/defu@6.1.4/node_modules/defu/dist/defu.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/remark-gfm@4.0.1/node_modules/remark-gfm/index.js';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/rehype-external-links@3.0.0/node_modules/rehype-external-links/index.js';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/rehype-sort-attribute-values@5.0.1/node_modules/rehype-sort-attribute-values/index.js';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/rehype-sort-attributes@5.0.1/node_modules/rehype-sort-attributes/index.js';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/rehype-raw@7.0.0/node_modules/rehype-raw/index.js';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/detab@3.0.2/node_modules/detab/index.js';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/scule@1.3.0/node_modules/scule/dist/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/micromark-util-sanitize-uri@2.0.1/node_modules/micromark-util-sanitize-uri/index.js';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/hast-util-to-string@3.0.1/node_modules/hast-util-to-string/index.js';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/github-slugger@2.0.0/node_modules/github-slugger/index.js';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/destr@2.0.5/node_modules/destr/dist/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/hookable@5.5.3/node_modules/hookable/dist/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/ofetch@1.4.1/node_modules/ofetch/dist/node.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/node-mock-http@1.0.3/node_modules/node-mock-http/dist/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/klona@2.0.6/node_modules/klona/dist/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/radix3@1.1.2/node_modules/radix3/dist/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primevue+core@4.3.9_vue@3.5.21_typescript@5.9.2_/node_modules/@primevue/core/base/style/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primevue+core@4.3.9_vue@3.5.21_typescript@5.9.2_/node_modules/@primevue/core/basecomponent/style/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/inputtext/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/textarea/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/button/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/card/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/divider/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/dialog/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/menu/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/menubar/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/toast/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/avatar/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/badge/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+utils@0.6.1/node_modules/@primeuix/utils/dist/object/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/chip/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/scrolltop/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/skeleton/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/progressspinner/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/tag/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/tooltip/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styles@1.2.3/node_modules/@primeuix/styles/dist/ripple/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/@primeuix+styled@0.7.2/node_modules/@primeuix/styled/dist/index.mjs';
+import 'node:fs';
+import 'node:url';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/ipx@2.1.1_db0@0.3.2_ioredis@5.7.0/node_modules/ipx/dist/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/unstorage@1.17.1_db0@0.3.2_ioredis@5.7.0/node_modules/unstorage/dist/index.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/unstorage@1.17.1_db0@0.3.2_ioredis@5.7.0/node_modules/unstorage/drivers/fs.mjs';
+import 'file:///D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/nuxt@3.19.1_@parcel+watcher_373915222a3e9ba5001e76740dbb80d1/node_modules/nuxt/dist/core/runtime/nitro/utils/cache-driver.js';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/unstorage@1.17.1_db0@0.3.2_ioredis@5.7.0/node_modules/unstorage/drivers/fs-lite.mjs';
+import 'file://D:/Project/AI%E9%A1%B9%E7%9B%AE/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node_modules/.pnpm/ohash@2.0.11/node_modules/ohash/dist/index.mjs';
 
 const VueResolver = (_, value) => {
   return isRef(value) ? toValue(value) : value;
@@ -24,46 +74,6 @@ function vueInstall(head) {
     }
   };
   return plugin.install;
-}
-
-function injectHead() {
-  if (hasInjectionContext()) {
-    const instance = inject(headSymbol);
-    if (!instance) {
-      throw new Error("useHead() was called without provide context, ensure you call it through the setup() function.");
-    }
-    return instance;
-  }
-  throw new Error("useHead() was called without provide context, ensure you call it through the setup() function.");
-}
-function useHead(input, options = {}) {
-  const head = options.head || injectHead();
-  return head.ssr ? head.push(input || {}, options) : clientUseHead(head, input, options);
-}
-function clientUseHead(head, input, options = {}) {
-  const deactivated = ref(false);
-  let entry;
-  watchEffect(() => {
-    const i = deactivated.value ? {} : walkResolver(input, VueResolver);
-    if (entry) {
-      entry.patch(i);
-    } else {
-      entry = head.push(i, options);
-    }
-  });
-  const vm = getCurrentInstance();
-  if (vm) {
-    onBeforeUnmount(() => {
-      entry.dispose();
-    });
-    onDeactivated(() => {
-      deactivated.value = true;
-    });
-    onActivated(() => {
-      deactivated.value = false;
-    });
-  }
-  return entry;
 }
 
 function createHead(options = {}) {
@@ -89,8 +99,8 @@ const appId = "nuxt-app";
 
 const APP_ROOT_OPEN_TAG = `<${appRootTag}${propsToString(appRootAttrs)}>`;
 const APP_ROOT_CLOSE_TAG = `</${appRootTag}>`;
-const getServerEntry = () => import('../build/server.mjs').then((r) => r.default || r);
-const getClientManifest = () => import('../build/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getServerEntry = () => import('../build/client.manifest.mjs').then(function (n) { return n.s; }).then((r) => r.default || r);
+const getClientManifest = () => import('../build/client.manifest.mjs').then(function (n) { return n.a; }).then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
 const getSSRRenderer = lazyCachedFunction(async () => {
   const manifest = await getClientManifest();
   if (!manifest) {
@@ -448,10 +458,5 @@ function renderHTMLDocument(html) {
   return `<!DOCTYPE html><html${joinAttrs(html.htmlAttrs)}><head>${joinTags(html.head)}</head><body${joinAttrs(html.bodyAttrs)}>${joinTags(html.bodyPrepend)}${joinTags(html.body)}${joinTags(html.bodyAppend)}</body></html>`;
 }
 
-const renderer$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  default: renderer
-}, Symbol.toStringTag, { value: 'Module' }));
-
-export { headSymbol as h, renderer$1 as r, useHead as u };
+export { renderer as default };
 //# sourceMappingURL=renderer.mjs.map
