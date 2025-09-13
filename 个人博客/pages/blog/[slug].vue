@@ -387,7 +387,7 @@ const formatDate = (dateString: string) => {
   })
 }
 
-const getCurrentURL = () => {
+const getCurrentURL = (): string => {
   if (process.client) {
     return window.location.href
   }

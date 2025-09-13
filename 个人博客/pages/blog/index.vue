@@ -166,6 +166,18 @@
  * 展示所有博客文章，支持搜索、标签筛选和分页
  */
 
+// 文章类型定义
+interface Article {
+  _path: string
+  title: string
+  description: string
+  publishedAt: string
+  readTime: string
+  category?: string
+  tags?: string[]
+  image?: string
+}
+
 // 页面元数据
 useHead({
   title: 'AI 前端开发实践博客 - 最新文章列表',
@@ -192,12 +204,12 @@ const isLoading = ref(false)
 const { data: articles } = await queryContent('/blog')
   .where({ draft: { $ne: true } })
   .sort({ publishedAt: -1 })
-  .find()
+  .find() as { data: Ref<Article[]> }
 
 // 计算属性
 const allTags = computed(() => {
   const tags = new Set<string>()
-  articles.value?.forEach(article => {
+  articles.value?.forEach((article: Article) => {
     article.tags?.forEach((tag: string) => tags.add(tag))
   })
   return Array.from(tags).sort()
@@ -209,7 +221,7 @@ const filteredArticles = computed(() => {
   // 搜索筛选
   if (searchQuery.value) {
     const query = searchQuery.value.toLowerCase()
-    filtered = filtered.filter(article => 
+    filtered = filtered.filter((article: Article) => 
       article.title?.toLowerCase().includes(query) ||
       article.description?.toLowerCase().includes(query) ||
       article.tags?.some((tag: string) => tag.toLowerCase().includes(query))
@@ -218,7 +230,7 @@ const filteredArticles = computed(() => {
   
   // 标签筛选
   if (selectedTags.value.length > 0) {
-    filtered = filtered.filter(article =>
+    filtered = filtered.filter((article: Article) =>
       selectedTags.value.some(tag => article.tags?.includes(tag))
     )
   }
@@ -278,7 +290,7 @@ useJsonld({
     '@type': 'Person',
     name: 'Frontend AI Engineer'
   },
-  blogPost: articles.value?.slice(0, 5).map(article => ({
+  blogPost: articles.value?.slice(0, 5).map((article: Article) => ({
     '@type': 'BlogPosting',
     headline: article.title,
     description: article.description,

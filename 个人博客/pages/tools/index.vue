@@ -342,8 +342,41 @@
  * 展示308+精选AI工具，支持搜索、筛选和分类浏览
  */
 
+// 类型定义
+interface Tool {
+  id: string
+  name: string
+  description: string
+  url: string
+  icon?: string
+  category: string
+  tags: string[]
+  rating: number
+  free: boolean
+  featured: boolean
+  pros?: string[]
+  cons?: string[]
+  useCases?: string[]
+  personalNote?: string
+}
+
+interface Category {
+  id: string
+  name: string
+  icon: string
+  color: string
+  tools: Tool[]
+}
+
+interface ToolsDatabase {
+  categories: Category[]
+  stats: {
+    totalTools: number
+  }
+}
+
 // 获取AI工具数据
-const { data: toolsData } = await $fetch('/api/tools') || await import('~/content/tools/ai-tools-database.json')
+const toolsData = await import('~/content/tools/ai-tools-database.json').then(m => m.default)
 
 // 页面元数据
 useHead({
@@ -361,7 +394,7 @@ useHead({
 })
 
 // 响应式数据
-const toolsDatabase = ref(toolsData)
+const toolsDatabase = ref<ToolsDatabase>(toolsData)
 const searchQuery = ref('')
 const selectedCategory = ref<string | null>(null)
 const selectedTags = ref<string[]>([])
@@ -370,7 +403,7 @@ const freeOnly = ref(false)
 
 // 工具详情模态框
 const showToolDetail = ref(false)
-const selectedTool = ref<any>(null)
+const selectedTool = ref<Tool | null>(null)
 
 // 分页相关
 const first = ref(0)
@@ -381,17 +414,17 @@ const categories = computed(() => toolsDatabase.value.categories)
 
 const allTags = computed(() => {
   const tags = new Set<string>()
-  categories.value.forEach(category => {
-    category.tools.forEach(tool => {
-      tool.tags.forEach(tag => tags.add(tag))
+  categories.value.forEach((category: Category) => {
+    category.tools.forEach((tool: Tool) => {
+      tool.tags.forEach((tag: string) => tags.add(tag))
     })
   })
   return Array.from(tags).sort()
 })
 
 const allTools = computed(() => {
-  return categories.value.flatMap(category => 
-    category.tools.map(tool => ({
+  return categories.value.flatMap((category: Category) => 
+    category.tools.map((tool: Tool) => ({
       ...tool,
       categoryName: category.name,
       categoryColor: category.color
@@ -400,11 +433,11 @@ const allTools = computed(() => {
 })
 
 const featuredTools = computed(() => 
-  allTools.value.filter(tool => tool.featured)
+  allTools.value.filter((tool: Tool) => tool.featured)
 )
 
 const freeTools = computed(() => 
-  allTools.value.filter(tool => tool.free)
+  allTools.value.filter((tool: Tool) => tool.free)
 )
 
 const filteredTools = computed(() => {
@@ -413,37 +446,37 @@ const filteredTools = computed(() => {
   // 搜索筛选
   if (searchQuery.value) {
     const query = searchQuery.value.toLowerCase()
-    tools = tools.filter(tool => 
+    tools = tools.filter((tool: Tool) => 
       tool.name.toLowerCase().includes(query) ||
       tool.description.toLowerCase().includes(query) ||
-      tool.tags.some(tag => tag.toLowerCase().includes(query))
+      tool.tags.some((tag: string) => tag.toLowerCase().includes(query))
     )
   }
   
   // 分类筛选
   if (selectedCategory.value) {
-    tools = tools.filter(tool => tool.category === selectedCategory.value)
+    tools = tools.filter((tool: Tool) => tool.category === selectedCategory.value)
   }
   
   // 标签筛选
   if (selectedTags.value.length > 0) {
-    tools = tools.filter(tool => 
+    tools = tools.filter((tool: Tool) => 
       selectedTags.value.some(tag => tool.tags.includes(tag))
     )
   }
   
   // 评分筛选
   if (selectedRating.value !== null) {
-    tools = tools.filter(tool => tool.rating >= (selectedRating.value as number))
+    tools = tools.filter((tool: Tool) => tool.rating >= (selectedRating.value as number))
   }
   
   // 免费筛选
   if (freeOnly.value) {
-    tools = tools.filter(tool => tool.free)
+    tools = tools.filter((tool: Tool) => tool.free)
   }
   
   // 按评分和是否精选排序
-  return tools.sort((a, b) => {
+  return tools.sort((a: Tool, b: Tool) => {
     if (a.featured && !b.featured) return -1
     if (!a.featured && b.featured) return 1
     return b.rating - a.rating
@@ -461,17 +494,17 @@ const totalPages = computed(() =>
 )
 
 // 方法
-const openToolDetail = (tool: any) => {
+const openToolDetail = (tool: Tool) => {
   selectedTool.value = tool
   showToolDetail.value = true
 }
 
-const visitTool = (tool: any) => {
+const visitTool = (tool: Tool) => {
   // 在新窗口打开工具链接
   window.open(tool.url, '_blank')
 }
 
-const shareToolUrl = (tool: any) => {
+const shareToolUrl = (tool: Tool) => {
   if (navigator.share) {
     navigator.share({
       title: tool.name,
@@ -503,7 +536,7 @@ useJsonld({
   mainEntity: {
     '@type': 'ItemList',
     numberOfItems: toolsDatabase.value.stats.totalTools,
-    itemListElement: allTools.value.slice(0, 10).map((tool, index) => ({
+    itemListElement: allTools.value.slice(0, 10).map((tool: Tool, index: number) => ({
       '@type': 'ListItem',
       position: index + 1,
       item: {
