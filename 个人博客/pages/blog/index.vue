@@ -201,10 +201,13 @@ const pageSize = 10
 const isLoading = ref(false)
 
 // 获取所有文章
-const { data: articles } = await queryContent('/blog')
+const articles = ref<Article[]>([])
+const { data } = await queryContent('/blog')
   .where({ draft: { $ne: true } })
   .sort({ publishedAt: -1 })
-  .find() as { data: Ref<Article[]> }
+  .find()
+
+articles.value = data as Article[]
 
 // 计算属性
 const allTags = computed(() => {

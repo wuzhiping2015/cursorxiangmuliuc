@@ -13,8 +13,8 @@ import { Icon } from '@iconify/vue'
 interface Props {
   /** 图标名称，格式：collection:icon-name */
   name: string
-  /** 自定义类名 */
-  class?: string
+  /** 自定义类名，支持字符串或数组 */
+  class?: string | string[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -32,6 +32,9 @@ const icon = computed(() => {
 
 // 合并类名
 const className = computed(() => {
+  if (Array.isArray(props.class)) {
+    return props.class.filter(Boolean).join(' ')
+  }
   return props.class || ''
 })
 </script>

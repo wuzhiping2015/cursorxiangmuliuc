@@ -315,7 +315,8 @@ const [prev, next] = await queryContent('/blog')
   .findSurround(`/blog/${slug}`)
 
 // 获取相关文章
-const { data: relatedArticles } = await queryContent('/blog')
+const relatedArticles = ref<any[]>([])
+const { data: relatedData } = await queryContent('/blog')
   .where({ 
     draft: { $ne: true },
     _path: { $ne: `/blog/${slug}` },
@@ -323,6 +324,8 @@ const { data: relatedArticles } = await queryContent('/blog')
   })
   .limit(3)
   .find()
+
+relatedArticles.value = relatedData as any[]
 
 // 页面元数据
 useHead({
@@ -355,8 +358,16 @@ const showFeedbackModal = ref(false)
 const selectedRating = ref(0)
 const feedbackText = ref('')
 
+// 获取当前URL的函数
+const getCurrentURL = (): string => {
+  if (process.client) {
+    return window.location.href
+  }
+  return `https://ai-frontend-engineer.com/blog/${slug}`
+}
+
 // 分享按钮配置
-const shareButtons = [
+const shareButtons = computed(() => [
   {
     name: '微博',
     icon: 'simple-icons:sinaweibo',
@@ -375,7 +386,7 @@ const shareButtons = [
     class: 'bg-blue-500 hover:bg-blue-600 text-white',
     url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(data?.title || '')}&url=${encodeURIComponent(getCurrentURL())}`
   }
-]
+])
 
 // 方法
 const formatDate = (dateString: string) => {
@@ -387,14 +398,7 @@ const formatDate = (dateString: string) => {
   })
 }
 
-const getCurrentURL = (): string => {
-  if (process.client) {
-    return window.location.href
-  }
-  return `https://ai-frontend-engineer.com/blog/${slug}`
-}
-
-const shareToSocial = (social: typeof shareButtons[0]) => {
+const shareToSocial = (social: any) => {
   if (social.name === '微信') {
     // 微信分享复制链接到剪贴板
     if (navigator.clipboard) {

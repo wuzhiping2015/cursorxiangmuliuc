@@ -22,7 +22,10 @@ declare module 'vue-router/auto-routes' {
     'about': RouteRecordInfo<'about', '/about', Record<never, never>, Record<never, never>>,
     'blog': RouteRecordInfo<'blog', '/blog', Record<never, never>, Record<never, never>>,
     'blog-slug': RouteRecordInfo<'blog-slug', '/blog/:slug()', { slug: ParamValue<true> }, { slug: ParamValue<false> }>,
+    'cases': RouteRecordInfo<'cases', '/cases', Record<never, never>, Record<never, never>>,
+    'privacy': RouteRecordInfo<'privacy', '/privacy', Record<never, never>, Record<never, never>>,
     'projects': RouteRecordInfo<'projects', '/projects', Record<never, never>, Record<never, never>>,
+    'terms': RouteRecordInfo<'terms', '/terms', Record<never, never>, Record<never, never>>,
     'tools': RouteRecordInfo<'tools', '/tools', Record<never, never>, Record<never, never>>,
   }
 
@@ -53,8 +56,20 @@ declare module 'vue-router/auto-routes' {
       routes: 'blog-slug'
       views: never
     }
+    'pages/cases.vue': {
+      routes: 'cases'
+      views: never
+    }
+    'pages/privacy.vue': {
+      routes: 'privacy'
+      views: never
+    }
     'pages/projects/index.vue': {
       routes: 'projects'
+      views: never
+    }
+    'pages/terms.vue': {
+      routes: 'terms'
       views: never
     }
     'pages/tools/index.vue': {

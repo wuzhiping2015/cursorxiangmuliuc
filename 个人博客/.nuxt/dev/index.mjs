@@ -1175,7 +1175,7 @@ const _inlineRuntimeConfig = {
           "yaml"
         ]
       },
-      "wsUrl": "ws://localhost:4001/",
+      "wsUrl": "ws://localhost:4002/",
       "documentDriven": false,
       "host": "",
       "trailingSlash": false,
