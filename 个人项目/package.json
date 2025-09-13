@@ -1,0 +1,73 @@
+{
+  "name": "ai-frontend-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI驱动的前端工程师个人博客 - 将AI融入工作流，提升开发效率",
+  "author": "Frontend AI Engineer",
+  "keywords": [
+    "AI工具",
+    "前端开发",
+    "开发效率",
+    "Vue3",
+    "Nuxt3",
+    "个人博客",
+    "工作流优化"
+  ],
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "type-check": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@iconify-json/simple-icons": "^1.2.51",
+    "@nuxt/content": "^2.13.4",
+    "@nuxt/image": "^1.8.1",
+    "@nuxtjs/color-mode": "^3.5.2",
+    "@pinia/nuxt": "^0.5.5",
+    "@primevue/nuxt-module": "^4.2.6",
+    "@vueuse/core": "^13.9.0",
+    "@vueuse/nuxt": "^11.2.0",
+    "nuxt": "^3.14.159",
+    "nuxt-jsonld": "^2.2.1",
+    "pinia": "^2.2.6",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.2.6",
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@iconify-json/heroicons": "^1.2.1",
+    "@iconify-json/mdi": "^1.2.1",
+    "@iconify-json/tabler": "^1.2.8",
+    "@nuxt/devtools": "^1.6.0",
+    "@nuxt/eslint": "^0.7.3",
+    "@nuxtjs/tailwindcss": "^6.12.1",
+    "@nuxt/icon": "^2.0.0",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^22.10.2",
+    "@unocss/nuxt": "^0.64.0",
+    "autoprefixer": "10",
+    "eslint": "^9.16.0",
+    "postcss": "8",
+    "sass": "^1.82.0",
+    "tailwindcss": "3.4.15",
+    "typescript": "^5.8.3",
+    "vue-tsc": "^3.0.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/ai-frontend-blog.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}
