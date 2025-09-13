@@ -525,46 +525,46 @@ const downloadResume = () => {
 
 /* 响应式优化 */
 @media (max-width: 1024px) {
-  .grid.lg\\:grid-cols-12 {
+  .grid.lg\:grid-cols-12 {
     grid-template-columns: 1fr;
   }
   
-  .lg\\:col-span-7,
-  .lg\\:col-span-5 {
+  .lg\:col-span-7,
+  .lg\:col-span-5 {
     grid-column: span 1;
   }
 }
 
 @media (max-width: 640px) {
-  .text-4xl.sm\\:text-5xl.lg\\:text-6xl {
+  .text-4xl.sm\:text-5xl.lg\:text-6xl {
     font-size: 2.5rem;
     line-height: 1.1;
   }
 }
 
 /* 动画效果 */
-.hover\\:shadow-2xl {
+.hover\:shadow-2xl {
   transition: box-shadow 0.3s ease;
 }
 
-.hover\\:scale-105 {
+.hover\:scale-105 {
   transition: transform 0.3s ease;
 }
 
-.group:hover .group-hover\\:translate-x-1 {
+.group:hover .group-hover\:translate-x-1 {
   transform: translateX(0.25rem);
 }
 
-.group:hover .group-hover\\:text-blue-600 {
+.group:hover .group-hover\:text-blue-600 {
   color: #2563eb;
 }
 
-.group:hover .group-hover\\:bg-black\\/10 {
+.group:hover .group-hover\:bg-black\/10 {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* 深色模式优化 */
-.dark .group:hover .group-hover\\:text-blue-400 {
+.dark .group:hover .group-hover\:text-blue-400 {
   color: #60a5fa;
 }
 </style>

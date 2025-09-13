@@ -316,7 +316,7 @@ const [prev, next] = await queryContent('/blog')
 
 // 获取相关文章
 const relatedArticles = ref<any[]>([])
-const { data: relatedData } = await queryContent('/blog')
+const relatedData = await queryContent('/blog')
   .where({ 
     draft: { $ne: true },
     _path: { $ne: `/blog/${slug}` },

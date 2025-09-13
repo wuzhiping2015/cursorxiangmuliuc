@@ -63,10 +63,10 @@
                     :name="getResultIcon(result.type)" 
                     :class="[
                       'w-4 h-4',
-                      result.type === 'tool' && 'text-blue-600 dark:text-blue-400',
-                      result.type === 'blog' && 'text-green-600 dark:text-green-400',
-                      result.type === 'page' && 'text-purple-600 dark:text-purple-400'
-                    ]"
+                      result.type === 'tool' ? 'text-blue-600 dark:text-blue-400' : '',
+                      result.type === 'blog' ? 'text-green-600 dark:text-green-400' : '',
+                      result.type === 'page' ? 'text-purple-600 dark:text-purple-400' : ''
+                    ].filter(Boolean)"
                   />
                 </div>
               </div>

@@ -604,8 +604,8 @@ useJsonld({
     @apply px-4;
   }
   
-  .grid.grid-cols-2.md\\:grid-cols-4 {
-    @apply grid-cols-2;
+  .grid.grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

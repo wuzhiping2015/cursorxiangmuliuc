@@ -202,12 +202,12 @@ const isLoading = ref(false)
 
 // 获取所有文章
 const articles = ref<Article[]>([])
-const { data } = await queryContent('/blog')
+const data = await queryContent('/blog')
   .where({ draft: { $ne: true } })
   .sort({ publishedAt: -1 })
   .find()
 
-articles.value = data as Article[]
+articles.value = data as unknown as Article[]
 
 // 计算属性
 const allTags = computed(() => {
